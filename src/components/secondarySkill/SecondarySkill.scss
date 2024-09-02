@@ -1,0 +1,62 @@
+.skill-component {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0; /* Utilisation de rem pour la marge */
+
+  .radio-button {
+    width: 1.25rem; /* Taille relative pour le bouton radio */
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .skill-name {
+    flex: 1;
+    font-weight: bold;
+    color: #4a4a4a;
+    font-size: 1rem; /* Taille de police relative */
+  }
+
+  .attribute-label {
+    margin-right: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem; /* Taille de police relative */
+
+    &.red {
+      color: red;
+    }
+
+    &.orange {
+      color: orange;
+    }
+
+    &.yellow {
+      color: yellow;
+    }
+
+    &.blue {
+      color: blue;
+    }
+
+    &.green {
+      color: green;
+    }
+
+    &.purple {
+      color: purple;
+    }
+  }
+
+  .skill-input {
+    width: 2.5rem; /* Taille relative de l'input */
+    text-align: center;
+    border: 0.0625rem solid #ccc; /* Bordure fine et relative */
+    padding: 0.125rem; /* Padding relatif */
+    font-size: 1rem; /* Taille de police relative */
+  }
+}

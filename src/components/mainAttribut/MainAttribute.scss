@@ -1,0 +1,149 @@
+.container {
+  position: relative;
+  width: 650px;
+  height: 480px;
+  font-family: "Roboto", sans-serif;
+}
+
+.stat-element {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  .stats-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 26%;
+    aspect-ratio: 1;
+    align-items: center;
+    margin-top: 11%;
+    background-color: #e4d9d9;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .wrapper-stat-square {
+    position: absolute;
+    width: 55%;
+    height: 50%;
+    padding-top: 22%;
+    padding-left: 11%;
+  }
+
+  .stat-square {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    border: 0.4em solid #000;
+    border-radius: 7%;
+    position: relative;
+
+    .stat-title {
+      font-weight: bold;
+      color: #c12a32;
+      transform: rotate(-90deg);
+      font-size: 2rem;
+      font-weight: 800;
+      position: absolute;
+      left: -25%;
+    }
+
+    .stat-ticker {
+      font-weight: bold;
+      color: #c12a32;
+      font-size: 2.5rem;
+      font-weight: 800;
+      position: absolute;
+      top: -25%;
+      left: 20%;
+    }
+
+    .number-input {
+      width: 80%;
+    }
+  }
+
+  .proficiency-square {
+    flex-direction: column; /* Stack the items vertically */
+    justify-content: center; /* Vertically centers the children inside the box */
+    align-items: center; /* Horizontally centers the children */
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    background-color: #e4d9d9;
+    border: 0.4em solid;
+    border-color: #c12a32;
+    border-radius: 7%;
+
+    .mod-value {
+      align-self: stretch; /* Aligne le texte sur toute la largeur */
+      text-align: center; /* Centre le texte horizontalement */
+      font-weight: bold;
+      color: #000000;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .number-input {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%; /* S'assure que l'input occupe toute la largeur */
+      height: 100%; /* Facultatif : Ajuste la taille de l'input selon vos besoins */
+
+      input {
+        text-align: center; /* Centre le texte à l'intérieur de l'input */
+        font-size: 5rem;
+        border: none;
+        background: transparent;
+        width: auto; /* Ajuste la taille de l'input */
+        height: auto;
+        padding-bottom: 20%;
+      }
+    }
+  }
+
+  .saving-square {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 43%;
+    height: 42%;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    background-color: #e4d9d9;
+    border: 0.4em solid #000;
+    border-radius: 7%;
+
+    .save-value {
+      align-items: center;
+      font-weight: bold;
+      color: #000000;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .number-input {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      height: auto;
+
+      input {
+        text-align: center;
+        font-size: 4rem;
+        border: none;
+        background: transparent;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+}

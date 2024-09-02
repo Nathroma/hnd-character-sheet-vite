@@ -1,0 +1,49 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Espace entre les colonnes */
+}
+
+body {
+  background-color: #e4d9d9; /* Choisis ta couleur ici */
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.testBlock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Espace entre les colonnes */
+  height: 300px; /* Ajuste la hauteur pour permettre l'affichage de 3 éléments par colonne */
+}
+
+.mainAttribute {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Espace entre les colonnes */
+  height: 300px; /* Ajuste la hauteur pour permettre l'affichage de 3 éléments par colonne */
+}
+
+.mainAttribute > * {
+  flex-basis: calc(
+    50% - 10px
+  ); /* Chaque élément prend environ 50% de la largeur */
+  height: 33%; /* Chaque élément prend 33% de la hauteur du conteneur */
+  box-sizing: border-box;
+  margin-bottom: 10px; /* Optionnel : Espace en bas de chaque élément */
+  padding: 100px; /* Optionnel : Ajoute de l'espacement autour des éléments */
+}
+
+.secondarySkill {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Espace entre les colonnes */
+  height: 300px; /* Ajuste la hauteur pour permettre l'affichage de 3 éléments par colonne */
+}
