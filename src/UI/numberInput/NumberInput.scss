@@ -1,15 +1,15 @@
 .number-input {
-  display: flex; /* This enables flexbox for the container */
-  justify-content: center; /* Centers the content horizontally */
-  align-items: center; /* Centers the content vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  /* hide button on Chrome, Safari, Edge, Opera */
+  /* hide buttons on Chromium*/
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-  /* hide button on Firefox */
+  /* hide buttons on Firefox */
   input[type="number"] {
     -moz-appearance: textfield;
   }
@@ -18,11 +18,11 @@
     border: none;
     outline: none;
     font-weight: 700;
-    font-size: 5rem;
+    font-size: 1rem;
     color: black;
     background-color: transparent;
-    text-align: center; /* Ensures the text inside the input is centered */
-    width: 100%; /* Adjust width as needed */
-    height: 100%; /* Adjust height as needed */
+    text-align: center;
+    width: 100%;
+    height: 100%;
   }
 }

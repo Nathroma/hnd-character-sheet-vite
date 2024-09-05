@@ -1,49 +1,81 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  --color-for: #c12a32;
+  --color-dex: #f48e01;
+  --color-con: #2eb576;
+  --color-int: #00aded;
+  --color-sag: #902e8c;
+  --color-cha: #ef7eb0;
+
+  --color-background: #e4d9d9;
+
+  --color-proficiency-field: #b87333;
+  --color-inspiration-field: #008705;
+  --color-passive-perc-field: #dd07a4;
+  --color-initiative-field: #f49740;
+  --color-speed-field: #793b01;
+  --color-dd-save-field: #920077;
 }
 .App {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Espace entre les colonnes */
+  justify-content: space-between;
 }
 
 body {
-  background-color: #e4d9d9; /* Choisis ta couleur ici */
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
+  background-color: #e4d9d9;
+  font-family: "Roboto", sans-serif;
 }
 
-.testBlock {
+.wapper-all-stats {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* Espace entre les colonnes */
-  height: 300px; /* Ajuste la hauteur pour permettre l'affichage de 3 éléments par colonne */
-}
+  width: auto;
+  height: auto;
+  justify-content: space-between;
 
-.mainAttribute {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* Espace entre les colonnes */
-  height: 300px; /* Ajuste la hauteur pour permettre l'affichage de 3 éléments par colonne */
-}
+  .testBlock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    width: auto;
+  }
 
-.mainAttribute > * {
-  flex-basis: calc(
-    50% - 10px
-  ); /* Chaque élément prend environ 50% de la largeur */
-  height: 33%; /* Chaque élément prend 33% de la hauteur du conteneur */
-  box-sizing: border-box;
-  margin-bottom: 10px; /* Optionnel : Espace en bas de chaque élément */
-  padding: 100px; /* Optionnel : Ajoute de l'espacement autour des éléments */
-}
+  .mainAttribute {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: auto;
+    max-width: 600px;
+    height: auto;
+  }
 
-.secondarySkill {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* Espace entre les colonnes */
-  height: 300px; /* Ajuste la hauteur pour permettre l'affichage de 3 éléments par colonne */
+  .mainAttribute > * {
+    box-sizing: border-box;
+  }
+
+  .secondarySkill {
+    padding-top: 5px;
+    padding-bottom: 3px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+    width: auto;
+  }
+
+  .SecondaryStats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    width: auto;
+    max-width: 550px;
+    height: auto;
+  }
 }

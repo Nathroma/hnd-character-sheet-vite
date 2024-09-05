@@ -1,8 +1,15 @@
-import "./LabeledCheckBox.scss"; // Assuming your styles are in a file named Checkbox.scss
-import PropTypes from "prop-types";
+import React from "react";
+import "./LabeledCheckBox.scss";
 
-const LabeledCheckbox = ({ label, isChecked, onChange }) => {
-  const handleCheckboxChange = (event) => {
+type LabeledCheckBoxProps = {
+  label: string;
+  isChecked: boolean;
+  onChange: (checked: boolean) => void;
+};
+
+const LabeledCheckbox = ({ label, isChecked, onChange }:LabeledCheckBoxProps) => {
+
+  const handleCheckboxChange = (event: { target: { checked: boolean; }; }) => {
     onChange(event.target.checked);
   };
 
@@ -19,12 +26,6 @@ const LabeledCheckbox = ({ label, isChecked, onChange }) => {
       </label>
     </div>
   );
-};
-
-LabeledCheckbox.propTypes = {
-  label: PropTypes.string.isRequired,
-  isChecked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default LabeledCheckbox;
