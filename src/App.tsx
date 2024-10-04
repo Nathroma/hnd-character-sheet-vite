@@ -28,13 +28,17 @@ function App() {
           ))}
         </div>
         <div className="secondarySkill">
-          {Object.values(SkillType).map((skillType) => (
-            <SkillBlock
-              key={skillType}
-              skillName={SkillAssociations[skillType].name}
-              attribute={SkillAssociations[skillType].stat}
-            />
-          ))}
+          {Object.values(SkillType)
+            .sort((a, b) =>
+              SkillAssociations[a].name.localeCompare(SkillAssociations[b].name)
+            )
+            .map((skillType) => (
+              <SkillBlock
+                key={skillType}
+                skillName={SkillAssociations[skillType].name}
+                attribute={SkillAssociations[skillType].stat}
+              />
+            ))}
         </div>
         <div className="SecondaryStats">
           {Object.values(AttributeType).map((attributeType) => (

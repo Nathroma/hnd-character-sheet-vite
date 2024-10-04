@@ -1,22 +1,7 @@
+import { StatColors } from "./src/types/colorType";
 import { StatType, Stat } from "./src/types/statType";
 import { SkillType, Skill } from "./src/types/skillType";
 import { AttributeType, Attribute } from "./src/types/attributeType";
-
-type StatColors = {
-  FOR: string;
-  DEX: string;
-  CON: string;
-  INT: string;
-  SAG: string;
-  CHA: string;
-
-  proficiencyField: string;
-  inspirationField: string;
-  passivePercField: string;
-  initiativeField: string;
-  speedField: string;
-  ddSaveField: string;
-};
 
 type ProficiencyBonus = {
   baseProficiency: number;
@@ -49,29 +34,29 @@ export const statAssociations: Record<StatType, Stat> = {
   [StatType.DEX]: { name: "Dextérité", color: color.stats.DEX },
   [StatType.CON]: { name: "Constitution", color: color.stats.CON },
   [StatType.INT]: { name: "Intelligence", color: color.stats.INT },
-  [StatType.SAG]: { name: "Sagesse", color: color.stats.SAG },
+  [StatType.WIS]: { name: "Sagesse", color: color.stats.SAG },
   [StatType.CHA]: { name: "Charisme", color: color.stats.CHA },
 };
 
 export const SkillAssociations: Record<SkillType, Skill> = {
-  [SkillType.Acrobatie]: { name: "Acrobatie", stat: "DEX" },
-  [SkillType.Arcanes]: { name: "Arcanes", stat: "INT" },
-  [SkillType.Athlétisme]: { name: "Athlétisme", stat: "FOR" },
-  [SkillType.Discrétion]: { name: "Discrétion", stat: "DEX" },
-  [SkillType.Dressage]: { name: "Dressage", stat: "SAG" },
-  [SkillType.Escamotage]: { name: "Escamotage", stat: "DEX" },
-  [SkillType.Histoire]: { name: "Histoire", stat: "INT" },
+  [SkillType.Acrobatics]: { name: "Acrobatie", stat: "DEX" },
+  [SkillType.Arcana]: { name: "Arcanes", stat: "INT" },
+  [SkillType.Athletics]: { name: "Athlétisme", stat: "FOR" },
+  [SkillType.Stealth]: { name: "Discrétion", stat: "DEX" },
+  [SkillType.AnimalHandling]: { name: "Dressage", stat: "SAG" },
+  [SkillType.SleightOfHand]: { name: "Escamotage", stat: "DEX" },
+  [SkillType.History]: { name: "Histoire", stat: "INT" },
   [SkillType.Intimidation]: { name: "Intimidation", stat: "CHA" },
-  [SkillType.investigation]: { name: "investigation", stat: "INT" },
-  [SkillType.Médecine]: { name: "Médecine", stat: "SAG" },
+  [SkillType.Investigation]: { name: "investigation", stat: "INT" },
+  [SkillType.Medicine]: { name: "Médecine", stat: "SAG" },
   [SkillType.Nature]: { name: "Nature", stat: "INT" },
   [SkillType.Perception]: { name: "Perception", stat: "SAG" },
-  [SkillType.Perspicacité]: { name: "Perspicacité", stat: "SAG" },
+  [SkillType.Insight]: { name: "Perspicacité", stat: "SAG" },
   [SkillType.Persuasion]: { name: "Persuasion", stat: "CHA" },
   [SkillType.Religion]: { name: "Religion", stat: "INT" },
-  [SkillType.Représentation]: { name: "Représentation", stat: "CHA" },
-  [SkillType.Supercherie]: { name: "Supercherie", stat: "CHA" },
-  [SkillType.Survie]: { name: "Survie", stat: "SAG" },
+  [SkillType.Performance]: { name: "Représentation", stat: "CHA" },
+  [SkillType.Deception]: { name: "Supercherie", stat: "CHA" },
+  [SkillType.Survival]: { name: "Survie", stat: "SAG" },
 };
 
 export const AttributeAssociations: Record<AttributeType, Attribute> = {

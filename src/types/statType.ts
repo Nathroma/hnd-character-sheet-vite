@@ -3,7 +3,7 @@ export enum StatType {
   DEX = "DEX",
   CON = "CON",
   INT = "INT",
-  SAG = "SAG",
+  WIS = "WIS",
   CHA = "CHA",
 }
 
