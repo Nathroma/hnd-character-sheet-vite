@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 export enum StatName {
   FOR = "FOR",
   DEX = "DEX",
