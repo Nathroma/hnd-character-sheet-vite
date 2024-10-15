@@ -1,3 +1,5 @@
+import { StatType } from "./statType";
+
 export enum SkillType {
   acrobatics = "acrobatics",
   arcana = "arcana",
@@ -21,5 +23,5 @@ export enum SkillType {
 
 export type Skill = {
   name: string;
-  stat: string;
+  relatedStat: StatType;
 };

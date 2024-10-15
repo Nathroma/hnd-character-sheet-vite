@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Character, StatName } from "./types";
+import { Character } from "../types/characterType";
+import { StatType } from "../types/statType";
 
 const defaultSubstats = {
   value: 0,
@@ -9,25 +10,23 @@ const defaultSubstats = {
 
 const defaultCharacter: Character = {
   stats: {
-    [StatName.FOR]: defaultSubstats,
-    [StatName.DEX]: defaultSubstats,
-    [StatName.CON]: defaultSubstats,
-    [StatName.INT]: defaultSubstats,
-    [StatName.CHA]: defaultSubstats,
-    [StatName.SAG]: defaultSubstats,
+    [StatType.FOR]: defaultSubstats,
+    [StatType.DEX]: defaultSubstats,
+    [StatType.CON]: defaultSubstats,
+    [StatType.INT]: defaultSubstats,
+    [StatType.WIS]: defaultSubstats,
+    [StatType.CHA]: defaultSubstats,
   },
 };
 
 const useCharacter = () => {
   const [character, setCharacter] = useState<Character>(defaultCharacter);
 
-  const setStatValue = (statName: StatName, value: number) => {
-
-  };
+  const setStatValue = (statName: StatType, value: number) => {};
 
   return {
     character: character,
-    setStatValue: setStatValue
+    setStatValue: setStatValue,
   };
 };
 

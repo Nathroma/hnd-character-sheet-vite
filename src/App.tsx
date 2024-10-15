@@ -36,7 +36,7 @@ function App() {
               <SkillBlock
                 key={skillType}
                 skillName={SkillAssociations[skillType].name}
-                attribute={SkillAssociations[skillType].stat}
+                attribute={SkillAssociations[skillType].relatedStat}
               />
             ))}
         </div>
