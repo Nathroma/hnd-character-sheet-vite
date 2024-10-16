@@ -1,33 +1,42 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Character } from "../types/characterType";
-import { StatType } from "../types/statType";
-
-const defaultSubstats = {
-  value: 0,
-  modifier: 0,
-  mastered: false,
-};
+import { defaultStat, StatType } from "../types/statType";
 
 const defaultCharacter: Character = {
   stats: {
-    [StatType.FOR]: defaultSubstats,
-    [StatType.DEX]: defaultSubstats,
-    [StatType.CON]: defaultSubstats,
-    [StatType.INT]: defaultSubstats,
-    [StatType.WIS]: defaultSubstats,
-    [StatType.CHA]: defaultSubstats,
+    [StatType.FOR]: defaultStat,
+    [StatType.DEX]: defaultStat,
+    [StatType.CON]: defaultStat,
+    [StatType.INT]: defaultStat,
+    [StatType.WIS]: defaultStat,
+    [StatType.CHA]: defaultStat,
   },
 };
 
 const useCharacter = () => {
   const [character, setCharacter] = useState<Character>(defaultCharacter);
 
-  const setStatValue = (statName: StatType, value: number) => {};
+  const setStatValue = (statType: StatType, value: number) => {
+    const newCharacter = {...character}
+    newCharacter.stats[statType].value = value
+    setCharacter(newCharacter)
+  };
 
-  return {
+  const setStatMastered = (statType: StatType, mastered: boolean) => {
+    const newCharacter = {...character}
+    newCharacter.stats[statType].mastered = mastered
+    setCharacter(newCharacter)
+  };
+
+  const getModifier = (statType: StatType): number => {
+    
+  }
+
+  return useMemo(() => ({
     character: character,
     setStatValue: setStatValue,
-  };
+    setStatMastered: setStatMastered
+  }), [character, setStatValue, setStatMastered]);
 };
 
 export default useCharacter;

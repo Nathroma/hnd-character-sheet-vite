@@ -1,6 +1,6 @@
 import "./App.scss";
 import React from "react";
-import { StatType } from "./types/statType";
+import { statColors, statNames, StatType } from "./types/statType";
 import { SkillType } from "./types/skillType";
 import { AttributeType } from "./types/attributeType";
 import {
@@ -22,8 +22,8 @@ function App() {
           {Object.values(StatType).map((statType) => (
             <StatBlock
               key={statType}
-              statTitle={statAssociations[statType].name}
-              color={statAssociations[statType].color}
+              statTitle={statNames[statType]}
+              color={statColors[statType]}
             />
           ))}
         </div>
