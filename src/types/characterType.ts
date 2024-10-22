@@ -1,3 +1,4 @@
+import { Skill, SkillType } from "./skillType";
 import { Stat, StatType } from "./statType";
 
 export type Character = {
@@ -9,4 +10,24 @@ export type Character = {
     [StatType.WIS]: Stat;
     [StatType.CHA]: Stat;
   };
+  // skills: {
+  //   [SkillType.acrobatics]: Skill;
+  //   [SkillType.arcana]: Skill;
+  //   [SkillType.athletics]: Skill;
+  //   [SkillType.stealth]: Skill;
+  //   [SkillType.animalHandling]: Skill;
+  //   [SkillType.sleightOfHand]: Skill;
+  //   [SkillType.history]: Skill;
+  //   [SkillType.intimidation]: Skill;
+  //   [SkillType.investigation]: Skill;
+  //   [SkillType.medicine]: Skill;
+  //   [SkillType.nature]: Skill;
+  //   [SkillType.perception]: Skill;
+  //   [SkillType.insight]: Skill;
+  //   [SkillType.persuasion]: Skill;
+  //   [SkillType.religion]: Skill;
+  //   [SkillType.performance]: Skill;
+  //   [SkillType.deception]: Skill;
+  //   [SkillType.survival]: Skill;
+  // };
 };

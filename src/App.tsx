@@ -1,13 +1,8 @@
 import "./App.scss";
 import React from "react";
 import { statColors, statNames, StatType } from "./types/statType";
-import { SkillType } from "./types/skillType";
-import { AttributeType } from "./types/attributeType";
-import {
-  statAssociations,
-  SkillAssociations,
-  AttributeAssociations,
-} from "../configs";
+import { skillAttributes, skillNames, SkillType } from "./types/skillType";
+import { attributeColors, attributeImgNames, attributeTitles, AttributeType } from "./types/attributeType";
 
 import StatBlock from "./components/mainStats/StatBlock";
 import SkillBlock from "./components/mainSkill/SkillBlock";
@@ -30,13 +25,13 @@ function App() {
         <div className="secondarySkill">
           {Object.values(SkillType)
             .sort((a, b) =>
-              SkillAssociations[a].name.localeCompare(SkillAssociations[b].name)
+              skillNames[a].localeCompare(skillNames[b])
             )
             .map((skillType) => (
               <SkillBlock
                 key={skillType}
-                skillName={SkillAssociations[skillType].name}
-                attribute={SkillAssociations[skillType].relatedStat}
+                skillName={skillNames[skillType]}
+                attribute={skillAttributes[skillType]}
               />
             ))}
         </div>
@@ -44,9 +39,9 @@ function App() {
           {Object.values(AttributeType).map((attributeType) => (
             <AttributeBlock
               key={attributeType}
-              attributeTitle={AttributeAssociations[attributeType].name}
-              color={AttributeAssociations[attributeType].color}
-              imgName={AttributeAssociations[attributeType].imgName}
+              attributeTitle={attributeTitles[attributeType]}
+              color={attributeColors[attributeType]}
+              imgName={attributeImgNames[attributeType]}
             />
           ))}
         </div>

@@ -9,21 +9,21 @@ export enum StatType {
 
 export const statNames: Record<StatType, string> = {
   [StatType.FOR]: "Force",
-  [StatType.DEX]: "Force",
-  [StatType.CON]: "",
-  [StatType.INT]: "",
-  [StatType.WIS]: "",
-  [StatType.CHA]: ""
-}
+  [StatType.DEX]: "Dextérité",
+  [StatType.CON]: "Constitution",
+  [StatType.INT]: "Intelligence",
+  [StatType.WIS]: "Sagesse",
+  [StatType.CHA]: "Charisme",
+};
 
 export const statColors: Record<StatType, string> = {
-  [StatType.FOR]: "",
-  [StatType.DEX]: "",
-  [StatType.CON]: "",
-  [StatType.INT]: "",
-  [StatType.WIS]: "",
-  [StatType.CHA]: ""
-}
+  [StatType.FOR]: "#c12a32",
+  [StatType.DEX]: "#F48E01",
+  [StatType.CON]: "#2EB576",
+  [StatType.INT]: "#00ADED",
+  [StatType.WIS]: "#902E8C",
+  [StatType.CHA]: "#EF7EB0",
+};
 
 export type Stat = {
   value: number;
@@ -32,5 +32,5 @@ export type Stat = {
 
 export const defaultStat: Stat = {
   value: 0,
-  mastered: false
+  mastered: false,
 };

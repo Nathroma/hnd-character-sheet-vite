@@ -1,3 +1,4 @@
+import { proficiencyBonus } from "../../configs";
 import { StatType } from "./statType";
 
 export enum SkillType {
@@ -21,7 +22,61 @@ export enum SkillType {
   survival = "survival",
 }
 
+export const skillNames: Record<SkillType, string> = {
+  [SkillType.acrobatics]: "Acrobatie",
+  [SkillType.arcana]: "Arcane",
+  [SkillType.athletics]: "Athletisme",
+  [SkillType.stealth]: "Discrétion",
+  [SkillType.animalHandling]: "Dréssage",
+  [SkillType.sleightOfHand]: "Escamotage",
+  [SkillType.history]: "Histoire",
+  [SkillType.intimidation]: "Intimidation",
+  [SkillType.investigation]: "Investigation",
+  [SkillType.medicine]: "Médicine",
+  [SkillType.nature]: "Naure",
+  [SkillType.perception]: "Perception",
+  [SkillType.insight]: "Perspicacité",
+  [SkillType.persuasion]: "Persuasion",
+  [SkillType.religion]: "Religion",
+  [SkillType.performance]: "Représentation",
+  [SkillType.deception]: "Supercherie",
+  [SkillType.survival]: "Survie",
+};
+
+export const skillAttributes: Record<SkillType, StatType> = {
+  [SkillType.acrobatics]: StatType.DEX,
+  [SkillType.arcana]: StatType.INT,
+  [SkillType.athletics]: StatType.FOR,
+  [SkillType.stealth]: StatType.DEX,
+  [SkillType.animalHandling]: StatType.WIS,
+  [SkillType.sleightOfHand]: StatType.DEX,
+  [SkillType.history]: StatType.INT,
+  [SkillType.intimidation]: StatType.WIS,
+  [SkillType.investigation]: StatType.INT,
+  [SkillType.medicine]: StatType.WIS,
+  [SkillType.nature]: StatType.INT,
+  [SkillType.perception]: StatType.WIS,
+  [SkillType.insight]: StatType.WIS,
+  [SkillType.persuasion]: StatType.CHA,
+  [SkillType.religion]: StatType.INT,
+  [SkillType.performance]: StatType.CHA,
+  [SkillType.deception]: StatType.CHA,
+  [SkillType.survival]: StatType.WIS,
+};
+
+export enum ProficiencyLevel {
+  default = "default",
+  master = "master",
+  expert = "expert",
+  half = "half",
+}
+
 export type Skill = {
-  name: string;
-  relatedStat: StatType;
+  value: number;
+  proficiency: ProficiencyLevel;
+};
+
+export const defaultSkill: Skill = {
+  value: 0,
+  proficiency: ProficiencyLevel.default,
 };

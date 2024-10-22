@@ -29,7 +29,10 @@ const useCharacter = () => {
   };
 
   const getModifier = (statType: StatType): number => {
-    
+    const baseModifier = Math.floor(character.stats[statType].value / 2) - 5;
+    const masteryBonus = character.stats[statType].mastered ? baseModifier : 0;
+  
+    return baseModifier + masteryBonus;
   }
 
   return useMemo(() => ({
