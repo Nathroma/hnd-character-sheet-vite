@@ -1,4 +1,3 @@
-import { proficiencyBonus } from "../../configs";
 import { StatType } from "./statType";
 
 export enum SkillType {
