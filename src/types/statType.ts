@@ -30,7 +30,4 @@ export type Stat = {
   mastered: boolean;
 };
 
-export const defaultStat: Stat = {
-  value: 0,
-  mastered: false,
-};
+export const newDefaultStat = (): Stat => ({ value: 0, mastered: false });

@@ -1,0 +1,39 @@
+.profile-block {
+    display: flex;
+    align-items: center;
+    border: 2px solid #2B1C3F; // Ajustez les couleurs selon le design
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+  
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px; // Ajustez selon la taille souhaitée pour l'icône
+      height: 24px;
+      margin-right: 8px;
+    }
+  
+    &__label {
+      font-weight: bold;
+      font-size: 16px;
+      color: #2B1C3F; // Couleur du texte
+      margin-right: 8px;
+    }
+  
+    &__input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      padding: 4px;
+      background-color: #F5F7FF; // Couleur de fond de l'input
+      color: #2B1C3F; // Couleur du texte de l'input
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  

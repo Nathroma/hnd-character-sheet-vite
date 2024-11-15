@@ -29,7 +29,14 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.wapper-all-stats {
+.wrapper-profile-data {
+  display: flex;
+  width: auto;
+  height: auto;
+  justify-content: space-between;
+}
+
+.wrapper-all-stats {
   display: flex;
   width: auto;
   height: auto;
