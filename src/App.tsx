@@ -59,6 +59,7 @@ function App() {
                 key={skillType}
                 skillName={skillNames[skillType]}
                 attribute={skillAttributes[skillType]}
+                stat={character.stats[skillAttributes[skillType]]}
               />
             ))}
         </div>

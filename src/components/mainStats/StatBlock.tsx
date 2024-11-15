@@ -3,7 +3,7 @@ import "./StatBlock.scss";
 
 import NumberInput from "../../UI/numberInput/NumberInput";
 import LabeledCheckBox from "../../UI/labeledCheckBox/LabeledCheckBox";
-import { skillModifier, saveThrowModifier } from "../../utils/modifierUtils";
+import { saveThrowModifier } from "../../utils/modifierUtils";
 
 type StatBlockProps = {
   statTitle: string;
@@ -33,7 +33,7 @@ const StatBlock = ({
   const [saveThrowValue, setSaveThrowValue] = useState(0);
 
   useEffect(() => {
-    saveThrowModifier(getModifier(), stat.mastered).then((value) =>
+    saveThrowModifier(stat.value, stat.mastered).then((value) =>
       setSaveThrowValue(value ?? 0)
     );
   });
