@@ -8,7 +8,7 @@ type SecondarySkillProps = {
   skillName: string;
   attribute: string;
   stat: {
-    value: number;
+    value: number | null;
     mastered: boolean;
   };
 };
@@ -26,12 +26,18 @@ const SkillBlock = ({ skillName, attribute, stat }: SecondarySkillProps) => {
   const [skillModValue, setSkillModValue] = useState(0);
 
   useEffect(() => {
-    skillModifier(stat.value, radioState).then((value) =>
-      setSkillModValue(value ?? 0)
-    );
-
     localStorage.setItem(`${skillName}_radioState`, JSON.stringify(radioState));
   }, [radioState, skillName]);
+
+  useEffect(() => {
+    if (stat.value !== null) {
+      skillModifier(stat.value, radioState).then((value) =>
+        setSkillModValue(value ?? 0)
+      );
+    } else {
+      setSkillModValue(0)
+    }
+  })
 
   const handleRadioClick = () => {
     setRadioState((prevState: any) => (prevState + 1) % 4);
@@ -40,16 +46,12 @@ const SkillBlock = ({ skillName, attribute, stat }: SecondarySkillProps) => {
   const getRadioIcon = () => {
     switch (radioState) {
       case 1:
-        console.log(`Radio State : ${radioState}`);
         return <img src={iconPath + "check.svg"} alt="check" />;
       case 2:
-        console.log(`Radio State : ${radioState}`);
         return <img src={iconPath + "doubleCheck.svg"} alt="doubleCheck" />;
       case 3:
-        console.log(`Radio State : ${radioState}`);
         return <img src={iconPath + "half.svg"} alt="halfCheck" />;
       default:
-        console.log(`Radio State : ${radioState}`);
         return <img src={iconPath + "unselected.svg"} alt="unselected" />;
     }
   };

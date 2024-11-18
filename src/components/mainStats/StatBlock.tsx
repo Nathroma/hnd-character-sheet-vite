@@ -3,14 +3,14 @@ import "./StatBlock.scss";
 
 import NumberInput from "../../UI/numberInput/NumberInput";
 import LabeledCheckBox from "../../UI/labeledCheckBox/LabeledCheckBox";
-import { saveThrowModifier } from "../../utils/modifierUtils";
+import { statModifier } from "../../utils/modifierUtils";
 
 type StatBlockProps = {
   statTitle: string;
   color: string;
   imgName: string;
   stat: {
-    value: number;
+    value: number | null;
     mastered: boolean;
   };
   onStatChange: (value: number) => void;
@@ -33,10 +33,14 @@ const StatBlock = ({
   const [saveThrowValue, setSaveThrowValue] = useState(0);
 
   useEffect(() => {
-    saveThrowModifier(stat.value, stat.mastered).then((value) =>
-      setSaveThrowValue(value ?? 0)
-    );
+    if (stat.value !== null) {
+      setSaveThrowValue(statModifier(stat.value, stat.mastered) ?? 0);
+    } else {
+      setSaveThrowValue(0);
+    }
   });
+
+  const displayValue = stat.value !== null ? stat.value : 10;
 
   return (
     <div className="container">
@@ -53,7 +57,7 @@ const StatBlock = ({
               {statTitle.substring(0, 3)}
             </span>
             <NumberInput
-              value={stat.value}
+              value={displayValue}
               onChange={(e: any) =>
                 onStatChange(Math.max(0, Number(e.target.value)))
               }
@@ -65,7 +69,7 @@ const StatBlock = ({
         <div className="proficiency-square" style={{ borderColor: color }}>
           <span className="mod-value">Valeur de mod.</span>
           <NumberInput
-            value={getModifier()}
+            value={stat.value ? statModifier(stat.value) : 0}
             placeholder="0"
             className="mod-input"
             readOnly={true}
@@ -74,7 +78,7 @@ const StatBlock = ({
         <div className="saving-square">
           <span className="save-value">Valeur de sauv.</span>
           <NumberInput
-            value={saveThrowValue}
+            value={stat.value ? statModifier(stat.value, stat.mastered) : 0}
             placeholder="0"
             className="mod-input"
             readOnly={true}

@@ -15,14 +15,20 @@ export const skillModifier = async (statValue: number, mastered: number) => {
   return 0;
 };
 
-export const saveThrowModifier = async (
-  statValue: number,
-  mastered: boolean
-) => {
-    const rawModifier = Math.floor(statValue / 2) - 5;
-  if (mastered === false) {
-    return Math.floor(rawModifier);
-  } else if (mastered === true) {
-    return Math.floor(rawModifier + proficiencyBonus.baseProficiency);
+// todo : add an overload to calculate with the mastered level only if provided
+
+export function statModifier(statValue: number, mastered?: boolean): number {
+  const rawModifier = Math.floor(statValue / 2) - 5;
+
+  // Si mastered n'est pas passé, retourne seulement rawModifier
+  if (mastered === undefined) {
+    return rawModifier;
   }
-};
+
+  // Si mastered est false ou true, applique la logique en conséquence
+  if (mastered === false) {
+    return rawModifier;
+  } else {
+    return rawModifier + proficiencyBonus.baseProficiency;
+  }
+}

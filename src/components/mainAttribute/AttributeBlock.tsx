@@ -13,7 +13,7 @@ const AttributeBlock = ({
   color,
   imgName,
 }: SecondaryStatsProps) => {
-  const [modNumber, setModNumber] = useState(0);
+  const [attributeValue, setModNumber] = useState(0);
 
   const imgPath = `src/assets/icons/secondaryStatsLogos/${imgName}-logo.png`;
   const imgAlt = `Logo stats ${attributeTitle}`;
@@ -30,7 +30,7 @@ const AttributeBlock = ({
         <div className="input-background">
           <NumberInput
             className="number-input"
-            value={modNumber}
+            value={attributeValue}
             onChange={(e) => handleChange(e)}
           />
         </div>
