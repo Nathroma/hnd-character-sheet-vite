@@ -1,0 +1,28 @@
+.number-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* hide buttons on Chromium*/
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* hide buttons on Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 1rem;
+    color: black;
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+}

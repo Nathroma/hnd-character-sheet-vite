@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { skillModifier } from "../../utils/modifierUtils";
+import { statModifier } from "../../utils/modifierUtils";
 
 import NumberInput from "../../UI/numberInput/NumberInput";
 import "./SkillBlock.scss";
@@ -8,7 +8,7 @@ type SecondarySkillProps = {
   skillName: string;
   attribute: string;
   stat: {
-    value: number | null;
+    value: number;
     mastered: boolean;
   };
 };
@@ -30,14 +30,8 @@ const SkillBlock = ({ skillName, attribute, stat }: SecondarySkillProps) => {
   }, [radioState, skillName]);
 
   useEffect(() => {
-    if (stat.value !== null) {
-      skillModifier(stat.value, radioState).then((value) =>
-        setSkillModValue(value ?? 0)
-      );
-    } else {
-      setSkillModValue(0)
-    }
-  })
+    setSkillModValue(statModifier(stat.value, radioState));
+  });
 
   const handleRadioClick = () => {
     setRadioState((prevState: any) => (prevState + 1) % 4);
@@ -72,12 +66,7 @@ const SkillBlock = ({ skillName, attribute, stat }: SecondarySkillProps) => {
         <span className={`attribute-label ${getAttributeClass()}`}>
           {attribute}
         </span>
-        <NumberInput
-          value={skillModValue}
-          placeholder="0"
-          // onChange={(e) => handleStatChange(e)}
-          readOnly={true}
-        />
+        <NumberInput value={skillModValue} placeholder="0" readOnly={true} />
       </div>
     </div>
   );

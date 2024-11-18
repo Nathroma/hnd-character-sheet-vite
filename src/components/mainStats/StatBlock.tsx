@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./StatBlock.scss";
 
 import NumberInput from "../../UI/numberInput/NumberInput";
+import StringNumberInput from "../../UI/stringNumberInput/StringNumberInput";
 import LabeledCheckBox from "../../UI/labeledCheckBox/LabeledCheckBox";
 import { statModifier } from "../../utils/modifierUtils";
 
@@ -25,22 +26,17 @@ const StatBlock = ({
   stat,
   onStatChange,
   onMasteryChange,
-  getModifier,
 }: StatBlockProps) => {
   const imgPath = `src/assets/icons/statsLogos/${imgName}-logo.png`;
   const imgAlt = `Logo stats ${imgName}`;
 
-  const [saveThrowValue, setSaveThrowValue] = useState(0);
+  const displayValue = (stat.value !== null ? stat.value : "").toString();
 
-  useEffect(() => {
-    if (stat.value !== null) {
-      setSaveThrowValue(statModifier(stat.value, stat.mastered) ?? 0);
-    } else {
-      setSaveThrowValue(0);
-    }
-  });
-
-  const displayValue = stat.value !== null ? stat.value : 10;
+  const handleValueChange = (inputValue: string) => {
+    const finalValue: number = parseInt(inputValue);
+    // if stat.value === null && finalValue === 0, set stat.value to null
+    onStatChange(finalValue!);
+  };
 
   return (
     <div className="container">
@@ -56,11 +52,9 @@ const StatBlock = ({
             <span className="stat-ticker" style={{ color: color }}>
               {statTitle.substring(0, 3)}
             </span>
-            <NumberInput
+            <StringNumberInput
               value={displayValue}
-              onChange={(e: any) =>
-                onStatChange(Math.max(0, Number(e.target.value)))
-              }
+              onChange={(e: any) => handleValueChange(e.target.value)}
               placeholder="10"
               className="stat-input"
             />
