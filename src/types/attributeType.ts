@@ -35,7 +35,5 @@ export const attributeImgNames: Record<AttributeType, string> = {
 };
 
 export type Attribute = {
-  name: string;
-  color: string;
-  imgName: string;
+  value : number,
 };

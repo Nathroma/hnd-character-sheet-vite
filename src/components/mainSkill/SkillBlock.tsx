@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { statModifier } from "../../utils/modifierUtils";
 
-import NumberInput from "../../UI/numberInput/NumberInput";
+import StringNumberInput from "../../UI/stringNumberInput/StringNumberInput";
 import "./SkillBlock.scss";
 
 type SecondarySkillProps = {
@@ -23,14 +23,16 @@ const SkillBlock = ({ skillName, attribute, stat }: SecondarySkillProps) => {
 
   const [radioState, setRadioState] = useState(getInitialRadioState);
 
-  const [skillModValue, setSkillModValue] = useState(0);
+  const [skillModValue, setSkillModValue] = useState("");
 
   useEffect(() => {
     localStorage.setItem(`${skillName}_radioState`, JSON.stringify(radioState));
   }, [radioState, skillName]);
 
   useEffect(() => {
-    setSkillModValue(statModifier(stat.value, radioState));
+    const modifier = statModifier(stat.value, radioState)
+    const finalValue = modifier > -5 ? modifier.toString() : "";
+    setSkillModValue(finalValue)
   });
 
   const handleRadioClick = () => {
@@ -66,7 +68,7 @@ const SkillBlock = ({ skillName, attribute, stat }: SecondarySkillProps) => {
         <span className={`attribute-label ${getAttributeClass()}`}>
           {attribute}
         </span>
-        <NumberInput value={skillModValue} placeholder="0" readOnly={true} />
+        <StringNumberInput value={skillModValue} placeholder="0" readOnly={true} />
       </div>
     </div>
   );

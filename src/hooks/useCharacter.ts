@@ -16,7 +16,7 @@ const defaultCharacter: Character = {
 const useCharacter = () => {
   const [character, setCharacter] = useState<Character>(defaultCharacter);
 
-  const setStatValue = (statType: StatType, value: number | null) => {
+  const setStatValue = (statType: StatType, value: number) => {
     const newCharacter = { ...character };
     newCharacter.stats[statType].value = value;
     setCharacter(newCharacter);
@@ -28,21 +28,13 @@ const useCharacter = () => {
     setCharacter(newCharacter);
   };
 
-  const getModifier = (statType: StatType): number  => {
-    if (character.stats[statType].value !== null) {
-      return Math.floor(character.stats[statType].value / 2) - 5;
-    }
-    return 0;
-  };
-
   return useMemo(
     () => ({
       character: character,
       setStatValue: setStatValue,
       setStatMastered: setStatMastered,
-      getModifier: getModifier,
     }),
-    [character, setStatValue, setStatMastered, getModifier]
+    [character, setStatValue, setStatMastered]
   );
 };
 

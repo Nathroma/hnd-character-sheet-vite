@@ -26,8 +26,8 @@ export const statColors: Record<StatType, string> = {
 };
 
 export type Stat = {
-  value: number | null;
+  value: number;
   mastered: boolean;
 };
 
-export const newDefaultStat = (): Stat => ({ value: null, mastered: false });
+export const newDefaultStat = (): Stat => ({ value: 0, mastered: false });

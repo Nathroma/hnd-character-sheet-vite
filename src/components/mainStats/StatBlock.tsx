@@ -11,12 +11,11 @@ type StatBlockProps = {
   color: string;
   imgName: string;
   stat: {
-    value: number | null;
+    value: number;
     mastered: boolean;
   };
   onStatChange: (value: number) => void;
   onMasteryChange: (mastered: boolean) => void;
-  getModifier: () => number;
 };
 
 const StatBlock = ({
@@ -63,7 +62,7 @@ const StatBlock = ({
         <div className="proficiency-square" style={{ borderColor: color }}>
           <span className="mod-value">Valeur de mod.</span>
           <NumberInput
-            value={stat.value ? statModifier(stat.value) : 0}
+            value={statModifier(stat.value)}
             placeholder="0"
             className="mod-input"
             readOnly={true}
@@ -72,7 +71,7 @@ const StatBlock = ({
         <div className="saving-square">
           <span className="save-value">Valeur de sauv.</span>
           <NumberInput
-            value={stat.value ? statModifier(stat.value, stat.mastered) : 0}
+            value={statModifier(stat.value, stat.mastered)}
             placeholder="0"
             className="mod-input"
             readOnly={true}

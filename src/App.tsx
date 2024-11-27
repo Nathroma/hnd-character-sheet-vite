@@ -22,7 +22,6 @@ function App() {
     character,
     setStatValue,
     setStatMastered,
-    getModifier,
   } = useCharacter();
 
   return (
@@ -47,7 +46,6 @@ function App() {
               stat={character.stats[statType]}
               onStatChange={(value) => setStatValue(statType, value)}
               onMasteryChange={(mastered) => setStatMastered(statType, mastered)}
-              getModifier={() => getModifier(statType)}
             />
           ))}
         </div>

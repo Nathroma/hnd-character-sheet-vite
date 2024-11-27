@@ -75,7 +75,4 @@ export type Skill = {
   proficiency: ProficiencyLevel;
 };
 
-export const defaultSkill: Skill = {
-  value: 0,
-  proficiency: ProficiencyLevel.default,
-};
+export const newDefaultSkill = (): Skill => ({ value: 0, proficiency: ProficiencyLevel.default });

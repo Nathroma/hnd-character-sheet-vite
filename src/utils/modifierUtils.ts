@@ -32,7 +32,6 @@ export function statModifier(
     } else if (mastered === 3) {
       return Math.floor(rawModifier + proficiencyBonus.baseProficiency / 2);
     }
-    return 0;
   }
 
   throw new Error("Type inattendu pour le paramètre mastered.");
