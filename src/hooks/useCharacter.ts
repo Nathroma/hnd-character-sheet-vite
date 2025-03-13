@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Character } from "../types/characterType";
 import { newDefaultStat, StatType } from "../types/statType";
+import useLocalStorage from "./useLocalStorage";
 
 const defaultCharacter: Character = {
   stats: {
@@ -14,7 +15,7 @@ const defaultCharacter: Character = {
 };
 
 const useCharacter = () => {
-  const [character, setCharacter] = useState<Character>(defaultCharacter);
+  const [character, setCharacter] = useLocalStorage<Character>("character", defaultCharacter);
 
   const setStatValue = (statType: StatType, value: number) => {
     const newCharacter = { ...character };

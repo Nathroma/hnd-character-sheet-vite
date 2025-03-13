@@ -1,3 +1,3 @@
 export enum history {
-    
+    // Pas encore le courage de tout ajouter...
 }
