@@ -72,7 +72,7 @@ export enum ProficiencyLevel {
 
 export type Skill = {
   value: number;
-  proficiency: ProficiencyLevel;
+  proficiencyLevel: ProficiencyLevel;
 };
 
-export const newDefaultSkill = (): Skill => ({ value: 0, proficiency: ProficiencyLevel.default });
+export const newDefaultSkill = (): Skill => ({ value: 0, proficiencyLevel: ProficiencyLevel.default });

@@ -1,12 +1,13 @@
 import { proficiencyBonus } from "../../configs";
+import { ProficiencyLevel } from "../types/skillType";
 
 export function statModifier(statValue: number): number;
 export function statModifier(statValue: number, mastered: boolean): number;
-export function statModifier(statValue: number, mastered: number): number;
+export function statModifier(statValue: number, mastered: string): number;
 
 export function statModifier(
   statValue: number,
-  mastered?: boolean | number
+  mastered?: boolean | string
 ): number {
   const rawModifier = Math.floor(statValue / 2) - 5;
 
@@ -22,14 +23,14 @@ export function statModifier(
     }
   }
 
-  if (typeof mastered === "number") {
-    if (mastered === 0) {
+  if (typeof mastered === "string") {
+    if (mastered === ProficiencyLevel.default) {
       return Math.floor(rawModifier);
-    } else if (mastered === 1) {
+    } else if (mastered === ProficiencyLevel.master) {
       return Math.floor(rawModifier + proficiencyBonus.baseProficiency);
-    } else if (mastered === 2) {
+    } else if (mastered === ProficiencyLevel.expert) {
       return Math.floor(rawModifier + proficiencyBonus.baseProficiency * 2);
-    } else if (mastered === 3) {
+    } else if (mastered === ProficiencyLevel.half) {
       return Math.floor(rawModifier + proficiencyBonus.baseProficiency / 2);
     }
   }

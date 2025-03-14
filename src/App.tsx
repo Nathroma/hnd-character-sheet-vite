@@ -1,7 +1,7 @@
 import "./App.scss";
 import React from "react";
 import { statColors, statNames, StatType } from "./types/statType";
-import { skillAttributes, skillNames, SkillType } from "./types/skillType";
+import { ProficiencyLevel, skillAttributes, skillNames, SkillType } from "./types/skillType";
 import {
   attributeColors,
   attributeImgNames,
@@ -22,7 +22,11 @@ function App() {
     character,
     setStatValue,
     setStatMastered,
+    switchSkillProficiencyLevel,
   } = useCharacter();
+
+  console.log(character);
+  
 
   return (
     <div className="App">
@@ -58,6 +62,8 @@ function App() {
                 skillName={skillNames[skillType]}
                 attribute={skillAttributes[skillType]}
                 stat={character.stats[skillAttributes[skillType]]}
+                proficiencyLevel={character?.skills[skillType]?.proficiencyLevel ?? ProficiencyLevel.default}
+                onProficiencyChange={() => switchSkillProficiencyLevel(skillType)}
               />
             ))}
         </div>

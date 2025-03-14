@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Character } from "../types/characterType";
 import { newDefaultStat, StatType } from "../types/statType";
 import useLocalStorage from "./useLocalStorage";
+import { newDefaultSkill, ProficiencyLevel, SkillType } from "../types/skillType";
 
 const defaultCharacter: Character = {
   stats: {
@@ -12,6 +13,26 @@ const defaultCharacter: Character = {
     [StatType.WIS]: newDefaultStat(),
     [StatType.CHA]: newDefaultStat(),
   },
+  skills: {
+    [SkillType.acrobatics]: newDefaultSkill(),
+    [SkillType.arcana]: newDefaultSkill(),
+    [SkillType.athletics]: newDefaultSkill(),
+    [SkillType.stealth]: newDefaultSkill(),
+    [SkillType.animalHandling]: newDefaultSkill(),
+    [SkillType.sleightOfHand]: newDefaultSkill(),
+    [SkillType.history]: newDefaultSkill(),
+    [SkillType.intimidation]: newDefaultSkill(),
+    [SkillType.investigation]: newDefaultSkill(),
+    [SkillType.medicine]: newDefaultSkill(),
+    [SkillType.nature]: newDefaultSkill(),
+    [SkillType.perception]: newDefaultSkill(),
+    [SkillType.insight]: newDefaultSkill(),
+    [SkillType.persuasion]: newDefaultSkill(),
+    [SkillType.religion]: newDefaultSkill(),
+    [SkillType.performance]: newDefaultSkill(),
+    [SkillType.deception]: newDefaultSkill(),
+    [SkillType.survival]: newDefaultSkill(),
+  }
 };
 
 const useCharacter = () => {
@@ -29,13 +50,31 @@ const useCharacter = () => {
     setCharacter(newCharacter);
   };
 
+  const switchSkillProficiencyLevel = (skillType: SkillType) => {
+    const newCharacter = { ...character };
+    const levels: ProficiencyLevel[] = [
+      ProficiencyLevel.default,
+      ProficiencyLevel.master,
+      ProficiencyLevel.expert,
+      ProficiencyLevel.half,
+    ];
+  
+    const currentLevel = newCharacter.skills[skillType].proficiencyLevel;
+    const currentIndex = levels.indexOf(currentLevel);
+
+    const nextIndex = (currentIndex + 1) % levels.length;
+    newCharacter.skills[skillType].proficiencyLevel = levels[nextIndex];
+    setCharacter(newCharacter);
+  };
+
   return useMemo(
     () => ({
       character: character,
       setStatValue: setStatValue,
       setStatMastered: setStatMastered,
+      switchSkillProficiencyLevel: switchSkillProficiencyLevel,
     }),
-    [character, setStatValue, setStatMastered]
+    [character, setStatValue, setStatMastered, switchSkillProficiencyLevel]
   );
 };
 
