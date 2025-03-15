@@ -35,5 +35,7 @@ export const attributeImgNames: Record<AttributeType, string> = {
 };
 
 export type Attribute = {
-  value : number,
+  value : number
 };
+
+export const newDefaultAttribute = (): Attribute => ({ value: 0 })

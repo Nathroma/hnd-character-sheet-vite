@@ -23,10 +23,8 @@ function App() {
     setStatValue,
     setStatMastered,
     switchSkillProficiencyLevel,
-  } = useCharacter();
-
-  console.log(character);
-  
+    setAttributeValue,
+  } = useCharacter();  
 
   return (
     <div className="App">
@@ -48,6 +46,7 @@ function App() {
               color={statColors[statType]}
               imgName={statType}
               stat={character.stats[statType]}
+              proficiencyBonus={character.attributes.proficiency.value}
               onStatChange={(value) => setStatValue(statType, value)}
               onMasteryChange={(mastered) => setStatMastered(statType, mastered)}
             />
@@ -62,7 +61,8 @@ function App() {
                 skillName={skillNames[skillType]}
                 attribute={skillAttributes[skillType]}
                 stat={character.stats[skillAttributes[skillType]]}
-                proficiencyLevel={character?.skills[skillType]?.proficiencyLevel ?? ProficiencyLevel.default}
+                proficiencyLevel={character.skills[skillType].proficiencyLevel ?? ProficiencyLevel.default}
+                proficiencyBonus={character.attributes.proficiency.value}
                 onProficiencyChange={() => switchSkillProficiencyLevel(skillType)}
               />
             ))}
@@ -73,8 +73,10 @@ function App() {
               key={attributeType}
               attributeTitle={attributeTitles[attributeType]}
               color={attributeColors[attributeType]}
-              imgName={attributeImgNames[attributeType]}
-            />
+              imgName={attributeImgNames[attributeType]} 
+              attributeValue={character.attributes[attributeType].value} 
+              onAttributeChange={(attributeValue) => setAttributeValue(attributeType, attributeValue)}         
+              />
           ))}
         </div>
       </div>

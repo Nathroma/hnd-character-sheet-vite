@@ -1,5 +1,6 @@
-import { Skill, SkillType } from "./skillType";
-import { Stat, StatType } from "./statType";
+import { Attribute, AttributeType } from './attributeType';
+import { Skill, SkillType } from './skillType';
+import { Stat, StatType } from './statType';
 
 export type Character = {
   stats: {
@@ -29,5 +30,13 @@ export type Character = {
     [SkillType.performance]: Skill;
     [SkillType.deception]: Skill;
     [SkillType.survival]: Skill;
+  };
+  attributes: {
+    [AttributeType.initiative]: Attribute;
+    [AttributeType.inspiration]: Attribute;
+    [AttributeType.perception]: Attribute;
+    [AttributeType.proficiency]: Attribute;
+    [AttributeType.saveThrow]: Attribute;
+    [AttributeType.speed]: Attribute;
   };
 };
