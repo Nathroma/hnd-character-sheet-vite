@@ -1,6 +1,6 @@
 import React from "react";
 import "./AttributeBlock.scss";
-import NumberInput from "../../UI/numberInput/NumberInput";
+import NumberInput from "@/UI/numberInput/NumberInput";
 
 type SecondaryStatsProps = {
   attributeTitle: string;

@@ -1,10 +1,10 @@
 import React from 'react';
 import './StatBlock.scss';
 
-import NumberInput from '../../UI/numberInput/NumberInput';
-import StringNumberInput from '../../UI/stringNumberInput/StringNumberInput';
-import LabeledCheckBox from '../../UI/labeledCheckBox/LabeledCheckBox';
-import { statModifier } from '../../utils/modifierUtils';
+import NumberInput from '@/UI/numberInput/NumberInput';
+import StringNumberInput from '@/UI/stringNumberInput/StringNumberInput';
+import LabeledCheckBox from '@/UI/labeledCheckBox/LabeledCheckBox';
+import { statModifier } from '@/utils/modifierUtils';
 
 type StatBlockProps = {
   statTitle: string;
