@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import "./StatBlock.scss";
+import React from 'react';
+import './StatBlock.scss';
 
-import NumberInput from "../../UI/numberInput/NumberInput";
-import StringNumberInput from "../../UI/stringNumberInput/StringNumberInput";
-import LabeledCheckBox from "../../UI/labeledCheckBox/LabeledCheckBox";
-import { statModifier } from "../../utils/modifierUtils";
+import NumberInput from '../../UI/numberInput/NumberInput';
+import StringNumberInput from '../../UI/stringNumberInput/StringNumberInput';
+import LabeledCheckBox from '../../UI/labeledCheckBox/LabeledCheckBox';
+import { statModifier } from '../../utils/modifierUtils';
 
 type StatBlockProps = {
   statTitle: string;
@@ -14,6 +14,7 @@ type StatBlockProps = {
     value: number;
     mastered: boolean;
   };
+  proficiencyBonus: number;
   onStatChange: (value: number) => void;
   onMasteryChange: (mastered: boolean) => void;
 };
@@ -23,13 +24,14 @@ const StatBlock = ({
   color,
   imgName,
   stat,
+  proficiencyBonus,
   onStatChange,
   onMasteryChange,
 }: StatBlockProps) => {
   const imgPath = `src/assets/icons/statsLogos/${imgName}-logo.png`;
   const imgAlt = `Logo stats ${imgName}`;
 
-  const displayValue = (stat.value !== null ? stat.value : "").toString();
+  const displayValue = (stat.value !== null ? stat.value : '').toString();
 
   const handleValueChange = (inputValue: string) => {
     const finalValue: number = parseInt(inputValue);
@@ -71,7 +73,7 @@ const StatBlock = ({
         <div className="saving-square">
           <span className="save-value">Valeur de sauv.</span>
           <NumberInput
-            value={statModifier(stat.value, stat.mastered)}
+            value={statModifier(stat.value, proficiencyBonus, stat.mastered)}
             placeholder="0"
             className="mod-input"
             readOnly={true}

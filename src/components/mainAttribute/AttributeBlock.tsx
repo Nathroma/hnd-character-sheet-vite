@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AttributeBlock.scss";
 import NumberInput from "../../UI/numberInput/NumberInput";
 
@@ -6,22 +6,19 @@ type SecondaryStatsProps = {
   attributeTitle: string;
   color: string;
   imgName: string;
+  attributeValue: number
+  onAttributeChange: (value: number) => void;
 };
 
 const AttributeBlock = ({
   attributeTitle,
   color,
   imgName,
+  attributeValue,
+  onAttributeChange,
 }: SecondaryStatsProps) => {
-  const [attributeValue, setModNumber] = useState(0);
-
   const imgPath = `src/assets/icons/secondaryStatsLogos/${imgName}-logo.png`;
   const imgAlt = `Logo stats ${attributeTitle}`;
-
-  const handleChange = (e: { target: { value: any } }) => {
-    let newValue = e.target.value;
-    setModNumber(newValue);
-  };
 
   return (
     <div className="wrapper-block">
@@ -31,7 +28,7 @@ const AttributeBlock = ({
           <NumberInput
             className="number-input"
             value={attributeValue}
-            onChange={(e) => handleChange(e)}
+            onChange={(e:any) => onAttributeChange(e.target.value)}
           />
         </div>
       </div>

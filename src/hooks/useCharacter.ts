@@ -1,8 +1,9 @@
-import { useMemo } from "react";
-import { Character } from "../types/characterType";
-import { newDefaultStat, StatType } from "../types/statType";
-import useLocalStorage from "./useLocalStorage";
-import { newDefaultSkill, ProficiencyLevel, SkillType } from "../types/skillType";
+import { useMemo } from 'react';
+import { Character } from '../types/characterType';
+import { newDefaultStat, StatType } from '../types/statType';
+import useLocalStorage from './useLocalStorage';
+import { newDefaultSkill, ProficiencyLevel, SkillType } from '../types/skillType';
+import { AttributeType, newDefaultAttribute } from '../types/attributeType';
 
 const defaultCharacter: Character = {
   stats: {
@@ -32,11 +33,19 @@ const defaultCharacter: Character = {
     [SkillType.performance]: newDefaultSkill(),
     [SkillType.deception]: newDefaultSkill(),
     [SkillType.survival]: newDefaultSkill(),
-  }
+  },
+  attributes: {
+    [AttributeType.initiative]: newDefaultAttribute(),
+    [AttributeType.inspiration]: newDefaultAttribute(),
+    [AttributeType.perception]: newDefaultAttribute(),
+    [AttributeType.proficiency]: newDefaultAttribute(),
+    [AttributeType.saveThrow]: newDefaultAttribute(),
+    [AttributeType.speed]: newDefaultAttribute(),
+  },
 };
 
 const useCharacter = () => {
-  const [character, setCharacter] = useLocalStorage<Character>("character", defaultCharacter);
+  const [character, setCharacter] = useLocalStorage<Character>('character', defaultCharacter);
 
   const setStatValue = (statType: StatType, value: number) => {
     const newCharacter = { ...character };
@@ -58,12 +67,18 @@ const useCharacter = () => {
       ProficiencyLevel.expert,
       ProficiencyLevel.half,
     ];
-  
+
     const currentLevel = newCharacter.skills[skillType].proficiencyLevel;
     const currentIndex = levels.indexOf(currentLevel);
 
     const nextIndex = (currentIndex + 1) % levels.length;
     newCharacter.skills[skillType].proficiencyLevel = levels[nextIndex];
+    setCharacter(newCharacter);
+  };
+
+  const setAttributeValue = (attributeType: AttributeType, value: number) => {
+    const newCharacter = { ...character };
+    newCharacter.attributes[attributeType].value = value;
     setCharacter(newCharacter);
   };
 
@@ -73,8 +88,9 @@ const useCharacter = () => {
       setStatValue: setStatValue,
       setStatMastered: setStatMastered,
       switchSkillProficiencyLevel: switchSkillProficiencyLevel,
+      setAttributeValue: setAttributeValue
     }),
-    [character, setStatValue, setStatMastered, switchSkillProficiencyLevel]
+    [character, setStatValue, setStatMastered, switchSkillProficiencyLevel, setAttributeValue]
   );
 };
 
