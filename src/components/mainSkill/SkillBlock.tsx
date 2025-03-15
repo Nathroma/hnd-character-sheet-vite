@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { statModifier } from "../../utils/modifierUtils";
-import StringNumberInput from "../../UI/stringNumberInput/StringNumberInput";
+import { statModifier } from "@/utils/modifierUtils";
+import StringNumberInput from "@/UI/stringNumberInput/StringNumberInput";
 import "./SkillBlock.scss";
-import { ProficiencyLevel } from "../../types/skillType";
+import { ProficiencyLevel } from "@/types/skillType";
 
 type SecondarySkillProps = {
   skillName: string;

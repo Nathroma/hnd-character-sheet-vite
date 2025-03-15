@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { Character } from '../types/characterType';
-import { newDefaultStat, StatType } from '../types/statType';
+import { Character } from '@/types/characterType';
+import { newDefaultStat, StatType } from '@/types/statType';
 import useLocalStorage from './useLocalStorage';
-import { newDefaultSkill, ProficiencyLevel, SkillType } from '../types/skillType';
-import { AttributeType, newDefaultAttribute } from '../types/attributeType';
+import { newDefaultSkill, ProficiencyLevel, SkillType } from '@/types/skillType';
+import { AttributeType, newDefaultAttribute } from '@/types/attributeType';
 
 const defaultCharacter: Character = {
   stats: {

@@ -1,4 +1,4 @@
-import { ProficiencyLevel } from '../types/skillType';
+import { ProficiencyLevel } from '@/types/skillType';
 
 export function statModifier(statValue: number, proficiencyBonus?: number): number;
 export function statModifier(statValue: number, proficiencyBonus?: number, mastered?: boolean): number;
