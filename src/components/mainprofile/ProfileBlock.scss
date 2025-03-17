@@ -44,5 +44,19 @@
         border-color: #666;
       }
     }
+
+    select {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: grey;
+      
+
+      &:focus {
+        outline: none;
+        border-color: #666;
+      }
+    }
   }
 }

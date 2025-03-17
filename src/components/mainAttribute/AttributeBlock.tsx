@@ -7,13 +7,11 @@ import { attributeColors, attributeImgNames, attributeTitles, AttributeType } fr
 type SecondaryStatsProps = {
   character:Character
   attributeType:AttributeType
-  onAttributeChange: (value: number) => void;
 };
 
 const AttributeBlock = ({
   character,
   attributeType,
-  onAttributeChange,
 }: SecondaryStatsProps) => {
   const imgPath = `src/assets/icons/secondaryStatsLogos/${attributeImgNames[attributeType]}-logo.png`;
   const imgAlt = `Logo stats ${attributeTitles[attributeType]}`;

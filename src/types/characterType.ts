@@ -1,18 +1,18 @@
 import { Attribute, AttributeType } from './attributeType';
 import { ClassType } from './classType';
-import { ProfileType } from './profileType';
+import { profileData, ProfileType } from './profileType';
 import { Skill, SkillType } from './skillType';
 import { Stat, StatType } from './statType';
 
-export type Character = {
+export type CharacterAttributes = {
   profileDatas: {
-    [ProfileType.name]: string;
-    [ProfileType.race]: string;
+    [ProfileType.name]: profileData;
+    [ProfileType.race]: profileData;
     [ProfileType.class]: ClassType | null;
-    [ProfileType.alignement]: string;
-    [ProfileType.history]: string;
-    [ProfileType.level]: number;
-    [ProfileType.experience]: number;
+    [ProfileType.alignement]: profileData;
+    [ProfileType.history]: profileData;
+    [ProfileType.level]: profileData;
+    [ProfileType.experience]: profileData;
   };
   stats: {
     [StatType.FOR]: Stat;
@@ -42,12 +42,13 @@ export type Character = {
     [SkillType.deception]: Skill;
     [SkillType.survival]: Skill;
   };
-  attributes: {
-    [AttributeType.initiative]: Attribute;
-    [AttributeType.inspiration]: Attribute;
-    [AttributeType.perception]: Attribute;
-    [AttributeType.proficiency]: Attribute;
-    [AttributeType.saveThrow]: Attribute;
-    [AttributeType.speed]: Attribute;
-  };
+};
+
+export type Character = {
+  attributes: CharacterAttributes;
+  setStatValue: (statType: StatType, value: number) => void;
+  setStatMastered: (statType: StatType, mastered: boolean) => void;
+  switchSkillProficiencyLevel: (skillType: SkillType) => void;
+  setClass: (newClass: ClassType) => void;
+  setProfileData: (dataName: ProfileType, value: string | number) => void;
 };

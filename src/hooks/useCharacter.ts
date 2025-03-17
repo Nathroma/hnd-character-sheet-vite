@@ -1,21 +1,20 @@
 import { useMemo } from 'react';
-import { Character } from '@/types/characterType';
+import { Character, CharacterAttributes } from '@/types/characterType';
 import { newDefaultStat, StatType } from '@/types/statType';
 import useLocalStorage from './useLocalStorage';
 import { newDefaultSkill, ProficiencyLevel, SkillType } from '@/types/skillType';
-import { AttributeType, newDefaultAttribute } from '@/types/attributeType';
-import { ProfileType } from '@/types/profileType';
+import { newDefaultProfileData, ProfileType } from '@/types/profileType';
 import { ClassType } from '@/types/classType';
 
-const defaultCharacter: Character = {
+const defaultCharacter: CharacterAttributes = {
   profileDatas: {
-    [ProfileType.name]: '',
-    [ProfileType.race]: '',
+    [ProfileType.name]: newDefaultProfileData(),
+    [ProfileType.race]: newDefaultProfileData(),
     [ProfileType.class]: null,
-    [ProfileType.alignement]: '',
-    [ProfileType.history]: '',
-    [ProfileType.level]: 0,
-    [ProfileType.experience]: 0,
+    [ProfileType.alignement]: newDefaultProfileData(),
+    [ProfileType.history]: newDefaultProfileData(),
+    [ProfileType.level]: newDefaultProfileData(),
+    [ProfileType.experience]: newDefaultProfileData(),
   },
   stats: {
     [StatType.FOR]: newDefaultStat(),
@@ -45,33 +44,25 @@ const defaultCharacter: Character = {
     [SkillType.deception]: newDefaultSkill(),
     [SkillType.survival]: newDefaultSkill(),
   },
-  attributes: {
-    [AttributeType.initiative]: newDefaultAttribute(),
-    [AttributeType.inspiration]: newDefaultAttribute(),
-    [AttributeType.perception]: newDefaultAttribute(),
-    [AttributeType.proficiency]: newDefaultAttribute(),
-    [AttributeType.saveThrow]: newDefaultAttribute(),
-    [AttributeType.speed]: newDefaultAttribute(),
-  },
 };
 
-const useCharacter = () => {
-  const [character, setCharacter] = useLocalStorage<Character>('character', defaultCharacter);
+const useCharacter = (): Character => {
+  const [characterDatas, setCharacter] = useLocalStorage<CharacterAttributes>('character', defaultCharacter);
 
-  const setStatValue = (statType: StatType, value: number) => {
-    const newCharacter = { ...character };
+  const setStatValue = (statType: StatType, value: number): void => {
+    const newCharacter = { ...characterDatas };
     newCharacter.stats[statType].value = value;
     setCharacter(newCharacter);
   };
 
   const setStatMastered = (statType: StatType, mastered: boolean) => {
-    const newCharacter = { ...character };
+    const newCharacter = { ...characterDatas };
     newCharacter.stats[statType].mastered = mastered;
     setCharacter(newCharacter);
   };
 
   const switchSkillProficiencyLevel = (skillType: SkillType) => {
-    const newCharacter = { ...character };
+    const newCharacter = { ...characterDatas };
     const levels: ProficiencyLevel[] = [
       ProficiencyLevel.default,
       ProficiencyLevel.master,
@@ -87,28 +78,38 @@ const useCharacter = () => {
     setCharacter(newCharacter);
   };
 
-  const setAttributeValue = (attributeType: AttributeType, value: number) => {
-    const newCharacter = { ...character };
-    newCharacter.attributes[attributeType].value = value;
+  const setClass = (newClass: ClassType) => {
+    const newCharacter = { ...characterDatas };
+    newCharacter.profileDatas.class = newClass;
     setCharacter(newCharacter);
   };
 
-  const setCharacterclass = (newClass: ClassType) => {
-    const newCharacter = { ...character };
-    newCharacter.profileDatas.class = newClass;
+  const setProfileData = (dataName: ProfileType, value: string | number) => {
+    const newCharacter = { ...characterDatas };
+    if (dataName !== ProfileType.class) {
+      newCharacter.profileDatas[dataName].value = value;
+    }
+
     setCharacter(newCharacter);
   };
 
   return useMemo(
     () => ({
-      character: character,
+      attributes: characterDatas,
       setStatValue: setStatValue,
       setStatMastered: setStatMastered,
       switchSkillProficiencyLevel: switchSkillProficiencyLevel,
-      setAttributeValue: setAttributeValue,
-      setCharacterclass: setCharacterclass,
+      setClass: setClass,
+      setProfileData: setProfileData,
     }),
-    [character, setStatValue, setStatMastered, switchSkillProficiencyLevel, setAttributeValue]
+    [
+      characterDatas,
+      setStatValue,
+      setStatMastered,
+      switchSkillProficiencyLevel,
+      setClass,
+      setProfileData,
+    ]
   );
 };
 
