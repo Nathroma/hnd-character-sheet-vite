@@ -1,8 +1,19 @@
 import { Attribute, AttributeType } from './attributeType';
+import { ClassType } from './classType';
+import { ProfileType } from './profileType';
 import { Skill, SkillType } from './skillType';
 import { Stat, StatType } from './statType';
 
 export type Character = {
+  profileDatas: {
+    [ProfileType.name]: string;
+    [ProfileType.race]: string;
+    [ProfileType.class]: ClassType | null;
+    [ProfileType.alignement]: string;
+    [ProfileType.history]: string;
+    [ProfileType.level]: number;
+    [ProfileType.experience]: number;
+  };
   stats: {
     [StatType.FOR]: Stat;
     [StatType.DEX]: Stat;

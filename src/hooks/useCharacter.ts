@@ -4,8 +4,19 @@ import { newDefaultStat, StatType } from '@/types/statType';
 import useLocalStorage from './useLocalStorage';
 import { newDefaultSkill, ProficiencyLevel, SkillType } from '@/types/skillType';
 import { AttributeType, newDefaultAttribute } from '@/types/attributeType';
+import { ProfileType } from '@/types/profileType';
+import { ClassType } from '@/types/classType';
 
 const defaultCharacter: Character = {
+  profileDatas: {
+    [ProfileType.name]: '',
+    [ProfileType.race]: '',
+    [ProfileType.class]: null,
+    [ProfileType.alignement]: '',
+    [ProfileType.history]: '',
+    [ProfileType.level]: 0,
+    [ProfileType.experience]: 0,
+  },
   stats: {
     [StatType.FOR]: newDefaultStat(),
     [StatType.DEX]: newDefaultStat(),
@@ -82,13 +93,20 @@ const useCharacter = () => {
     setCharacter(newCharacter);
   };
 
+  const setCharacterclass = (newClass: ClassType) => {
+    const newCharacter = { ...character };
+    newCharacter.profileDatas.class = newClass;
+    setCharacter(newCharacter);
+  };
+
   return useMemo(
     () => ({
       character: character,
       setStatValue: setStatValue,
       setStatMastered: setStatMastered,
       switchSkillProficiencyLevel: switchSkillProficiencyLevel,
-      setAttributeValue: setAttributeValue
+      setAttributeValue: setAttributeValue,
+      setCharacterclass: setCharacterclass,
     }),
     [character, setStatValue, setStatMastered, switchSkillProficiencyLevel, setAttributeValue]
   );
