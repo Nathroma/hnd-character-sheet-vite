@@ -85,7 +85,17 @@ const ProfileBlock = ({ character }: ProfileBlockProps) => {
         </div>
         <div className="field-group">
           <label htmlFor="archetype">Archétype</label>
-          <input type="text" id="archetype" name="archetype" />
+
+          <select id="archetype" value={character.profileDatas.class ?? ""} onChange={(e: any) => onClassChange(e.target.value)}>
+            <option value="" disabled hidden>
+              Choisir une classe
+            </option>
+            {Object.values(ClassType).map((classKey) => (
+              <option key={classKey} value={classKey}>
+                {classNames[classKey]}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
