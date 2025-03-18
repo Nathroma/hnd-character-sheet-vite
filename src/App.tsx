@@ -42,11 +42,8 @@ function App() {
           {Object.values(StatType).map((statType) => (
             <StatBlock
               key={statType}
-              statTitle={statNames[statType]}
-              color={statColors[statType]}
-              imgName={statType}
-              stat={character.stats[statType]}
-              proficiencyBonus={character.attributes.proficiency.value}
+              statType={statType}
+              character={character}
               onStatChange={(value) => setStatValue(statType, value)}
               onMasteryChange={(mastered) => setStatMastered(statType, mastered)}
             />
