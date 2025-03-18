@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { statModifier } from "@/utils/modifierUtils";
 import StringNumberInput from "@/UI/stringNumberInput/StringNumberInput";
 import "./SkillBlock.scss";
-import { ProficiencyLevel } from "@/types/skillType";
+import { ProficiencyLevel, SkillType } from "@/types/skillType";
+import { Character } from "@/types/characterType";
 
 type SecondarySkillProps = {
+  character:Character;
+  skillType: SkillType;
   skillName: string;
   attribute: string;
   stat: {
@@ -18,7 +21,7 @@ type SecondarySkillProps = {
 
 const iconPath = "/icons/skillRadioBtn/";
 
-const SkillBlock = ({ skillName, attribute, stat, proficiencyLevel, proficiencyBonus, onProficiencyChange}: SecondarySkillProps) => {
+const SkillBlock = ({ character, skillType, skillName, attribute, stat, proficiencyLevel, proficiencyBonus, onProficiencyChange}: SecondarySkillProps) => {
 
   const [skillModValue, setSkillModValue] = useState("");
 

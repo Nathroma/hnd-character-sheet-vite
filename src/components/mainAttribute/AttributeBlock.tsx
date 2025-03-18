@@ -1,8 +1,12 @@
 import React from "react";
 import "./AttributeBlock.scss";
 import NumberInput from "@/UI/numberInput/NumberInput";
+import { Character } from "@/types/characterType";
+import { AttributeType } from "@/types/attributeType";
 
 type SecondaryStatsProps = {
+  character:Character
+  attributeType:AttributeType
   attributeTitle: string;
   color: string;
   imgName: string;
@@ -11,6 +15,8 @@ type SecondaryStatsProps = {
 };
 
 const AttributeBlock = ({
+  character,
+  attributeType,
   attributeTitle,
   color,
   imgName,

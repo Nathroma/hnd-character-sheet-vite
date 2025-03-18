@@ -55,6 +55,8 @@ function App() {
             .map((skillType) => (
               <SkillBlock
                 key={skillType}
+                character={character}
+                skillType={skillType}
                 skillName={skillNames[skillType]}
                 attribute={skillAttributes[skillType]}
                 stat={character.stats[skillAttributes[skillType]]}
@@ -68,6 +70,8 @@ function App() {
           {Object.values(AttributeType).map((attributeType) => (
             <AttributeBlock
               key={attributeType}
+              character={character}
+              attributeType={attributeType}
               attributeTitle={attributeTitles[attributeType]}
               color={attributeColors[attributeType]}
               imgName={attributeImgNames[attributeType]} 
