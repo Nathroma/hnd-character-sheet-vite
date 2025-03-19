@@ -97,6 +97,10 @@ const ProfileBlock = ({ character }: ProfileBlockProps) => {
             ))}
           </select>
         </div>
+        <div className="field-group">
+          <label htmlFor="archetype">Archétype</label>
+          <input type="text" id="archetype" name="archetype" />
+        </div>
       </div>
 
       {/* Ligne 4 : Alignement, Foi */}
