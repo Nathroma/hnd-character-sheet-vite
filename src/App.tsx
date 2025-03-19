@@ -57,11 +57,6 @@ function App() {
                 key={skillType}
                 character={character}
                 skillType={skillType}
-                skillName={skillNames[skillType]}
-                attribute={skillAttributes[skillType]}
-                stat={character.stats[skillAttributes[skillType]]}
-                proficiencyLevel={character.skills[skillType].proficiencyLevel ?? ProficiencyLevel.default}
-                proficiencyBonus={character.attributes.proficiency.value}
                 onProficiencyChange={() => switchSkillProficiencyLevel(skillType)}
               />
             ))}
