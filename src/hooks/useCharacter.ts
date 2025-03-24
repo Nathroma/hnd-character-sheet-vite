@@ -1,11 +1,22 @@
 import { useMemo } from 'react';
-import { Character } from '@/types/characterType';
+import { Character, CharacterAttributes } from '@/types/characterType';
 import { newDefaultStat, StatType } from '@/types/statType';
 import useLocalStorage from './useLocalStorage';
 import { newDefaultSkill, ProficiencyLevel, SkillType } from '@/types/skillType';
-import { AttributeType, newDefaultAttribute } from '@/types/attributeType';
+import { newDefaultProfileData, ProfileType } from '@/types/profileType';
+import { ClassType } from '@/types/classType';
+import { DerivedValueType } from '@/types/derivedValueType';
 
-const defaultCharacter: Character = {
+const defaultCharacter: CharacterAttributes = {
+  profileDatas: {
+    [ProfileType.name]: newDefaultProfileData(),
+    [ProfileType.race]: newDefaultProfileData(),
+    [ProfileType.class]: null,
+    [ProfileType.alignement]: newDefaultProfileData(),
+    [ProfileType.history]: newDefaultProfileData(),
+    [ProfileType.level]: newDefaultProfileData(),
+    [ProfileType.experience]: newDefaultProfileData(),
+  },
   stats: {
     [StatType.FOR]: newDefaultStat(),
     [StatType.DEX]: newDefaultStat(),
@@ -34,33 +45,25 @@ const defaultCharacter: Character = {
     [SkillType.deception]: newDefaultSkill(),
     [SkillType.survival]: newDefaultSkill(),
   },
-  attributes: {
-    [AttributeType.initiative]: newDefaultAttribute(),
-    [AttributeType.inspiration]: newDefaultAttribute(),
-    [AttributeType.perception]: newDefaultAttribute(),
-    [AttributeType.proficiency]: newDefaultAttribute(),
-    [AttributeType.saveThrow]: newDefaultAttribute(),
-    [AttributeType.speed]: newDefaultAttribute(),
-  },
 };
 
-const useCharacter = () => {
-  const [character, setCharacter] = useLocalStorage<Character>('character', defaultCharacter);
+const useCharacter = (): Character => {
+  const [characterDatas, setCharacter] = useLocalStorage<CharacterAttributes>('character', defaultCharacter);
 
-  const setStatValue = (statType: StatType, value: number) => {
-    const newCharacter = { ...character };
+  const setStatValue = (statType: StatType, value: number): void => {
+    const newCharacter = { ...characterDatas };
     newCharacter.stats[statType].value = value;
     setCharacter(newCharacter);
   };
 
   const setStatMastered = (statType: StatType, mastered: boolean) => {
-    const newCharacter = { ...character };
+    const newCharacter = { ...characterDatas };
     newCharacter.stats[statType].mastered = mastered;
     setCharacter(newCharacter);
   };
 
   const switchSkillProficiencyLevel = (skillType: SkillType) => {
-    const newCharacter = { ...character };
+    const newCharacter = { ...characterDatas };
     const levels: ProficiencyLevel[] = [
       ProficiencyLevel.default,
       ProficiencyLevel.master,
@@ -76,21 +79,61 @@ const useCharacter = () => {
     setCharacter(newCharacter);
   };
 
-  const setAttributeValue = (attributeType: AttributeType, value: number) => {
-    const newCharacter = { ...character };
-    newCharacter.attributes[attributeType].value = value;
+  const setClass = (newClass: ClassType) => {
+    const newCharacter = { ...characterDatas };
+    newCharacter.profileDatas.class = newClass;
     setCharacter(newCharacter);
+  };
+
+  const setProfileData = (dataName: ProfileType, value: string | number) => {
+    const newCharacter = { ...characterDatas };
+    if (dataName !== ProfileType.class) {
+      newCharacter.profileDatas[dataName].value = value;
+    }
+    setCharacter(newCharacter);
+  };
+
+  const getDerivedValue = (dataName: DerivedValueType): number => {
+    if (dataName === DerivedValueType.initiative) {
+      return characterDatas.stats.DEX.value;
+    }
+    if (dataName === DerivedValueType.inspiration) {
+      return 0;
+    }
+    if (dataName === DerivedValueType.perception) {
+      return 10 + characterDatas.skills.perception.value;
+    }
+    if (dataName === DerivedValueType.proficiency) {
+      return 3;
+    }
+    if (dataName === DerivedValueType.saveThrow) {
+      return 0;
+    }
+    if (dataName === DerivedValueType.speed) {
+      return 9;
+    }
+    return 0;
   };
 
   return useMemo(
     () => ({
-      character: character,
+      attributes: characterDatas,
       setStatValue: setStatValue,
       setStatMastered: setStatMastered,
       switchSkillProficiencyLevel: switchSkillProficiencyLevel,
-      setAttributeValue: setAttributeValue
+      setClass: setClass,
+      setProfileData: setProfileData,
+      getDerivedValue: getDerivedValue,
     }),
-    [character, setStatValue, setStatMastered, switchSkillProficiencyLevel, setAttributeValue]
+    [
+      characterDatas,
+      setStatValue,
+      setStatMastered,
+      switchSkillProficiencyLevel,
+      setClass,
+      setProfileData,
+      getDerivedValue,
+    ]
   );
 };
 

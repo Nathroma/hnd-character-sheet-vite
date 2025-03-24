@@ -8,27 +8,22 @@ import { statColors, statNames, StatType } from '@/types/statType';
 import { Character } from '@/types/characterType';
 
 type StatBlockProps = {
-  character:Character
-  statType:StatType
-  onStatChange: (value: number) => void;
-  onMasteryChange: (mastered: boolean) => void;
+  character: Character;
+  statType: StatType;
 };
 
-const StatBlock = ({
-  character,
-  statType,
-  onStatChange,
-  onMasteryChange,
-}: StatBlockProps) => {
+const StatBlock = ({ character, statType }: StatBlockProps) => {
   const imgPath = `src/assets/icons/statsLogos/${statType}-logo.png`;
   const imgAlt = `Logo stats ${statType}`;
 
-  const displayValue = (character.stats[statType].value !== null ? character.stats[statType].value : '').toString();
+  const displayValue = (
+    character.attributes.stats[statType].value !== null ? character.attributes.stats[statType].value : ''
+  ).toString();
 
   const handleValueChange = (inputValue: string) => {
     const finalValue: number = parseInt(inputValue);
     // if stat.value === null && finalValue === 0, set stat.value to null
-    onStatChange(finalValue!);
+    character.setStatValue(statType, finalValue!);
   };
 
   return (
@@ -56,7 +51,7 @@ const StatBlock = ({
         <div className="proficiency-square" style={{ borderColor: statColors[statType] }}>
           <span className="mod-value">Valeur de mod.</span>
           <NumberInput
-            value={statModifier(character.stats[statType].value)}
+            value={statModifier(character.attributes.stats[statType].value)}
             placeholder="0"
             className="mod-input"
             readOnly={true}
@@ -65,15 +60,21 @@ const StatBlock = ({
         <div className="saving-square">
           <span className="save-value">Valeur de sauv.</span>
           <NumberInput
-            value={statModifier(character.stats[statType].value, character.attributes.proficiency.value, character.stats[statType].mastered)}
+            value={statModifier(
+              character.attributes.stats[statType].value,
+              2,
+              character.attributes.stats[statType].mastered
+            )}
             placeholder="0"
             className="mod-input"
             readOnly={true}
           />
           <LabeledCheckBox
             label="Maitrise"
-            onChange={() => onMasteryChange(!character.stats[statType].mastered)}
-            isChecked={character.stats[statType].mastered}
+            onChange={() =>
+              character.setStatMastered(statType, !character.attributes.stats[statType].mastered)
+            }
+            isChecked={character.attributes.stats[statType].mastered}
           />
         </div>
       </div>
