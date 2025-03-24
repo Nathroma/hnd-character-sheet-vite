@@ -1,4 +1,4 @@
-import { Attribute, AttributeType } from './attributeType';
+import { DerivedValueType } from './derivedValueType';
 import { ClassType } from './classType';
 import { profileData, ProfileType } from './profileType';
 import { Skill, SkillType } from './skillType';
@@ -51,4 +51,5 @@ export type Character = {
   switchSkillProficiencyLevel: (skillType: SkillType) => void;
   setClass: (newClass: ClassType) => void;
   setProfileData: (dataName: ProfileType, value: string | number) => void;
+  getDerivedValue: (dataName: DerivedValueType) => number;
 };

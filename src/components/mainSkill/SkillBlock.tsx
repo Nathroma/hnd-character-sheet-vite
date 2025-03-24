@@ -21,7 +21,7 @@ const SkillBlock = ({ character, skillType }: SecondarySkillProps) => {
       2,
       character.attributes.skills[skillType].proficiencyLevel
     );
-    const finalValue = modifier > -5 ? modifier.toString() : '';
+    const finalValue = modifier > - 5 ? modifier.toString() : '';
     setSkillModValue(finalValue);
   });
 

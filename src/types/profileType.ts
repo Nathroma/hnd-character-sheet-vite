@@ -20,17 +20,15 @@ export const ProfileNames: Record<ProfileType, string> = {
   [ProfileType.experience]: 'Experience',
 };
 
-// export type ProfileData = {
-//   firstname: string;
-//   lastname: string;
-//   race: string;
-//   height: string;
-//   class: ClassType;
-//   alignement: string;
-//   history: string;
-//   level: number;
-//   experience: number;
-// };
+export type ProfileData = {
+  name: string;
+  race: string;
+  class: ClassType;
+  alignement: string;
+  history: string;
+  level: number;
+  experience: number;
+};
 
 export type profileData = {
   value: number | string | null;
