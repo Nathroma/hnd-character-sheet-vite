@@ -92,6 +92,15 @@ const useCharacter = (): Character => {
     }
     setCharacter(newCharacter);
   };
+  
+  const setCharacterProfileData = (dataName: ProfileType, value: string | number) => {
+    const newCharacter = { ...characterDatas };
+    if (dataName !== ProfileType.class) {
+      newCharacter.profileDatas[dataName].value = value;
+    }
+
+    setCharacter(newCharacter);
+  };
 
   const getDerivedValue = (dataName: DerivedValueType): number => {
     if (dataName === DerivedValueType.initiative) {
@@ -114,6 +123,7 @@ const useCharacter = (): Character => {
     }
     return 0;
   };
+
 
   return useMemo(
     () => ({
