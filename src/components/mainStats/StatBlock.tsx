@@ -17,7 +17,7 @@ const StatBlock = ({ character, statType }: StatBlockProps) => {
   const imgAlt = `Logo stats ${statType}`;
 
   const displayValue = (
-    character.attributes.stats[statType].value !== null ? character.attributes.stats[statType].value : ''
+    character.datas.stats[statType].value !== null ? character.datas.stats[statType].value : ''
   ).toString();
 
   const handleValueChange = (inputValue: string) => {
@@ -51,7 +51,7 @@ const StatBlock = ({ character, statType }: StatBlockProps) => {
         <div className="proficiency-square" style={{ borderColor: statColors[statType] }}>
           <span className="mod-value">Valeur de mod.</span>
           <NumberInput
-            value={statModifier(character.attributes.stats[statType].value)}
+            value={statModifier(character.datas.stats[statType].value)}
             placeholder="0"
             className="mod-input"
             readOnly={true}
@@ -61,9 +61,9 @@ const StatBlock = ({ character, statType }: StatBlockProps) => {
           <span className="save-value">Valeur de sauv.</span>
           <NumberInput
             value={statModifier(
-              character.attributes.stats[statType].value,
+              character.datas.stats[statType].value,
               2,
-              character.attributes.stats[statType].mastered
+              character.datas.stats[statType].mastered
             )}
             placeholder="0"
             className="mod-input"
@@ -71,10 +71,8 @@ const StatBlock = ({ character, statType }: StatBlockProps) => {
           />
           <LabeledCheckBox
             label="Maitrise"
-            onChange={() =>
-              character.setStatMastered(statType, !character.attributes.stats[statType].mastered)
-            }
-            isChecked={character.attributes.stats[statType].mastered}
+            onChange={() => character.setStatMastered(statType, !character.datas.stats[statType].mastered)}
+            isChecked={character.datas.stats[statType].mastered}
           />
         </div>
       </div>

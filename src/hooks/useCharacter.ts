@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
-import { Character, CharacterAttributes } from '@/types/characterType';
+import { Character, CharacterDatas } from '@/types/characterType';
 import { newDefaultStat, StatType } from '@/types/statType';
 import useLocalStorage from './useLocalStorage';
 import { newDefaultSkill, ProficiencyLevel, SkillType } from '@/types/skillType';
 import { newDefaultProfileData, ProfileType } from '@/types/profileType';
 import { ClassType } from '@/types/classType';
 import { DerivedValueType } from '@/types/derivedValueType';
+import { AttributesType, newDefaultAc, newDefaultHp } from '@/types/attributeType';
 
-const defaultCharacter: CharacterAttributes = {
+const defaultCharacter: CharacterDatas = {
   profileDatas: {
     [ProfileType.name]: newDefaultProfileData(),
     [ProfileType.race]: newDefaultProfileData(),
@@ -45,25 +46,29 @@ const defaultCharacter: CharacterAttributes = {
     [SkillType.deception]: newDefaultSkill(),
     [SkillType.survival]: newDefaultSkill(),
   },
+  attributes: {
+    [AttributesType.hp]: newDefaultHp(),
+    [AttributesType.ac]: newDefaultAc(),
+  },
 };
 
 const useCharacter = (): Character => {
-  const [characterDatas, setCharacter] = useLocalStorage<CharacterAttributes>('character', defaultCharacter);
+  const [characterDatas, setCharacter] = useLocalStorage<CharacterDatas>('character', defaultCharacter);
 
   const setStatValue = (statType: StatType, value: number): void => {
-    const newCharacter = { ...characterDatas };
-    newCharacter.stats[statType].value = value;
-    setCharacter(newCharacter);
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.stats[statType].value = value;
+    setCharacter(newCharacterDatas);
   };
 
   const setStatMastered = (statType: StatType, mastered: boolean) => {
-    const newCharacter = { ...characterDatas };
-    newCharacter.stats[statType].mastered = mastered;
-    setCharacter(newCharacter);
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.stats[statType].mastered = mastered;
+    setCharacter(newCharacterDatas);
   };
 
   const switchSkillProficiencyLevel = (skillType: SkillType) => {
-    const newCharacter = { ...characterDatas };
+    const newCharacterDatas = { ...characterDatas };
     const levels: ProficiencyLevel[] = [
       ProficiencyLevel.default,
       ProficiencyLevel.master,
@@ -71,26 +76,26 @@ const useCharacter = (): Character => {
       ProficiencyLevel.half,
     ];
 
-    const currentLevel = newCharacter.skills[skillType].proficiencyLevel;
+    const currentLevel = newCharacterDatas.skills[skillType].proficiencyLevel;
     const currentIndex = levels.indexOf(currentLevel);
 
     const nextIndex = (currentIndex + 1) % levels.length;
-    newCharacter.skills[skillType].proficiencyLevel = levels[nextIndex];
-    setCharacter(newCharacter);
+    newCharacterDatas.skills[skillType].proficiencyLevel = levels[nextIndex];
+    setCharacter(newCharacterDatas);
   };
 
   const setClass = (newClass: ClassType) => {
-    const newCharacter = { ...characterDatas };
-    newCharacter.profileDatas.class = newClass;
-    setCharacter(newCharacter);
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.profileDatas.class = newClass;
+    setCharacter(newCharacterDatas);
   };
 
   const setProfileData = (dataName: ProfileType, value: string | number) => {
-    const newCharacter = { ...characterDatas };
+    const newCharacterDatas = { ...characterDatas };
     if (dataName !== ProfileType.class) {
-      newCharacter.profileDatas[dataName].value = value;
+      newCharacterDatas.profileDatas[dataName].value = value;
     }
-    setCharacter(newCharacter);
+    setCharacter(newCharacterDatas);
   };
 
   const getDerivedValue = (dataName: DerivedValueType): number => {
@@ -115,15 +120,36 @@ const useCharacter = (): Character => {
     return 0;
   };
 
+  const setMaxHp = (value: number) => {
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.attributes.healthPoint.max = value;
+    setCharacter(newCharacterDatas);
+  };
+
+  const setCurrentHp = (value: number) => {
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.attributes.healthPoint.current = value;
+    setCharacter(newCharacterDatas);
+  };
+
+  const setTotalAc = (value: number) => {
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.attributes.armorClass.total = value;
+    setCharacter(newCharacterDatas);
+  };
+
   return useMemo(
     () => ({
-      attributes: characterDatas,
+      datas: characterDatas,
       setStatValue: setStatValue,
       setStatMastered: setStatMastered,
       switchSkillProficiencyLevel: switchSkillProficiencyLevel,
       setClass: setClass,
       setProfileData: setProfileData,
       getDerivedValue: getDerivedValue,
+      setMaxHp: setMaxHp,
+      setCurrentHp: setCurrentHp,
+      setTotalAc: setTotalAc,
     }),
     [
       characterDatas,
@@ -133,6 +159,9 @@ const useCharacter = (): Character => {
       setClass,
       setProfileData,
       getDerivedValue,
+      setMaxHp,
+      setCurrentHp,
+      setTotalAc,
     ]
   );
 };

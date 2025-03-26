@@ -8,6 +8,8 @@ import SkillBlock from './components/mainSkill/SkillBlock';
 import DerivedValueBlock from './components/mainDerivedValue/DerivedValueBlock';
 import useCharacter from './hooks/useCharacter';
 import ProfileBlock from './components/mainprofile/ProfileBlock';
+import HealthPointBlock from './components/mainHp/hpBlock';
+import ArmorClassBlock from './components/mainAc/AcBlock';
 
 function App() {
   const character = useCharacter();
@@ -30,10 +32,18 @@ function App() {
               <SkillBlock key={skillType} skillType={skillType} character={character} />
             ))}
         </div>
-        <div className="SecondaryStats">
-          {Object.values(DerivedValueType).map((attributeType) => (
-            <DerivedValueBlock key={attributeType} derivedValueType={attributeType} character={character} />
-          ))}
+        <div className="additionalValues">
+          <div className="derivedValue">
+            {Object.values(DerivedValueType).map((attributeType) => (
+              <DerivedValueBlock key={attributeType} derivedValueType={attributeType} character={character} />
+            ))}
+          </div>
+          <div className="healthPoint">
+            <HealthPointBlock character={character} />
+          </div>
+          <div className="armorClass">
+            <ArmorClassBlock character={character} />
+          </div>
         </div>
       </div>
     </div>
