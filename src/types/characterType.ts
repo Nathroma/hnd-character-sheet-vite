@@ -3,8 +3,9 @@ import { ClassType } from './classType';
 import { profileData, ProfileType } from './profileType';
 import { Skill, SkillType } from './skillType';
 import { Stat, StatType } from './statType';
+import { ArmorClass, AttributesType, HealthPoint } from './attributeType';
 
-export type CharacterAttributes = {
+export type CharacterDatas = {
   profileDatas: {
     [ProfileType.name]: profileData;
     [ProfileType.race]: profileData;
@@ -42,14 +43,21 @@ export type CharacterAttributes = {
     [SkillType.deception]: Skill;
     [SkillType.survival]: Skill;
   };
+  attributes: {
+    [AttributesType.hp]: HealthPoint;
+    [AttributesType.ac]: ArmorClass;
+  };
 };
 
 export type Character = {
-  attributes: CharacterAttributes;
+  datas: CharacterDatas;
   setStatValue: (statType: StatType, value: number) => void;
   setStatMastered: (statType: StatType, mastered: boolean) => void;
   switchSkillProficiencyLevel: (skillType: SkillType) => void;
   setClass: (newClass: ClassType) => void;
   setProfileData: (dataName: ProfileType, value: string | number) => void;
   getDerivedValue: (dataName: DerivedValueType) => number;
+  setMaxHp: (value: number) => void;
+  setCurrentHp: (value: number) => void;
+  setTotalAc: (value: number) => void;
 };

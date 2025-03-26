@@ -17,16 +17,16 @@ const SkillBlock = ({ character, skillType }: SecondarySkillProps) => {
 
   useEffect(() => {
     const modifier = statModifier(
-      character.attributes.stats[skillAttributes[skillType]].value,
+      character.datas.stats[skillAttributes[skillType]].value,
       2,
-      character.attributes.skills[skillType].proficiencyLevel
+      character.datas.skills[skillType].proficiencyLevel
     );
-    const finalValue = modifier > - 5 ? modifier.toString() : '';
+    const finalValue = modifier > -5 ? modifier.toString() : '';
     setSkillModValue(finalValue);
   });
 
   const getRadioIcon = () => {
-    switch (character.attributes.skills[skillType].proficiencyLevel) {
+    switch (character.datas.skills[skillType].proficiencyLevel) {
       case ProficiencyLevel.master:
         return <img src={iconPath + 'check.svg'} alt="check" />;
       case ProficiencyLevel.expert:
