@@ -78,6 +78,7 @@ body {
   .additionalValues {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     .derivedValue {
       display: flex;
@@ -91,6 +92,17 @@ body {
     }
 
     .healthPoint {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: flex-start;
+      width: auto;
+      max-width: 550px;
+      height: auto;
+    }
+
+    .armorClass {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
