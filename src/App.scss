@@ -26,7 +26,7 @@
 
 body {
   background-color: #e4d9d9;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .wrapper-profile-data {
@@ -75,42 +75,14 @@ body {
     width: auto;
   }
 
-  .additionalValues {
+  .SecondaryStats {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
-
-    .derivedValue {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-content: flex-start;
-      width: auto;
-      max-width: 550px;
-      height: auto;
-    }
-
-    .healthPoint {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-content: flex-start;
-      width: auto;
-      max-width: 550px;
-      height: auto;
-    }
-
-    .armorClass {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-content: flex-start;
-      width: auto;
-      max-width: 550px;
-      height: auto;
-    }
+    align-content: flex-start;
+    width: auto;
+    max-width: 550px;
+    height: auto;
   }
 }

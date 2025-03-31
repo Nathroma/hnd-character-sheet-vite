@@ -1,62 +1,39 @@
-.character-sheet {
-  /* Largeur globale et centrage de la fiche */
-  width: 80%;
-  max-width: 800px;
-  margin: 2rem auto;
-
-  .row {
+.profile-block {
     display: flex;
-    gap: 1rem;              // Espace horizontal entre champs
-    margin-bottom: 1.5rem;  // Espace vertical entre les rangées
-  }
-
-  .top-row {
-    // Première ligne : 1 champ large (Nom) + 2 champs petits (Niveau, PX)
-    .wide {
-      flex: 1; // occupe tout l’espace disponible
+    align-items: center;
+    border: 2px solid #2B1C3F; // Ajustez les couleurs selon le design
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+  
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px; // Ajustez selon la taille souhaitée pour l'icône
+      height: 24px;
+      margin-right: 8px;
     }
-
-    .small {
-      width: 100px; // champs plus petits
-    }
-  }
-
-  .field-group {
-    display: flex;
-    flex-direction: column;
-
-    label {
+  
+    &__label {
       font-weight: bold;
-      margin-bottom: 0.3rem;
-      color: black;
+      font-size: 16px;
+      color: #2B1C3F; // Couleur du texte
+      margin-right: 8px;
     }
-
-    input {
-      padding: 0.4rem 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      background-color: grey;
-      
-
+  
+    &__input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      padding: 4px;
+      background-color: #F5F7FF; // Couleur de fond de l'input
+      color: #2B1C3F; // Couleur du texte de l'input
+  
       &:focus {
         outline: none;
-        border-color: #666;
-      }
-    }
-
-    select {
-      padding: 0.4rem 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      background-color: grey;
-      
-
-      &:focus {
-        outline: none;
-        border-color: #666;
       }
     }
   }
-}
+  
