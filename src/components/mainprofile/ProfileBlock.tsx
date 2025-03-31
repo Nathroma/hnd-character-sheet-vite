@@ -17,7 +17,8 @@ const ProfileBlock = ({ character }: ProfileBlockProps) => {
           <label htmlFor="nom">Nom</label>
           <input
             type="text"
-            value={character.attributes.profileDatas.name.value?.toString()}
+            name="nom"
+            value={character.datas.profileDatas.name.value?.toString()}
             onChange={(e: any) => character.setProfileData(ProfileType.name, e.target.value)}
           />
         </div>
@@ -60,24 +61,8 @@ const ProfileBlock = ({ character }: ProfileBlockProps) => {
         <div className="field-group">
           <label htmlFor="classe">Classe</label>
           <select
-            value={character.attributes.profileDatas.class ?? ''}
-            onChange={(e: any) => character.setClass(e.target.value)}
-          >
-            <option value="" disabled hidden>
-              Choisir une classe
-            </option>
-            {Object.values(ClassType).map((classKey) => (
-              <option key={classKey} value={classKey}>
-                {classNames[classKey]}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="field-group">
-          <label htmlFor="archetype">Archétype</label>
-
-          <select
-            value={character.attributes.profileDatas.class ?? ''}
+            id="archetype"
+            value={character.datas.profileDatas.class ?? ''}
             onChange={(e: any) => character.setClass(e.target.value)}
           >
             <option value="" disabled hidden>
