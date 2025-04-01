@@ -10,7 +10,7 @@ type SecondarySkillProps = {
   skillType: SkillType;
 };
 
-const iconPath = '/icons/skillRadioBtn/';
+const iconPath = './src/assets/icons/skillRadioBtn/';
 
 const SkillBlock = ({ character, skillType }: SecondarySkillProps) => {
   const [skillModValue, setSkillModValue] = useState('');

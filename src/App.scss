@@ -1,6 +1,5 @@
 #root {
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   --color-for: #c12a32;
   --color-dex: #f48e01;
@@ -18,43 +17,37 @@
   --color-speed-field: #793b01;
   --color-dd-save-field: #920077;
 }
-.App-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: left;
-  justify-content: left;
-  width: 100%;
-  height: 100%;
-}
-
-.separator{
-  width: 100%;
-  height: 1px;
-  background-color: #151515;
-  margin: 1rem 0;
-}
-
-.tab-component {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 
 body {
   background-color: #e4d9d9;
   font-family: 'Roboto', sans-serif;
 }
 
-.wrapper-profile-data {
+.App-wrapper {
   display: flex;
-  width: auto;
+  flex-direction: row;
+  justify-content: flex-start;
   height: auto;
-  justify-content: space-between;
-}
+  min-width: 1675px;
 
-.wrapper-all-stats {
-  display: flex;
-  width: auto;
-  height: auto;
-  justify-content: space-between;
+  .tab-selector-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    min-width: 150px;
+
+    background-color: var(--color-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #d4cfcf;
+    }
+  }
+  
+  .tab-component {
+    display: flex;
+  }
 }

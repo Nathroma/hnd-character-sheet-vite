@@ -1,7 +1,9 @@
 import React from "react";
 import "./TabSelector.scss";
+import { tabSelectorIcons, tabSelectorTitles, TabSelectorType } from "@/types/tabSelectorType";
 
-const tabs: Array<string> = ["profil", "stats", "inventory", "spellbook"];
+const tabs: Array<TabSelectorType> = Object.values(TabSelectorType);
+const imgPath = "./src/assets/icons/tabSelectorIcons/";
 
 type TabSelectorProps = {
     selectedTab: string;
@@ -16,7 +18,8 @@ const TabSelector = ({ selectedTab, setSelectedTab }: TabSelectorProps) => {
                     key={tab}
                     className={`tab-button ${selectedTab === tab ? "active" : ""}`}
                     onClick={() => setSelectedTab(tab)}>
-                    {tab}
+                    <span>{tabSelectorTitles[tab]}</span>
+                    <img src={imgPath + tabSelectorIcons[tab]} alt={tabSelectorIcons[tab]} className="tab-icon" />
                 </button>
             ))}
         </div>
