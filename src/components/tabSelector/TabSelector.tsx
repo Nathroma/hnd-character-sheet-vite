@@ -1,7 +1,7 @@
 import React from "react";
 import "./TabSelector.scss";
 
-const tabs = ["Profil", "Stats", "inventory", "spellbook"];
+const tabs: Array<string> = ["profil", "stats", "inventory", "spellbook"];
 
 type TabSelectorProps = {
     selectedTab: string;
@@ -15,8 +15,7 @@ const TabSelector = ({ selectedTab, setSelectedTab }: TabSelectorProps) => {
                 <button
                     key={tab}
                     className={`tab-button ${selectedTab === tab ? "active" : ""}`}
-                    onClick={() => setSelectedTab(tab)}
-                >
+                    onClick={() => setSelectedTab(tab)}>
                     {tab}
                 </button>
             ))}

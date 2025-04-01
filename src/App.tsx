@@ -8,18 +8,21 @@ import TabSelector from './components/tabSelector/TabSelector';
 function App() {
   const character = useCharacter();
 
-  const [selectedTab, setSelectedTab] = useState('Profil');
+  const [selectedTab, setSelectedTab] = useState('profil');
 
   return (
     <div className="App-wrapper">
       <div className="tab-selector-wrapper">
-        <TabSelector selectedTab={selectedTab} setSelectedTab={(tab) => { setSelectedTab(tab) }} />
+        <TabSelector selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       </div>
-      <div className="App">
-        {selectedTab === 'Profil' && <ProfileBlock character={character} />}
-        {selectedTab === 'Stats' && <StatsPage character={character} />}
-        {selectedTab === 'inventory' && <h1>Inventory</h1>}
-        {selectedTab === 'spellbook' && <h1>Spellbook</h1>}
+      <div className='separator'/>
+      <div className="tab-component">
+        {{
+          profil: <ProfileBlock character={character} />,
+          stats: <StatsPage character={character} />,
+          inventory: <h1>Inventory</h1>,
+          spellbook: <h1>Spellbook</h1>
+        }[selectedTab]}
       </div>
     </div>
   );
