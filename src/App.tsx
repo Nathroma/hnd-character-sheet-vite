@@ -11,18 +11,25 @@ function App() {
   const [selectedTab, setSelectedTab] = useState('stats');
 
   return (
-    <div className="App-wrapper">
-      <div className="tab-selector-wrapper">
-        <TabSelector selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      </div>
-      <div className="tab-component">
-        {{
-          profil: <ProfileBlock character={character} />,
-          stats: <StatsPage character={character} />,
-          inventory: <h1>Inventory</h1>,
-          spellbook: <h1>Spellbook</h1>,
-          playerNote: <h1>Player Note</h1>
-        }[selectedTab]}
+    <div className="App">
+      <div className="App-wrapper">
+        <div className="App-header">
+          <h1>Character Sheet</h1>
+        </div>
+        <div className='App-content'>
+          <div className="tab-selector-wrapper">
+            <TabSelector selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+          </div>
+          <div className="tab-component">
+            {{
+              profil: <ProfileBlock character={character} />,
+              stats: <StatsPage character={character} />,
+              inventory: <h1>Inventory</h1>,
+              spellbook: <h1>Spellbook</h1>,
+              playerNote: <h1>Player Note</h1>
+            }[selectedTab]}
+          </div>
+        </div>
       </div>
     </div>
   );
