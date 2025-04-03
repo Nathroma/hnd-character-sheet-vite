@@ -1,7 +1,17 @@
 .tab-selector {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+    flex-direction: column;
+    width: 150px;
+    height: 80%;
+    background-color: var(--color-background);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #d4cfcf;
+    }
 
   button {
     display: flex;

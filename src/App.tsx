@@ -12,14 +12,14 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App-wrapper">
+      <div className="tab-selector-wrapper">
+        <TabSelector selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      </div>
+      <div className="app-wrapper">
         <div className="App-header">
           <h1>Character Sheet</h1>
         </div>
         <div className='App-content'>
-          <div className="tab-selector-wrapper">
-            <TabSelector selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-          </div>
           <div className="tab-component">
             {{
               profil: <ProfileBlock character={character} />,
