@@ -92,6 +92,7 @@ const useCharacter = (): Character => {
 
   const setProfileData = (dataName: ProfileType, value: string | number) => {
     const newCharacterDatas = { ...characterDatas };
+    
     if (dataName !== ProfileType.class) {
       newCharacterDatas.profileDatas[dataName].value = value;
     }
@@ -101,9 +102,8 @@ const useCharacter = (): Character => {
   const setCharacterProfileData = (dataName: ProfileType, value: string | number) => {
     const newCharacter = { ...characterDatas };
     if (dataName !== ProfileType.class) {
-      newCharacter.profileDatas[dataName].value = value;
+      newCharacterDatas.profileDatas[dataName].value = value;
     }
-
     setCharacter(newCharacter);
   };
 
