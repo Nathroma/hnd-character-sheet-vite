@@ -92,10 +92,19 @@ const useCharacter = (): Character => {
 
   const setProfileData = (dataName: ProfileType, value: string | number) => {
     const newCharacterDatas = { ...characterDatas };
+    
     if (dataName !== ProfileType.class) {
       newCharacterDatas.profileDatas[dataName].value = value;
     }
     setCharacter(newCharacterDatas);
+  };
+  
+  const setCharacterProfileData = (dataName: ProfileType, value: string | number) => {
+    const newCharacter = { ...characterDatas };
+    if (dataName !== ProfileType.class) {
+      newCharacterDatas.profileDatas[dataName].value = value;
+    }
+    setCharacter(newCharacter);
   };
 
   const getDerivedValue = (dataName: DerivedValueType): number => {

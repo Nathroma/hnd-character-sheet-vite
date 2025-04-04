@@ -1,6 +1,4 @@
 #root {
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   --color-for: #c12a32;
   --color-dex: #f48e01;
@@ -18,99 +16,50 @@
   --color-speed-field: #793b01;
   --color-dd-save-field: #920077;
 }
-.App {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 
 body {
   background-color: #e4d9d9;
   font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+
+.App {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  margin-left: 1%;
+
+
+  .tab-selector-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+  }
 }
 
-.wrapper-profile-data {
+.app-wrapper {
   display: flex;
-  width: auto;
-  height: auto;
-  justify-content: space-between;
-}
+  flex-direction: column;
+  flex: 1;
 
-.wrapper-all-stats {
-  display: flex;
-  width: auto;
-  height: auto;
-  justify-content: space-between;
-
-  .testBlock {
+  .App-header {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    height: auto;
-    width: auto;
+    justify-content: center;
+    align-items: start;
+    height: 10vh;
   }
 
-  .mainAttribute {
+  .App-content {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: auto;
-    max-width: 600px;
-    height: auto;
-  }
-
-  .mainAttribute > * {
-    box-sizing: border-box;
-  }
-
-  .secondarySkill {
-    padding-top: 5px;
-    padding-bottom: 3px;
-    padding-left: 30px;
-    padding-right: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: auto;
-    width: auto;
-  }
-
-  .additionalValues {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    .derivedValue {
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 3%;
+    overflow: auto;
+  
+    .tab-component {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-content: flex-start;
-      width: auto;
-      max-width: 550px;
-      height: auto;
-    }
-
-    .healthPoint {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-content: flex-start;
-      width: auto;
-      max-width: 550px;
-      height: auto;
-    }
-
-    .armorClass {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-content: flex-start;
-      width: auto;
-      max-width: 550px;
-      height: auto;
     }
   }
 }
