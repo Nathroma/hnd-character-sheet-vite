@@ -30,6 +30,7 @@ function App() {
             }[selectedTab]}
           </div>
         </div>
+        <div className="App-footer" />
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ body {
   background-color: #e4d9d9;
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
+}
 
 .App {
   display: flex;
@@ -47,7 +48,7 @@ body {
   .App-header {
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: end;
     height: 10vh;
   }
 
@@ -57,9 +58,17 @@ body {
     justify-content: flex-start;
     margin-left: 3%;
     overflow: auto;
+    height: 100%;
   
     .tab-component {
       display: flex;
     }
+  }
+
+  .App-footer {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 10vh;
   }
 }
