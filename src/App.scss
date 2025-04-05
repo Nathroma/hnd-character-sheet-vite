@@ -67,8 +67,9 @@ body {
 
   .App-footer {
     display: flex;
-    justify-content: center;
-    align-items: start;
+    justify-content: left;
+    align-items: end;
+    color: black;
     height: 10vh;
   }
 }

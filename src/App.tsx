@@ -30,7 +30,9 @@ function App() {
             }[selectedTab]}
           </div>
         </div>
-        <div className="App-footer" />
+        <div className="App-footer">
+          <span>version: 0.1</span>
+        </div>
       </div>
     </div>
   );
