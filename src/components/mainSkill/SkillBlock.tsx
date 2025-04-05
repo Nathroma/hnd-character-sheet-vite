@@ -25,24 +25,16 @@ const SkillBlock = ({ character, skillType }: SecondarySkillProps) => {
     setSkillModValue(finalValue);
   });
 
-  const getRadioIcon = () => {
-    switch (character.datas.skills[skillType].proficiencyLevel) {
-      case ProficiencyLevel.master:
-        return <img src={iconPath + 'check.svg'} alt="check" />;
-      case ProficiencyLevel.expert:
-        return <img src={iconPath + 'doubleCheck.svg'} alt="doubleCheck" />;
-      case ProficiencyLevel.half:
-        return <img src={iconPath + 'half.svg'} alt="halfCheck" />;
-      default:
-        return <img src={iconPath + 'unselected.svg'} alt="unselected" />;
-    }
-  };
-
   return (
     <div className="skill-component">
       <div className="wrapper-checkbox">
         <div className="radio-button" onClick={() => character.switchSkillProficiencyLevel(skillType)}>
-          {getRadioIcon()}
+          {{
+            master: <img src={iconPath + 'check.svg'} alt="check" />,
+            expert: <img src={iconPath + 'doubleCheck.svg'} alt="doubleCheck" />,
+            half: <img src={iconPath + 'half.svg'} alt="halfCheck" />,
+            default: <img src={iconPath + 'unselected.svg'} alt="unselected" />,
+          }[character.datas.skills[skillType].proficiencyLevel]}
         </div>
         <span className="skill-name">{skillNames[skillType]}</span>
       </div>
