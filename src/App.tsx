@@ -4,6 +4,8 @@ import useCharacter from '@/hooks/useCharacter';
 import ProfileBlock from '@/components/mainprofile/ProfileBlock';
 import StatsPage from './pages/statsPage/StatsPage';
 import TabSelector from './components/tabSelector/TabSelector';
+import InventoryPage from './pages/inventoryPage/InventoryPage';
+import SpellPage from './pages/spellPage/SpellPage';
 
 function App() {
   const character = useCharacter();
@@ -24,8 +26,8 @@ function App() {
             {{
               profil: <ProfileBlock character={character} />,
               stats: <StatsPage character={character} />,
-              inventory: <h1>Inventory</h1>,
-              spellbook: <h1>Spellbook</h1>,
+              inventory: <InventoryPage title="Inventory" />,
+              spellbook: <SpellPage title="Spellbook" />,
               playerNote: <h1>Player Note</h1>
             }[selectedTab]}
           </div>

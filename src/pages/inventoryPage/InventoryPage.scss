@@ -1,0 +1,13 @@
+.inventory-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  .inventory-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+}
