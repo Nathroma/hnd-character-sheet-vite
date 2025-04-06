@@ -1,9 +1,7 @@
 .tab-selector {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  width: 150px;
-  height: 80%;
+  height: 95%;
   background-color: var(--color-background);
   border-radius: 12px;
   box-shadow: 0 6px 12px 5px rgba(0, 0, 0, 0.2);
