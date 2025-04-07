@@ -20,6 +20,14 @@
             margin-bottom: 20px;
         }
 
+        .div-input {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-weight: bold;
+                    }
+
         input {
             display: block;
             width: 100%;
