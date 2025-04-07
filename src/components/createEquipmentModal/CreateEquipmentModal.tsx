@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CreateEquipmentModal.scss";
-import { Equipment } from "@/types/itemType";
+import { EquipementAction, Equipment } from "@/types/itemType";
 
 type CreateEquipmentModalProps = {
     isOpen: boolean;
@@ -11,17 +11,28 @@ type CreateEquipmentModalProps = {
 const CreateEquipmentModal = ({ isOpen, onClose, onCreate }: CreateEquipmentModalProps) => {
     const [equipment, setEquipment] = useState<Omit<Equipment, "id">>({
         name: "",
-        action: "",
+        action: EquipementAction.ACTION,
         quantity: 1,
         weight: "",
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setEquipment({ ...equipment, [name]: name === "quantity" ? parseInt(value) : value });
     };
 
     const handleSubmit = () => {
+        if (equipment.name === "") {
+            alert("Le nom de l'objet est requis.");
+            return;
+        }
+        if (!(Object.values(EquipementAction).includes(equipment.action))) {
+            alert("Veuillez sélectionner une action.");
+            return;
+        }
+        if (!equipment.weight) {
+            equipment.weight = "0";
+        }
         onCreate({ id: Date.now(), ...equipment });
         onClose();
     };
@@ -39,13 +50,16 @@ const CreateEquipmentModal = ({ isOpen, onClose, onCreate }: CreateEquipmentModa
                     value={equipment.name}
                     onChange={handleChange}
                 />
-                <input
-                    type="text"
+                <select
                     name="action"
-                    placeholder="Action"
-                    value={equipment.action}
                     onChange={handleChange}
-                />
+                >
+                    {Object.values(EquipementAction).map((action) => (
+                        <option key={action} value={action}>
+                            {action}
+                        </option>
+                    ))}
+                </select>
                 <input
                     type="number"
                     name="quantity"
