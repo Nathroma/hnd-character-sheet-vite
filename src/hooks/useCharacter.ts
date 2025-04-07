@@ -7,6 +7,7 @@ import { newDefaultProfileData, ProfileType } from '@/types/profileType';
 import { ClassType } from '@/types/classType';
 import { DerivedValueType } from '@/types/derivedValueType';
 import { AttributesType, newDefaultAc, newDefaultHp } from '@/types/attributeType';
+import { Equipment } from '@/types/itemType';
 
 const defaultCharacter: CharacterDatas = {
   profileDatas: {
@@ -50,6 +51,9 @@ const defaultCharacter: CharacterDatas = {
     [AttributesType.hp]: newDefaultHp(),
     [AttributesType.ac]: newDefaultAc(),
   },
+  inventory: {
+    equipments: [],
+  }
 };
 
 const useCharacter = (): Character => {
@@ -98,14 +102,6 @@ const useCharacter = (): Character => {
     }
     setCharacter(newCharacterDatas);
   };
-  
-  const setCharacterProfileData = (dataName: ProfileType, value: string | number) => {
-    const newCharacter = { ...characterDatas };
-    if (dataName !== ProfileType.class) {
-      newCharacterDatas.profileDatas[dataName].value = value;
-    }
-    setCharacter(newCharacter);
-  };
 
   const getDerivedValue = (dataName: DerivedValueType): number => {
     if (dataName === DerivedValueType.initiative) {
@@ -147,6 +143,28 @@ const useCharacter = (): Character => {
     setCharacter(newCharacterDatas);
   };
 
+  const addEquipement = (equipement: Equipment) => {
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.inventory.equipments.push(equipement);
+    setCharacter(newCharacterDatas);
+  };
+
+  const editEquipement = (equipementId: number, equipement: Equipment) => {
+    const newCharacterDatas = { ...characterDatas };
+    const index = newCharacterDatas.inventory.equipments.findIndex(e => e.id === equipementId);
+    if (index !== -1) {
+      newCharacterDatas.inventory.equipments[index] = equipement;
+      setCharacter(newCharacterDatas);
+    }
+  };
+
+  const removeEquipement = (equipementId: number) => {
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.inventory.equipments = newCharacterDatas.inventory.equipments.filter(equipement => equipement.id !== equipementId);
+    setCharacter(newCharacterDatas);
+  };
+
+
   return useMemo(
     () => ({
       datas: characterDatas,
@@ -159,6 +177,9 @@ const useCharacter = (): Character => {
       setMaxHp: setMaxHp,
       setCurrentHp: setCurrentHp,
       setTotalAc: setTotalAc,
+      addEquipement: addEquipement,
+      editEquipement: editEquipement,
+      removeEquipement: removeEquipement,
     }),
     [
       characterDatas,
@@ -171,6 +192,9 @@ const useCharacter = (): Character => {
       setMaxHp,
       setCurrentHp,
       setTotalAc,
+      addEquipement,
+      editEquipement,
+      removeEquipement,
     ]
   );
 };

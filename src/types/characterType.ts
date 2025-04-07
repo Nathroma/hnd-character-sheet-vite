@@ -4,6 +4,7 @@ import { profileData, ProfileType } from './profileType';
 import { Skill, SkillType } from './skillType';
 import { Stat, StatType } from './statType';
 import { ArmorClass, AttributesType, HealthPoint } from './attributeType';
+import { Equipment, Inventory } from './itemType';
 
 export type CharacterDatas = {
   profileDatas: {
@@ -47,6 +48,7 @@ export type CharacterDatas = {
     [AttributesType.hp]: HealthPoint;
     [AttributesType.ac]: ArmorClass;
   };
+  inventory: Inventory
 };
 
 export type Character = {
@@ -60,4 +62,7 @@ export type Character = {
   setMaxHp: (value: number) => void;
   setCurrentHp: (value: number) => void;
   setTotalAc: (value: number) => void;
+  addEquipement: (equipement: Equipment) => void;
+  editEquipement: (equipementId: number, equipement: Equipment) => void;
+  removeEquipement: (equipementId: number) => void;
 };

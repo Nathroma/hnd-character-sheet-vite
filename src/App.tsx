@@ -26,8 +26,8 @@ function App() {
             {{
               profil: <ProfileBlock character={character} />,
               stats: <StatsPage character={character} />,
-              inventory: <InventoryPage title="Inventory" />,
-              spellbook: <SpellPage title="Spellbook" />,
+              inventory: <InventoryPage title="Inventory" character={character} />,
+              spellbook: <SpellPage title="Spellbook" character={character} />,
               playerNote: <h1>Player Note</h1>
             }[selectedTab]}
           </div>
