@@ -1,41 +1,23 @@
 import React, { useState } from "react";
 import "./InventoryTableBlock.scss";
+import { Character } from "@/types/characterType";
+import { Equipment } from "@/types/itemType";
+import CreateEquipmentModal from "../createEquipmentModal/CreateEquipmentModal";
 
 type InventoryTableBlockProps = {
+    character: Character;
 };
 
-interface Equipment {
-    id: number;
-    name: string;
-    quantity: number;
-    weight: string;
-}
-
-const InventoryTableBlock = ({ }: InventoryTableBlockProps) => {
-    const [equipments, setEquipments] = useState<Equipment[]>([
-        { id: 1, name: 'Épée', quantity: 1, weight: '1kg' },
-        { id: 2, name: 'Bouclier', quantity: 1, weight: '3kg' },
-    ]);
+const InventoryTableBlock = ({ character }: InventoryTableBlockProps) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleAdd = () => {
-        // Modal de création d'un nouvel équipement
-        const newEquipment: Equipment = {
-            id: Date.now(),
-            name: 'Nouvel Équipement',
-            quantity: 1,
-            weight: '1kg',
-        };
-        setEquipments([...equipments, newEquipment]);
+        setIsModalOpen(true);
     };
 
-    const handleEdit = (id: number) => {
-        // todo: Modal de modifcation de l'objet
-        alert(`Impossible de modifer l'object id: ${id}, fonctionnalité à implémenter`);
-    };
-
-    const handleDelete = (id: number) => {
-        // Todo: Ajoute ici une confirmation
-        setEquipments(equipments.filter(equipment => equipment.id !== id));
+    const handleCreate = (newEquipment: Equipment) => {
+        character.addEquipement(newEquipment);
+        setIsModalOpen(false);
     };
 
     return (
@@ -45,7 +27,8 @@ const InventoryTableBlock = ({ }: InventoryTableBlockProps) => {
             </div>
             <table className="equipment-table">
                 <colgroup>
-                    <col style={{ width: '50%' }} />
+                    <col style={{ width: '35%' }} />
+                    <col style={{ width: '15%' }} />
                     <col style={{ width: '15%' }} />
                     <col style={{ width: '15%' }} />
                     <col style={{ width: '20%' }} />
@@ -53,28 +36,34 @@ const InventoryTableBlock = ({ }: InventoryTableBlockProps) => {
                 <thead>
                     <tr>
                         <th>Nom</th>
+                        <th>Action</th>
                         <th>Quantité</th>
                         <th>Poids</th>
-                        <th>Action</th>
+                        <th>Gestion</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {equipments.map(equipment => (
+                    {character.datas.inventory.equipments.map(equipment => (
                         <tr key={equipment.id}>
                             <td>{equipment.name}</td>
+                            <td>{equipment.action}</td>
                             <td>{equipment.quantity}</td>
                             <td>{equipment.weight}</td>
                             <td>
-                                <button onClick={() => handleEdit(equipment.id)}>Edit</button>
-                                <button onClick={() => handleDelete(equipment.id)}>Supprimer</button>
+                                <button onClick={() => alert(`Modifier id: ${equipment.id}`)}>Edit</button>
+                                <button onClick={() => character.removeEquipement(equipment.id)}>Supprimer</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <CreateEquipmentModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onCreate={handleCreate}
+            />
         </div>
     );
 };
-
 
 export default InventoryTableBlock;
