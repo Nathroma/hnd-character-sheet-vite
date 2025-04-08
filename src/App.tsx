@@ -33,7 +33,7 @@ function App() {
           </div>
         </div>
         <div className="App-footer">
-          <span>version: 0.1</span>
+          <span>version: 0.2</span>
         </div>
       </div>
     </div>

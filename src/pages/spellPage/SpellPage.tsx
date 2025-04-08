@@ -8,12 +8,12 @@ type SpellPageProps = {
     character: Character;
 };
 
-const SpellPage = ({ title }: SpellPageProps) => {
+const SpellPage = ({ title, character }: SpellPageProps) => {
     return (
         <div className="spell-page">
             <h1>{title}</h1>
             <div className="spell-content">
-                <SpellTableBlock />
+                <SpellTableBlock character={character} />
             </div>
         </div>
     );

@@ -5,6 +5,7 @@ import { Skill, SkillType } from './skillType';
 import { Stat, StatType } from './statType';
 import { ArmorClass, AttributesType, HealthPoint } from './attributeType';
 import { Equipment, Inventory } from './itemType';
+import { SpellType } from './spellType';
 
 export type CharacterDatas = {
   profileDatas: {
@@ -48,7 +49,8 @@ export type CharacterDatas = {
     [AttributesType.hp]: HealthPoint;
     [AttributesType.ac]: ArmorClass;
   };
-  inventory: Inventory
+  inventory: Inventory;
+  spells: SpellType[];
 };
 
 export type Character = {
@@ -65,4 +67,7 @@ export type Character = {
   addEquipement: (equipement: Equipment) => void;
   editEquipement: (equipementId: number, equipement: Equipment) => void;
   removeEquipement: (equipementId: number) => void;
+  addSpell: (spell: SpellType) => void;
+  editSpell: (spellId: number, spell: SpellType) => void;
+  removeSpell: (spellId: number) => void;
 };

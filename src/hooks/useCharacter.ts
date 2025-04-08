@@ -8,6 +8,7 @@ import { ClassType } from '@/types/classType';
 import { DerivedValueType } from '@/types/derivedValueType';
 import { AttributesType, newDefaultAc, newDefaultHp } from '@/types/attributeType';
 import { Equipment } from '@/types/itemType';
+import { SpellType } from '@/types/spellType';
 
 const defaultCharacter: CharacterDatas = {
   profileDatas: {
@@ -53,7 +54,8 @@ const defaultCharacter: CharacterDatas = {
   },
   inventory: {
     equipments: [],
-  }
+  },
+  spells: [],
 };
 
 const useCharacter = (): Character => {
@@ -164,6 +166,27 @@ const useCharacter = (): Character => {
     setCharacter(newCharacterDatas);
   };
 
+  const addSpell = (spell: SpellType) => {
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.spells.push(spell);
+    setCharacter(newCharacterDatas);
+  };
+
+  const editSpell = (spellId: number, spell: SpellType) => {
+    const newCharacterDatas = { ...characterDatas };
+    const index = newCharacterDatas.spells.findIndex(spell => spell.id === spellId);
+    if (index !== -1) {
+      newCharacterDatas.spells[index] = spell;
+      setCharacter(newCharacterDatas);
+    }
+  };
+
+  const removeSpell = (spellId: number) => {
+    const newCharacterDatas = { ...characterDatas };
+    newCharacterDatas.spells = newCharacterDatas.spells.filter(spell => spell.id !== spellId);
+    setCharacter(newCharacterDatas);
+  };
+
 
   return useMemo(
     () => ({
@@ -180,6 +203,9 @@ const useCharacter = (): Character => {
       addEquipement: addEquipement,
       editEquipement: editEquipement,
       removeEquipement: removeEquipement,
+      addSpell: addSpell,
+      editSpell: editSpell,
+      removeSpell: removeSpell,
     }),
     [
       characterDatas,
@@ -195,6 +221,9 @@ const useCharacter = (): Character => {
       addEquipement,
       editEquipement,
       removeEquipement,
+      addSpell,
+      editSpell,
+      removeSpell,
     ]
   );
 };
