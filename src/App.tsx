@@ -6,6 +6,7 @@ import StatsPage from './pages/statsPage/StatsPage';
 import TabSelector from './components/tabSelector/TabSelector';
 import InventoryPage from './pages/inventoryPage/InventoryPage';
 import SpellPage from './pages/spellPage/SpellPage';
+import PlayerNotePage from './pages/playerNotePage/PlayerNotePage';
 
 function App() {
   const character = useCharacter();
@@ -28,7 +29,7 @@ function App() {
               stats: <StatsPage character={character} />,
               inventory: <InventoryPage title="Inventory" character={character} />,
               spellbook: <SpellPage title="Spellbook" character={character} />,
-              playerNote: <h1>Player Note</h1>
+              playerNote: <PlayerNotePage title="Player Note" character={character} />,
             }[selectedTab]}
           </div>
         </div>

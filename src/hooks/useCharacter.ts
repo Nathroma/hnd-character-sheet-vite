@@ -57,6 +57,11 @@ const defaultCharacter: CharacterDatas = {
   inventory: {
     equipments: [],
   },
+  playerNotes: {
+    note: '',
+    knownCharacters: [],
+    ImportantItem: [],
+  },
   spells: [],
 };
 

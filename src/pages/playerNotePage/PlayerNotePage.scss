@@ -1,0 +1,48 @@
+.player-note-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    h1 {
+        font-size: 2.5rem;
+        color: #333;
+    }
+
+    .infos-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+
+        textarea {
+            width: 70%;
+            resize: unset;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+
+            &:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+
+            &::placeholder {
+                color: #aaa;
+            }
+        }
+
+        .secondary-infos {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 20px;
+            background-color: #f9f9f9;
+        }
+    }
+}
