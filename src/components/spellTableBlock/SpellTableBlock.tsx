@@ -1,41 +1,39 @@
 import React, { useState } from "react";
 import "./SpellTableBlock.scss";
+import { SpellType } from "@/types/spellType";
+import { Character } from "@/types/characterType";
+import CreateSpellModal from "../createSpellModal/CreateSpellModal";
 
 type SpellTableBlockProps = {
+    character: Character;
 };
 
-interface spell {
-    id: number;
-    name: string;
-    componant: string;
-    spellLevel: string;
-}
-
-const SpellTableBlock = ({ }: SpellTableBlockProps) => {
-    const [spells, setSpells] = useState<spell[]>([
-        { id: 1, name: 'Préstidigitation', componant: "V S M", spellLevel: ' Sort Mineur' },
-        { id: 2, name: 'Déguisement', componant: "V C R", spellLevel: 'Niveau 1' },
-    ]);
+const SpellTableBlock = ({ character }: SpellTableBlockProps) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleAdd = () => {
-        // Modal de création d'un nouveau sort
-        const newspell: spell = {
-            id: Date.now(),
-            name: 'Nouveau sort',
-            componant: " V S M",
-            spellLevel: 'Sort mineur',
-        };
-        setSpells([...spells, newspell]);
+        setIsModalOpen(true);
     };
 
-    const handleEdit = (id: number) => {
-        // todo: Modal de modifcation de l'objet
-        alert(`Impossible de modifer l'object id: ${id}, fonctionnalité à implémenter`);
-    };
-
-    const handleDelete = (id: number) => {
-        // Todo: Ajoute ici une confirmation
-        setSpells(spells.filter(spell => spell.id !== id));
+    const handleCreate = (newSpell: SpellType) => {
+        if (!newSpell.name) {
+            alert("Le nom est requis.");
+            return;
+        }
+        if (!newSpell.level) {
+            alert("Le niveau est requis.");
+            return;
+        }
+        if (!newSpell.incantationTime) {
+            alert("Le temps d'incantation est requis.");
+            return;
+        }
+        if (!newSpell.duration) {
+            alert("La durée est requise.");
+            return;
+        }
+        character.addSpell(newSpell);
+        setIsModalOpen(false);
     };
 
     return (
@@ -45,34 +43,51 @@ const SpellTableBlock = ({ }: SpellTableBlockProps) => {
             </div>
             <table className="spell-table">
                 <colgroup>
-                    <col style={{ width: '50%' }} />
-                    <col style={{ width: '15%' }} />
-                    <col style={{ width: '15%' }} />
                     <col style={{ width: '20%' }} />
+                    <col style={{ width: '10%' }} />
+                    <col style={{ width: '15%' }} />
+                    <col style={{ width: '10%' }} />
+                    <col style={{ width: '15%' }} />
+                    <col style={{ width: '10%' }} />
+                    <col style={{ width: '10%' }} />
+                    <col style={{ width: '10%' }} />
                 </colgroup>
                 <thead>
                     <tr>
                         <th>Nom</th>
-                        <th>Quantité</th>
-                        <th>Poids</th>
-                        <th>Action</th>
+                        <th>niveau</th>
+                        <th>Temps d'incantation</th>
+                        <th>Durée</th>
+                        <th>Concentration</th>
+                        <th>Rituel</th>
+                        <th>Composantes</th>
+                        <th>Gestion</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {spells.map(spell => (
+                    {character.datas.spells.map(spell => (
                         <tr key={spell.id}>
                             <td>{spell.name}</td>
-                            <td>{spell.componant}</td>
-                            <td>{spell.spellLevel}</td>
+                            <td>{spell.level}</td>
+                            <td>{spell.incantationTime}</td>
+                            <td>{spell.duration}</td>
+                            <td>{spell.concentration ? "Concentration" : ""}</td>
+                            <td>{spell.ritual ? "Rituel" : ""}</td>
+                            <td>{spell.components}</td>
                             <td>
-                                <button onClick={() => handleEdit(spell.id)}>Edit</button>
-                                <button onClick={() => handleDelete(spell.id)}>Supprimer</button>
+                                <button onClick={() => alert(`Modifier id: ${spell.id}`)}>Edit</button>
+                                <button onClick={() => character.removeSpell(spell.id)}>Supprimer</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </div>
+            <CreateSpellModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onCreate={handleCreate}
+            />
+        </div >
     );
 };
 
