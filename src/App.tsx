@@ -7,6 +7,7 @@ import TabSelector from './components/tabSelector/TabSelector';
 import InventoryPage from './pages/inventoryPage/InventoryPage';
 import SpellPage from './pages/spellPage/SpellPage';
 import PlayerNotePage from './pages/playerNotePage/PlayerNotePage';
+import ProfilPage from './pages/profilPage/ProfilPage';
 
 function App() {
   const character = useCharacter();
@@ -25,7 +26,7 @@ function App() {
           </div>
           <div className="tab-component">
             {{
-              profil: <ProfileBlock character={character} />,
+              profil: <ProfilPage character={character} />,
               stats: <StatsPage character={character} />,
               inventory: <InventoryPage title="Inventory" character={character} />,
               spellbook: <SpellPage title="Spellbook" character={character} />,
