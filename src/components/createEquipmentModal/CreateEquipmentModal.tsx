@@ -87,7 +87,7 @@ const CreateEquipmentModal = ({ isOpen, onClose, onCreate }: CreateEquipmentModa
                         placeholder="Poids"
                         value={equipment.weight}
                         onChange={handleChange}
-                        />
+                    />
                 </div>
                 <div className="modal-actions">
                     <button className="cancel" onClick={onClose}>Annuler</button>

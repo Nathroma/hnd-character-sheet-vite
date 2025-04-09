@@ -82,5 +82,12 @@ export type Character = {
   addSpell: (spell: SpellType) => void;
   editSpell: (spellId: number, spell: SpellType) => void;
   removeSpell: (spellId: number) => void;
+  // hooks for player notes
   updatePlayerNote: (note: string) => void;
+  addKnownCharacter: (character: KnownCharacter) => void;
+  editKnownCharacter: (characterId: number, character: KnownCharacter) => void;
+  removeKnownCharacter: (characterId: number) => void;
+  addImportantItem: (item: ImportantItem) => void;
+  editImportantItem: (itemId: number, item: ImportantItem) => void;
+  removeImportantItem: (itemId: number) => void;
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import "./PlayerNotePage.scss";
 import { Character } from "@/types/characterType";
+import KnownCharacterTableBlock from "@/components/knownCharacterTableBlock/KnownCharacterTableBlock";
 
 type PlayerNotePageProps = {
     title: string;
@@ -18,6 +19,9 @@ const PlayerNotePage = ({ title, character }: PlayerNotePageProps) => {
                     placeholder="Entrez vos notes ici..."
                     onChange={(e) => { character.updatePlayerNote(e.target.value) }} value={character.datas.playerNotes.note} />
                 <div className="secondary-infos">
+                    <div className="KnownCharacterTableBlock">
+                        <KnownCharacterTableBlock character={character} />
+                    </div>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ import useProfile from './useProfile';
 import useAttributes from './useAttributes';
 import useEquipment from './useEquipments';
 import useSpell from './useSpell';
+import usePlayerNote from './usePlayerNote';
 
 const defaultCharacter: CharacterDatas = {
   profileDatas: {
@@ -74,6 +75,7 @@ const useCharacter = (): Character => {
   const attributes = useAttributes(characterDatas, setCharacter);
   const equipments = useEquipment(characterDatas, setCharacter);
   const spells = useSpell(characterDatas, setCharacter);
+  const playerNote = usePlayerNote(characterDatas, setCharacter);
 
   return useMemo(
     () => ({
@@ -84,6 +86,7 @@ const useCharacter = (): Character => {
       ...attributes,
       ...equipments,
       ...spells,
+      ...playerNote,
     }),
     [
       characterDatas,
@@ -93,6 +96,7 @@ const useCharacter = (): Character => {
       attributes,
       equipments,
       spells,
+      playerNote,
     ]
   );
 };

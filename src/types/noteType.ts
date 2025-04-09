@@ -1,4 +1,5 @@
 export type KnownCharacter = {
+  id: number;
   name: string;
   age: number;
   player: boolean;
@@ -8,9 +9,10 @@ export type KnownCharacter = {
 };
 
 export type ImportantItem = {
-    title: string;
-    quantity: number;
-    location: string;
-    playerOwner: string;
-    description: string;
+  id: number;
+  title: string;
+  quantity: number;
+  location: string;
+  playerOwner: string;
+  description: string;
 }
