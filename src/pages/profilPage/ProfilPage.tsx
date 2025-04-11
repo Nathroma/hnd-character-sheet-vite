@@ -39,22 +39,27 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
                 {/* Bloc d’informations générales : Nom, Race, Historique, etc. */}
                 <div className="character-datas">
                     <div className="character-sheet__info-block">
-                        <label>Nom du personnage :</label>
-                        <p>{"characterName"}</p>
+                        <p className="character-name">{"characterName"}</p>
                     </div>
                     <div className="character-sheet__info-block">
+                        <img src="" alt="" />
                         <label>Race :</label>
                         <p>{"race"}</p>
                     </div>
                     <div className="character-sheet__info-block">
-                        <label>Historique :</label>
-                        <p>{"background"}</p>
+                        <div className="historical">
+                            <img src="" alt="" />
+                            <label>Historique :</label>
+                            <p>{"background"}</p>
+                        </div>
+                        <div className="archetype">
+                            <img src="" alt="" />
+                            <label>Archetype :</label>
+                            <p>{"archetype"}</p>
+                        </div>
                     </div>
                     <div className="character-sheet__info-block">
-                        <label>Archetype :</label>
-                        <p>{"archetype"}</p>
-                    </div>
-                    <div className="character-sheet__info-block">
+                        <img src="" alt="" />
                         <label>Alignement :</label>
                         <p>{"alignment"}</p>
                     </div>

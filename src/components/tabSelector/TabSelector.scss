@@ -8,10 +8,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 
-  &:hover {
-    background-color: #d4cfcf;
-  }
-
   button {
     display: flex;
     flex-direction: column;
@@ -20,6 +16,12 @@
     height: 100%;
     width: 100%;
     background-color: transparent;
+
+    &:hover {
+      background-color: #b9b9b9;
+      color: #000000;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
 
     span {
       display: flex;
@@ -31,18 +33,18 @@
       text-align: center;
       text-decoration: none;
       cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-
-      &:hover {
-        background-color: #d4cfcf;
-        color: #000000;
-      }
     }
 
     img {
       width: 50px;
       height: 50px;
       margin-top: 10%;
+    }
+
+    &.active {
+      background-color: #b9b9b9;
+      color: #000000;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
   }
 }
