@@ -6,6 +6,9 @@ type ProfilPageProps = {
     character: Character;
 };
 
+const dataPhysicalImgPath = "src/assets/icons/physicalDatasLogos/";
+const dataProfilImgPath = "src/assets/icons/profilDatasLogos/";
+
 const ProfilPage = ({ character }: ProfilPageProps) => {
     return (
         <div className="character-sheet">
@@ -59,7 +62,7 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
                         </div>
                     </div>
                     <div className="character-sheet__info-block">
-                        <img src="" alt="" />
+                        <img src={dataProfilImgPath + "alignement.png"} alt="" />
                         <label>Alignement :</label>
                         <p>{"alignment"}</p>
                     </div>
@@ -67,27 +70,55 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
 
                 {/* Bloc d’informations physiques : Taille, Âge, etc. */}
                 <div className="character-physical">
-                    <p>
-                        <strong>Taille :</strong> {"size"}
-                    </p>
-                    <p>
-                        <strong>Âge :</strong> {"age"}
-                    </p>
-                    <p>
-                        <strong>Couleur des yeux :</strong> {"eyeColor"}
-                    </p>
-                    <p>
-                        <strong>Couleur des cheveux :</strong> {"hairColor"}
-                    </p>
-                    <p>
-                        <strong>Teinte de peau :</strong> {"skinTone"}
-                    </p>
-                    <p>
-                        <strong>Pilosité :</strong> {"bodyHair"}
-                    </p>
-                    <p>
-                        <strong>Poids :</strong> {"weight"} kg
-                    </p>
+                    <div className="phsyical-wrapper">
+                        <div>
+                            <img src={dataPhysicalImgPath + "height.svg"} alt="" />
+                            <strong>Taille :</strong>
+                        </div>
+                        <p>{"size"}</p>
+                    </div>
+                    <div className="phsyical-wrapper">
+                        <div>
+                            <img src={dataPhysicalImgPath + "age.svg"} alt="" />
+                            <strong>Âge :</strong>
+                        </div>
+                        <p>{"age"}</p>
+                    </div>
+                    <div className="phsyical-wrapper">
+                        <div>
+                            <img src={dataPhysicalImgPath + "eye.png"} alt="" />
+                            <strong>Couleur des yeux :</strong>
+                        </div>
+                        <p>{"eyeColor"}</p>
+                    </div>
+                    <div className="phsyical-wrapper">
+                        <div>
+                            <img src={dataPhysicalImgPath + "hair.png"} alt="" />
+                            <strong>Couleur des cheveux :</strong>
+                        </div>
+                        <p>{"hairColor"}</p>
+                    </div>
+                    <div className="phsyical-wrapper">
+                        <div>
+                            <img src={dataPhysicalImgPath + "skinTone.png"} alt="" />
+                            <strong>Teinte de peau :</strong>
+                        </div>
+                        <p>{"skinTone"}</p>
+                    </div>
+                    <div className="phsyical-wrapper">
+                        <div>
+                            <img src={dataPhysicalImgPath + "pilosity.png"} alt="" />
+                            <strong>Pilosité :</strong>
+                        </div>
+                        <p>{"bodyHair"}</p>
+                    </div>
+                    <div className="phsyical-wrapper">
+                        <div>
+                            <img src={dataPhysicalImgPath + "weight.png"} alt="" />
+                            <strong>Poids :</strong>
+                        </div>
+                        <p>{"weight"} kg</p>
+                    </div>
                 </div>
             </div>
 
