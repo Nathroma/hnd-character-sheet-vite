@@ -1,7 +1,6 @@
 import './App.scss';
 import React, { useState } from 'react';
 import useCharacter from '@/hooks/useCharacter';
-import ProfileBlock from '@/components/mainprofile/ProfileBlock';
 import StatsPage from './pages/statsPage/StatsPage';
 import TabSelector from './components/tabSelector/TabSelector';
 import InventoryPage from './pages/inventoryPage/InventoryPage';

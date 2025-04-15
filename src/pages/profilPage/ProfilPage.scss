@@ -1,12 +1,11 @@
 .character-sheet {
     display: flex;
     flex-direction: row;
-    border: #666 solid 1px;
 
     .character-sheet__container {
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+        gap: 1rem;
     }
 
     .character-sheet__header {
@@ -15,7 +14,6 @@
         justify-content: flex-start;
         gap: 1rem;
         padding: 1rem;
-        padding-bottom: 50px;
     }
 
     &__photo {
@@ -53,11 +51,18 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background-color: #eee;
+            background-color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
+
+            .CircularProgressbar {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
 
             p {
                 margin: 0;
@@ -65,12 +70,10 @@
         }
 
         &-arrow {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
+            font-size: 1rem;
         }
 
         .character-sheet__xp {
-            margin-top: 0.25rem;
             font-size: 0.8rem;
             color: #666;
         }
@@ -78,37 +81,59 @@
 
     &__classes {
         display: flex;
-        gap: 0.5rem;
-    }
-
-    .character-sheet__info-block {
-        display: flex;
-        flex-direction: row;
+        align-items: center;
         justify-content: center;
 
-        .character-name {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
+        &-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
 
+            .character-sheet__classes-icon {
+                font-size: 2rem;
+            }
+
+            .character-sheet__classes-name {
+                font-size: 1.2rem;
+                color: #666;
+            }
+
+            .character-sheet__classes-level {
+                font-size: 1.8rem;
+                color: #666;
+            }
+        }
+    }
+
+    .character-sheet-name-block {
+        display: flex;
+        height: 4rem;
+        align-items: center;
+        justify-content: center;
+        border-top: #666 solid 2px;
+        margin: 0 15px 0 15px;
+
+        p {
+            font-size: 2rem;
+            font-weight: bold;
+        }
     }
 
     .character-infos__content {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-
+        width: 100%;
 
         .character-datas {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             gap: 0.5rem;
-            width: 100%;
-            height: 100%;
             margin-left: 20px;
 
             .character-sheet__info-block {
@@ -142,12 +167,7 @@
                 }
 
                 .race,
-                .variante {
-                    display: flex;
-                    flex-direction: row;
-                    padding-right: 30px;
-                }
-
+                .variante,
                 .archetype,
                 .historical {
                     display: flex;
@@ -158,10 +178,9 @@
         }
 
         .character-physical {
-            display: flex;
-            flex-direction: column;
+            display: grid;
             gap: 0.5rem;
-
+            border-left: #adadad solid 2px;
 
             .phsyical-wrapper {
                 display: flex;
@@ -169,12 +188,14 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 0.5rem 1rem;
-                width: 100%;
+                min-width: 400px;
 
                 p {
                     margin: 0;
                     line-height: 1.4;
                     white-space: pre-line;
+                    text-align: left;
+                    min-width: 80px;
                 }
 
                 img {

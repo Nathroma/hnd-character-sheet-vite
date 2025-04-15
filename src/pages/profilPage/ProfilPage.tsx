@@ -2,6 +2,8 @@ import React from "react";
 import "./ProfilPage.scss";
 import { Character } from "@/types/characterType";
 import VerticalSeparator from "@/UI/verticalSeparator/VerticalSeparator";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 type ProfilPageProps = {
     character: Character;
@@ -11,6 +13,7 @@ const dataPhysicalImgPath = "src/assets/icons/physicalDatasLogos/";
 const dataProfilImgPath = "src/assets/icons/profilDatasLogos/";
 
 const ProfilPage = ({ character }: ProfilPageProps) => {
+
     return (
         <div className="character-sheet">
             <div className="character-sheet__container">
@@ -24,28 +27,40 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
                     {/* Cercle Niveau / XP */}
                     <div className="character-sheet__level">
                         <div className="character-sheet__level-circle">
+                            <CircularProgressbar
+                                value={50}
+                                styles={buildStyles({
+                                    pathColor: "#4caf50",
+                                    trailColor: "#ddd",
+                                    strokeLinecap: "round",
+                                    pathTransitionDuration: 0.5,
+                                })}
+                            />
                             <span className="character-sheet__level-arrow">⬆</span>
                             <p>
-                                Niveau <strong>{"level"}</strong>
+                                Niveau
                             </p>
-                            <p className="character-sheet__xp">XP : {"xp"}</p>
+                            <strong>{3}</strong>
+                            <p className="character-sheet__xp">XP : {50}</p>
                         </div>
                     </div>
 
                     {/* Classes du personnage */}
                     <div className="character-sheet__classes">
-                        <div className="character-sheet__class barbarian">
-                            Barbare <span>{"barbarianLevel"}</span>
+                        <div className="character-sheet__classes-circle">
+                            <span className="character-sheet__classes-icon">🏹</span>
+                            <strong className="character-sheet__classes-name">{"Ranger"}</strong>
+                            <strong className="character-sheet__classes-level">{3}</strong>
                         </div>
                     </div>
                 </div>
 
-                <div className="character-sheet__info-block">
-                    <p className="character-name">{"characterName"}</p>
+                <div className="character-sheet-name-block">
+                    <p>{"characterName"}</p>
                 </div>
-                
+
                 <div className="character-infos__content">
-                    {/* Bloc d’informations générales : Nom, Race, Historique, etc. */}
+                    {/* Bloc d’informations générales : Race, Historique, etc. */}
                     <div className="character-datas">
                         <div className="character-sheet__info-block">
                             <div className="race">
@@ -112,7 +127,7 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
                                 <img src={dataPhysicalImgPath + "skinTone.png"} alt="" />
                                 <strong>Teinte de peau :</strong>
                             </div>
-                            <p>{"skinTone"}</p>
+                            <span>{"skinTone"}</span>
                         </div>
                         <div className="phsyical-wrapper">
                             <div>
