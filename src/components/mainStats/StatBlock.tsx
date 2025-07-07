@@ -1,11 +1,11 @@
-import React from 'react';
-import './StatBlock.scss';
+import { Character } from '@/types/characterType';
+import { statColors, statNames, StatType } from '@/types/statType';
+import LabeledCheckBox from '@/UI/labeledCheckBox/LabeledCheckBox';
 import NumberInput from '@/UI/numberInput/NumberInput';
 import StringNumberInput from '@/UI/stringNumberInput/StringNumberInput';
-import LabeledCheckBox from '@/UI/labeledCheckBox/LabeledCheckBox';
 import { statModifier } from '@/utils/modifierUtils';
-import { statColors, statNames, StatType } from '@/types/statType';
-import { Character } from '@/types/characterType';
+import React from 'react';
+import './StatBlock.scss';
 
 type StatBlockProps = {
   character: Character;
@@ -13,7 +13,7 @@ type StatBlockProps = {
 };
 
 const StatBlock = ({ character, statType }: StatBlockProps) => {
-  const imgPath = `src/assets/icons/statsLogos/${statType}-logo.png`;
+  const imgPath = `/assets/icons/statsLogos/${statType}-logo.png`;
   const imgAlt = `Logo stats ${statType}`;
 
   const displayValue = (

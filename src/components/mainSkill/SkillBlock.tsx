@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { statModifier } from '@/utils/modifierUtils';
-import StringNumberInput from '@/UI/stringNumberInput/StringNumberInput';
-import './SkillBlock.scss';
-import { ProficiencyLevel, skillAttributes, skillNames, SkillType } from '@/types/skillType';
-import { Character } from '@/types/characterType';
+import { Character } from "@/types/characterType";
+import { skillAttributes, skillNames, SkillType } from "@/types/skillType";
+import StringNumberInput from "@/UI/stringNumberInput/StringNumberInput";
+import { statModifier } from "@/utils/modifierUtils";
+import React, { useEffect, useState } from "react";
+import "./SkillBlock.scss";
 
 type SecondarySkillProps = {
   character: Character;
   skillType: SkillType;
 };
-
-const iconPath = './src/assets/icons/skillRadioBtn/';
 
 const SkillBlock = ({ character, skillType }: SecondarySkillProps) => {
   const [skillModValue, setSkillModValue] = useState('');
@@ -30,10 +28,10 @@ const SkillBlock = ({ character, skillType }: SecondarySkillProps) => {
       <div className="wrapper-checkbox">
         <div className="radio-button" onClick={() => character.switchSkillProficiencyLevel(skillType)}>
           {{
-            master: <img src={iconPath + 'check.svg'} alt="check" />,
-            expert: <img src={iconPath + 'doubleCheck.svg'} alt="doubleCheck" />,
-            half: <img src={iconPath + 'half.svg'} alt="halfCheck" />,
-            default: <img src={iconPath + 'unselected.svg'} alt="unselected" />,
+            master: <img src="/assets/icons/skillRadioBtn/check.svg" alt="check" />,
+            expert: <img src="/assets/icons/skillRadioBtn/doubleCheck.svg" alt="doubleCheck" />,
+            half: <img src="/assets/icons/skillRadioBtn/half.svg" alt="halfCheck" />,
+            default: <img src="/assets/icons/skillRadioBtn/unselected.svg" alt="unselected" />,
           }[character.datas.skills[skillType].proficiencyLevel]}
         </div>
         <span className="skill-name">{skillNames[skillType]}</span>

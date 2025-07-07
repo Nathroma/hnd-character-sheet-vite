@@ -1,13 +1,8 @@
+import { Character } from '@/types/characterType';
+import { derivedValueColors, derivedValueImgNames, derivedValueTitles, DerivedValueType } from '@/types/derivedValueType';
+import NumberInput from '@/UI/numberInput/NumberInput';
 import React from 'react';
 import './DerivedValueBlock.scss';
-import NumberInput from '@/UI/numberInput/NumberInput';
-import { Character } from '@/types/characterType';
-import {
-  derivedValueColors,
-  derivedValueImgNames,
-  derivedValueTitles,
-  DerivedValueType,
-} from '@/types/derivedValueType';
 
 type DerivedValueProps = {
   character: Character;
@@ -15,7 +10,7 @@ type DerivedValueProps = {
 };
 
 const DerivedValueBlock = ({ character, derivedValueType }: DerivedValueProps) => {
-  const imgPath = `src/assets/icons/secondaryStatsLogos/${derivedValueImgNames[derivedValueType]}-logo.png`;
+  const imgPath = `/assets/icons/secondaryStatsLogos/${derivedValueImgNames[derivedValueType]}-logo.png`;
   const imgAlt = `Logo stats ${derivedValueTitles[derivedValueType]}`;
 
   return (
