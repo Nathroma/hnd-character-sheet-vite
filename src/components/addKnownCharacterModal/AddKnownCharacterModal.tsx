@@ -1,6 +1,7 @@
+import { KnownCharacter } from "@/types/noteType";
+import cx from 'classnames';
 import React, { useState } from "react";
 import "./AddKnownCharacterModal.scss";
-import { KnownCharacter } from "@/types/noteType";
 
 type AddKnownCharacterProps = {
     isOpen: boolean;
@@ -36,10 +37,10 @@ const AddKnownCharacter = ({ isOpen, onClose, onCreate }: AddKnownCharacterProps
     if (!isOpen) return null;
 
     return (
-        <div className="add-known-character-modal">
-            <div className="modal-content">
+        <div className={cx("add-known-character-modal")}>
+            <div className={cx("modal-content")}>
                 <h2>Ajouter un personnage connu</h2>
-                <div className="div-input">
+                <div className={cx("div-input")}>
                     <span>Nom</span>
                     <input
                         type="text"
@@ -49,8 +50,8 @@ const AddKnownCharacter = ({ isOpen, onClose, onCreate }: AddKnownCharacterProps
                         onChange={handleChange}
                     />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>Âge</span>
                     <input
                         type="number"
@@ -60,19 +61,19 @@ const AddKnownCharacter = ({ isOpen, onClose, onCreate }: AddKnownCharacterProps
                         onChange={handleChange}
                     />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>Joueur</span>
                     <input
-                        className="checkbox"
+                        className={cx("checkbox")}
                         type="checkbox"
                         name="player"
                         checked={character.player}
                         onChange={handleCheckboxChange}
                     />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>Lieu</span>
                     <input
                         type="text"
@@ -82,8 +83,8 @@ const AddKnownCharacter = ({ isOpen, onClose, onCreate }: AddKnownCharacterProps
                         onChange={handleChange}
                     />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>Relation</span>
                     <input
                         type="text"
@@ -93,8 +94,8 @@ const AddKnownCharacter = ({ isOpen, onClose, onCreate }: AddKnownCharacterProps
                         onChange={handleChange}
                     />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>Description</span>
                     <textarea
                         name="description"
@@ -103,9 +104,9 @@ const AddKnownCharacter = ({ isOpen, onClose, onCreate }: AddKnownCharacterProps
                         onChange={handleChange}
                     />
                 </div>
-                <div className="modal-actions">
-                    <button className="cancel" onClick={onClose}>Annuler</button>
-                    <button className="validate" onClick={handleSubmit}>Créer</button>
+                <div className={cx("modal-actions")}>
+                    <button className={cx("cancel")} onClick={onClose}>Annuler</button>
+                    <button className={cx("validate")} onClick={handleSubmit}>Créer</button>
                 </div>
             </div>
         </div>

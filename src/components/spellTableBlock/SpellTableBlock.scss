@@ -1,4 +1,31 @@
+.floating-add-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f5e9da;
+  color: #7a7773;
+  font-size: 2rem;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 2;
+  padding: 0;
+  line-height: 1.5;
+
+  &:hover {
+    background-color: #ecd7b7;
+  }
+}
+
 .spell-table-container {
+  position: relative;
     padding: 20px;
     font-family: Arial, sans-serif;
     width: 100%;

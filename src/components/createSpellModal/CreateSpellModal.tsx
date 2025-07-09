@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import "./CreateSpellModal.scss";
 import { SpellComponentType, SpellLevelType, SpellType } from "@/types/spellType";
 import LabeledCheckbox from "@/UI/labeledCheckBox/LabeledCheckBox";
+import cx from "classnames";
+import React, { useState } from "react";
+import "./CreateSpellModal.scss";
 
 type CreateSpellModalProps = {
     isOpen: boolean;
@@ -43,10 +44,10 @@ const CreateSpellModal = ({ isOpen, onClose, onCreate }: CreateSpellModalProps) 
     if (!isOpen) return null;
 
     return (
-        <div className="create-spell-modal">
-            <div className="modal-content">
+        <div className={cx("create-spell-modal")}>
+            <div className={cx("modal-content")}>
                 <h2>Créer un nouvel équipement</h2>
-                <div className="div-input">
+                <div className={cx("div-input")}>
                     <span>
                         Nom
                     </span>
@@ -58,8 +59,8 @@ const CreateSpellModal = ({ isOpen, onClose, onCreate }: CreateSpellModalProps) 
                         onChange={handleChange}
                     />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>Niveau</span>
                     <select
                         name="spellLevel"
@@ -71,8 +72,8 @@ const CreateSpellModal = ({ isOpen, onClose, onCreate }: CreateSpellModalProps) 
                         ))}
                     </select>
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>
                         Temps d'incantation
                     </span>
@@ -84,8 +85,8 @@ const CreateSpellModal = ({ isOpen, onClose, onCreate }: CreateSpellModalProps) 
                         onChange={handleChange}
                     />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>
                         Durée
                     </span>
@@ -97,8 +98,8 @@ const CreateSpellModal = ({ isOpen, onClose, onCreate }: CreateSpellModalProps) 
                         onChange={handleChange}
                     />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>
                         Concentration
                     </span>
@@ -109,8 +110,8 @@ const CreateSpellModal = ({ isOpen, onClose, onCreate }: CreateSpellModalProps) 
                         checked={spell.concentration}
                         onChange={(e) => setSpell({ ...spell, concentration: e.target.checked })} />
                 </div>
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>
                         Ritual
                     </span>
@@ -121,10 +122,10 @@ const CreateSpellModal = ({ isOpen, onClose, onCreate }: CreateSpellModalProps) 
                         checked={spell.ritual}
                         onChange={(e) => setSpell({ ...spell, ritual: e.target.checked })} />
                 </div >
-                <div className="horizontal-separator" />
-                <div className="div-input">
+                <div className={cx("horizontal-separator")} />
+                <div className={cx("div-input")}>
                     <span>Composantes</span>
-                    <div className="checkbox-group">
+                    <div className={cx("checkbox-group")}>
                         {Object.values(SpellComponentType).map((component) => (
                             <LabeledCheckbox
                                 label={component}
@@ -134,7 +135,7 @@ const CreateSpellModal = ({ isOpen, onClose, onCreate }: CreateSpellModalProps) 
                         ))}
                     </div>
                 </div>
-                <div className="modal-actions">
+                <div className={cx("modal-actions")}>
                     <button className="cancel" onClick={onClose}>Annuler</button>
                     <button className="validate" onClick={handleSubmit}>Créer</button>
                 </div>

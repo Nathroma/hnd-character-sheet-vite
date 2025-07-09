@@ -1,5 +1,6 @@
-import "./TextInput.scss";
+import cx from 'classnames';
 import React, { ChangeEventHandler } from "react";
+import "./TextInput.scss";
 
 type TextInputProps = {
   label: string;
@@ -18,15 +19,15 @@ const TextInput = ({
   image,
 }: TextInputProps) => {
   return (
-    <div className="wrapper-text-input">
+    <div className={cx('wrapper-text-input')}>
       {image}
-      <div className="text-input-div">
-        <label className="text-input-label">{label} :</label>
+      <div className={cx('text-input-div')}>
+        <label className={cx('text-input-label')}>{label} :</label>
         <input
           type="text"
           value={value}
           onChange={onChange}
-          className="text-input-field"
+          className={cx('text-input-field')}
           placeholder={placeholder}
         />
       </div>

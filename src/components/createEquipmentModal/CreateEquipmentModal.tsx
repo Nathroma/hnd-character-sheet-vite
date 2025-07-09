@@ -1,6 +1,7 @@
+import { EquipementAction, Equipment } from "@/types/itemType";
+import classNames from 'classnames';
 import React, { useState } from "react";
 import "./CreateEquipmentModal.scss";
-import { EquipementAction, Equipment } from "@/types/itemType";
 
 type CreateEquipmentModalProps = {
     isOpen: boolean;
@@ -40,10 +41,10 @@ const CreateEquipmentModal = ({ isOpen, onClose, onCreate }: CreateEquipmentModa
     if (!isOpen) return null;
 
     return (
-        <div className="create-equipment-modal">
-            <div className="modal-content">
+        <div className={classNames("create-equipment-modal")}>
+            <div className={classNames("modal-content")}>
                 <h2>Créer un nouvel équipement</h2>
-                <div className="div-input">
+                <div className={classNames("div-input")}>
                     <span>
                         Nom de l'équipement
                     </span>
@@ -55,7 +56,7 @@ const CreateEquipmentModal = ({ isOpen, onClose, onCreate }: CreateEquipmentModa
                         onChange={handleChange}
                     />
                 </div>
-                <div className="div-input">
+                <div className={classNames("div-input")}>
                     <span>Type d'action</span>
                     <select
                         name="action"
@@ -67,7 +68,7 @@ const CreateEquipmentModal = ({ isOpen, onClose, onCreate }: CreateEquipmentModa
                         ))}
                     </select>
                 </div>
-                <div className="div-input">
+                <div className={classNames("div-input")}>
                     <span>
                         Quantité
                     </span>
@@ -79,7 +80,7 @@ const CreateEquipmentModal = ({ isOpen, onClose, onCreate }: CreateEquipmentModa
                         onChange={handleChange}
                     />
                 </div>
-                <div className="div-input">
+                <div className={classNames("div-input")}>
                     <span>Poid d'une unité</span>
                     <input
                         type="text"
@@ -89,9 +90,9 @@ const CreateEquipmentModal = ({ isOpen, onClose, onCreate }: CreateEquipmentModa
                         onChange={handleChange}
                     />
                 </div>
-                <div className="modal-actions">
-                    <button className="cancel" onClick={onClose}>Annuler</button>
-                    <button className="validate" onClick={handleSubmit}>Créer</button>
+                <div className={classNames("modal-actions")}>
+                    <button className={classNames("cancel")} onClick={onClose}>Annuler</button>
+                    <button className={classNames("validate")} onClick={handleSubmit}>Créer</button>
                 </div>
             </div>
         </div>

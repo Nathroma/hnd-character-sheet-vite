@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import "./SpellTableBlock.scss";
-import { SpellType } from "@/types/spellType";
 import { Character } from "@/types/characterType";
+import { SpellType } from "@/types/spellType";
+import cx from 'classnames';
+import React, { useState } from "react";
 import CreateSpellModal from "../createSpellModal/CreateSpellModal";
+import "./SpellTableBlock.scss";
 
 type SpellTableBlockProps = {
     character: Character;
@@ -37,11 +38,11 @@ const SpellTableBlock = ({ character }: SpellTableBlockProps) => {
     };
 
     return (
-        <div className="spell-table-container">
-            <div className="table-header">
-                <button className="add-button" onClick={handleAdd}>Ajouter</button>
+        <div className={cx('spell-table-container')}>
+            <div className={cx('table-header')}>
+                {/* Le bouton Ajouter est déplacé plus bas */}
             </div>
-            <table className="spell-table">
+            <table className={cx('spell-table')}>
                 <colgroup>
                     <col style={{ width: '20%' }} />
                     <col style={{ width: '10%' }} />
@@ -82,6 +83,15 @@ const SpellTableBlock = ({ character }: SpellTableBlockProps) => {
                     ))}
                 </tbody>
             </table>
+            {/* Nouveau bouton Ajouter en bas à droite */}
+            {!isModalOpen && (
+                <button className={cx('floating-add-button')}
+                    onClick={handleAdd}
+                    aria-label="Ajouter un sort"
+                >
+                    +
+                </button>
+            )}
             <CreateSpellModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
