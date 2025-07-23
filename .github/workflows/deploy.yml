@@ -1,0 +1,41 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy_front:
+    name: Build & Deploy Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout du code
+      - uses: actions/checkout@v3
+
+      # 2. Chargement de la clé SSH pour la connexion au VPS
+      - name: Load SSH key
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # 3. Build du frontend
+      - name: Build Frontend
+        working-directory: ./rolistica-client
+        run: |
+          npm install
+          npm run build
+
+      # 4. Déploiement via rsync
+      - name: Deploy Frontend to server
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p ${{ secrets.SSH_PORT }}" \
+            ./rolistica-client/build/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/rolistica/
+
+      # 5. Rechargement de Nginx pour prendre en compte les nouveaux fichiers
+      - name: Reload Nginx
+        run: |
+          ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "systemctl reload nginx"
