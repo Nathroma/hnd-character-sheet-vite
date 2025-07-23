@@ -42,4 +42,4 @@ jobs:
       - name: Reload Nginx
         run: |
           ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "systemctl reload nginx"
+            "sudo systemctl reload nginx"
