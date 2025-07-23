@@ -29,23 +29,23 @@ jobs:
             ./rolistica-client/build/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/rolistica/
 
-      - name: Build Backend
-        working-directory: ./rolistica-api
-        run: |
-          npm install
-          npm run build
+      # - name: Build Backend
+      #   working-directory: ./rolistica-api
+      #   run: |
+      #     npm install
+      #     npm run build
 
-      - name: Deploy Backend to server
-        run: |
-          rsync -avz --delete \
-            -e "ssh -p ${{ secrets.SSH_PORT }}" \
-            ./rolistica-api/dist/ \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/root/rolistica-api/
+      # - name: Deploy Backend to server
+      #   run: |
+      #     rsync -avz --delete \
+      #       -e "ssh -p ${{ secrets.SSH_PORT }}" \
+      #       ./rolistica-api/dist/ \
+      #       ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/root/rolistica-api/
 
-      - name: Install Backend Dependencies on server
-        run: |
-          ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "cd ~/rolistica-api && npm install --production"
+      # - name: Install Backend Dependencies on server
+      #   run: |
+      #     ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+      #       "cd ~/rolistica-api && npm install --production"
 
       - name: Restart API & Reload Nginx
         run: |
