@@ -1,6 +1,6 @@
+import { HealthPointBlock } from '@/components/hpBlock/HealthPointBlock';
 import ArmorClassBlock from '@/components/mainAc/AcBlock';
 import DerivedValueBlock from '@/components/mainDerivedValue/DerivedValueBlock';
-import HealthPointBlock from '@/components/mainHp/HpBlock';
 import SkillBlock from '@/components/mainSkill/SkillBlock';
 import StatBlock from '@/components/mainStats/StatBlock';
 import { Character } from '@/types/characterType';
