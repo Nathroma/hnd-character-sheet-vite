@@ -15,7 +15,7 @@ jobs:
 
       # 2. Chargement de la clé SSH pour la connexion au VPS
       - name: Load SSH key
-        uses: webfactory/ssh-agent@v0.8.1
+        uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
