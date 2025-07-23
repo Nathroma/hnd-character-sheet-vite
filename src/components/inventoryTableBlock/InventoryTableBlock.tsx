@@ -9,6 +9,8 @@ type InventoryTableBlockProps = {
     character: Character;
 };
 
+const tableIconsPath = "/assets/icons/tableIcons/";
+
 const InventoryTableBlock = ({ character }: InventoryTableBlockProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -51,8 +53,12 @@ const InventoryTableBlock = ({ character }: InventoryTableBlockProps) => {
                             <td>{equipment.quantity}</td>
                             <td>{equipment.weight}</td>
                             <td>
-                                <button onClick={() => alert(`Modifier id: ${equipment.id}`)}>Edit</button>
-                                <button onClick={() => character.removeEquipement(equipment.id)}>Supprimer</button>
+                                <button onClick={() => alert(`Modifier id: ${equipment.id}`)}>
+                                    <img src={tableIconsPath + "edit.svg"} alt="Modifier" />
+                                </button>
+                                <button onClick={() => character.removeEquipement(equipment.id)}>
+                                    <img src={tableIconsPath + "delete.svg"} alt="Supprimer" />
+                                </button>
                             </td>
                         </tr>
                     ))}

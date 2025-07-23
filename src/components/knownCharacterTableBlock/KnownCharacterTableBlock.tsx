@@ -9,6 +9,8 @@ type KnownCharacterTableBlockProps = {
     character: Character;
 };
 
+const tableIconsPath = "/assets/icons/tableIcons/";
+
 const KnownCharacterTableBlock = ({ character }: KnownCharacterTableBlockProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,11 +24,11 @@ const KnownCharacterTableBlock = ({ character }: KnownCharacterTableBlockProps) 
     };
 
     return (
-        <div className={cx("equipment-table-container")}>
+        <div className={cx("known-character-table-container")}>
             <div className={cx("table-header")}>
                 {/* Le bouton Ajouter est déplacé plus bas */}
             </div>
-            <table className={cx("equipment-table")}>
+            <table className={cx("known-character-table")}>
                 <colgroup>
                     <col style={{ width: '5%' }} />
                     <col style={{ width: '30%' }} />
@@ -51,8 +53,12 @@ const KnownCharacterTableBlock = ({ character }: KnownCharacterTableBlockProps) 
                             <td>{knownCharacter.location}</td>
                             <td>{knownCharacter.relationship}</td>
                             <td>
-                                <button onClick={() => alert(`Modifier id: ${knownCharacter.id}`)}>Edit</button>
-                                <button onClick={() => character.removeKnownCharacter(knownCharacter.id)}>Supprimer</button>
+                                <button onClick={() => alert(`Modifier id: ${knownCharacter.id}`)}>
+                                    <img src={tableIconsPath + "edit.svg"} alt="Modifier" />
+                                </button>
+                                <button onClick={() => character.removeKnownCharacter(knownCharacter.id)}>
+                                    <img src={tableIconsPath + "delete.svg"} alt="Supprimer" />
+                                </button>
                             </td>
                         </tr>
                     ))}

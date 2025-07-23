@@ -9,6 +9,10 @@ type SpellTableBlockProps = {
     character: Character;
 };
 
+const tableIconsPath = "/assets/icons/tableIcons/";
+const checkIcon = tableIconsPath + "check.svg";
+const crossIcon = tableIconsPath + "cross.svg";
+
 const SpellTableBlock = ({ character }: SpellTableBlockProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -72,12 +76,16 @@ const SpellTableBlock = ({ character }: SpellTableBlockProps) => {
                             <td>{spell.level}</td>
                             <td>{spell.incantationTime}</td>
                             <td>{spell.duration}</td>
-                            <td>{spell.concentration ? "Concentration" : ""}</td>
-                            <td>{spell.ritual ? "Rituel" : ""}</td>
-                            <td>{spell.components}</td>
+                            <td>{spell.concentration ? <img src={checkIcon} alt="Yes" /> : <img src={crossIcon} alt="No" />}</td>
+                            <td>{spell.ritual ? <img src={checkIcon} alt="Yes" /> : <img src={crossIcon} alt="No" />}</td>
+                            <td>{spell.components ? spell.components.join(", ") : "/"}</td>
                             <td>
-                                <button onClick={() => alert(`Modifier id: ${spell.id}`)}>Edit</button>
-                                <button onClick={() => character.removeSpell(spell.id)}>Supprimer</button>
+                                <button onClick={() => alert(`Modifier id: ${spell.id}`)}>
+                                    <img src={tableIconsPath + "edit.svg"} alt="Modifier" />
+                                </button>
+                                <button onClick={() => character.removeSpell(spell.id)}>
+                                    <img src={tableIconsPath + "delete.svg"} alt="Supprimer" />
+                                </button>
                             </td>
                         </tr>
                     ))}
