@@ -9,8 +9,8 @@ type ProfilPageProps = {
     character: Character;
 };
 
-const dataPhysicalImgPath = "src/assets/icons/physicalDatasLogos/";
-const dataProfilImgPath = "src/assets/icons/profilDatasLogos/";
+const dataPhysicalImgPath = "/assets/icons/physicalDatasLogos/";
+const dataProfilImgPath = "/assets/icons/profilDatasLogos/";
 
 const ProfilPage = ({ character }: ProfilPageProps) => {
 
