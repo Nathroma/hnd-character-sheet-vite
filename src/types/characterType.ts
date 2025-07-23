@@ -4,6 +4,9 @@ import { profileData, ProfileType } from './profileType';
 import { Skill, SkillType } from './skillType';
 import { Stat, StatType } from './statType';
 import { ArmorClass, AttributesType, HealthPoint } from './attributeType';
+import { Equipment, Inventory } from './itemType';
+import { SpellType } from './spellType';
+import { ImportantItem, KnownCharacter } from './noteType';
 
 export type CharacterDatas = {
   profileDatas: {
@@ -47,17 +50,44 @@ export type CharacterDatas = {
     [AttributesType.hp]: HealthPoint;
     [AttributesType.ac]: ArmorClass;
   };
+  inventory: Inventory;
+  spells: SpellType[];
+  playerNotes: {
+    note: string;
+    knownCharacters: KnownCharacter[];
+    ImportantItem: ImportantItem[];
+  };
 };
 
 export type Character = {
   datas: CharacterDatas;
+  getDerivedValue: (dataName: DerivedValueType) => number;
+  // Hooks for stats
   setStatValue: (statType: StatType, value: number) => void;
   setStatMastered: (statType: StatType, mastered: boolean) => void;
+  // Hooks for skills
   switchSkillProficiencyLevel: (skillType: SkillType) => void;
+  // Hooks for profile
   setClass: (newClass: ClassType) => void;
   setProfileData: (dataName: ProfileType, value: string | number) => void;
-  getDerivedValue: (dataName: DerivedValueType) => number;
+  // Hooks for attributes
   setMaxHp: (value: number) => void;
   setCurrentHp: (value: number) => void;
   setTotalAc: (value: number) => void;
+  // Hooks for equipments
+  addEquipement: (equipement: Equipment) => void;
+  editEquipement: (equipementId: number, equipement: Equipment) => void;
+  removeEquipement: (equipementId: number) => void;
+  // Hooks for spells
+  addSpell: (spell: SpellType) => void;
+  editSpell: (spellId: number, spell: SpellType) => void;
+  removeSpell: (spellId: number) => void;
+  // hooks for player notes
+  updatePlayerNote: (note: string) => void;
+  addKnownCharacter: (character: KnownCharacter) => void;
+  editKnownCharacter: (characterId: number, character: KnownCharacter) => void;
+  removeKnownCharacter: (characterId: number) => void;
+  addImportantItem: (item: ImportantItem) => void;
+  editImportantItem: (itemId: number, item: ImportantItem) => void;
+  removeImportantItem: (itemId: number) => void;
 };

@@ -1,0 +1,164 @@
+// Variables pour les couleurs des tableaux
+$table-colors: (
+  'background': #cbbfbf,
+  'header-bg': #969696,
+  'row-odd': #e1e1e1,
+  'row-even': #c9c9c9,
+  'row-hover': #a9a9a9,
+  'button-primary': #2196f3,
+  'button-primary-hover': #0b7dda,
+  'button-danger': #f44336,
+  'button-danger-hover': #da190b,
+  'button-success': #4caf50,
+  'button-success-hover': #45a049,
+  'button-dark': #303030,
+  'button-dark-hover': #616161
+);
+
+// Variables pour les boutons flottants
+$floating-button: (
+  'background': #dfdfdf,
+  'background-hover': #929292,
+  'color': #7a7773,
+  'size': 60px,
+  'border-radius': 50%,
+  'font-size': 2rem,
+  'shadow': 0 2px 8px rgba(0, 0, 0, 0.12)
+);
+
+// Mixin pour le bouton flottant
+@mixin floating-add-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: map-get($floating-button, 'size');
+  height: map-get($floating-button, 'size');
+  border-radius: map-get($floating-button, 'border-radius');
+  background-color: map-get($floating-button, 'background');
+  color: map-get($floating-button, 'color');
+  font-size: map-get($floating-button, 'font-size');
+  border: none;
+  box-shadow: map-get($floating-button, 'shadow');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 2;
+  padding: 0;
+  line-height: 1.5;
+
+  &:hover {
+    background-color: map-get($floating-button, 'background-hover');
+    color: map-get($floating-button, 'background');
+  }
+}
+
+// Mixin pour le conteneur de tableau
+@mixin table-container($background-color: map-get($table-colors, 'background')) {
+  position: relative;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  background-color: $background-color;
+  border-radius: 18px;
+}
+
+// Mixin pour l'en-tête de tableau
+@mixin table-header {
+  margin-bottom: 10px;
+}
+
+// Mixin pour le bouton d'ajout dans l'en-tête
+@mixin table-add-button($background-color: map-get($table-colors, 'button-success')) {
+  padding: 8px 16px;
+  background-color: $background-color;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: map-get($table-colors, 'button-success-hover');
+  }
+}
+
+// Mixin pour le tableau de base
+@mixin base-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 8px;
+    text-align: center;
+
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  th {
+    background-color: map-get($table-colors, 'header-bg');
+    height: 40px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: map-get($table-colors, 'row-odd');
+  }
+
+  tr:nth-child(even) {
+    background-color: map-get($table-colors, 'row-even');
+  }
+
+  tr:hover {
+    background-color: map-get($table-colors, 'row-hover');
+  }
+}
+
+// Mixin pour les boutons d'action dans le tableau
+@mixin table-action-buttons {
+  button {
+    margin: 0 5px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:first-child {
+      background-color: map-get($table-colors, 'button-primary');
+      color: white;
+
+      &:hover {
+        background-color: map-get($table-colors, 'button-primary-hover');
+      }
+    }
+
+    &:last-child {
+      background-color: map-get($table-colors, 'button-danger');
+      color: white;
+
+      &:hover {
+        background-color: map-get($table-colors, 'button-danger-hover');
+      }
+    }
+  }
+}
+
+// Mixin complet pour un tableau avec tous les styles
+@mixin complete-table($container-bg: map-get($table-colors, 'background'), $add-button-bg: map-get($table-colors, 'button-success')) {
+  @include table-container($container-bg);
+
+  .table-header {
+    @include table-header;
+
+    .add-button {
+      @include table-add-button($add-button-bg);
+    }
+  }
+
+  table {
+    @include base-table;
+    @include table-action-buttons;
+  }
+} 

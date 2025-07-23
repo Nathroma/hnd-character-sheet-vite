@@ -1,18 +1,12 @@
 .tab-selector {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  width: 150px;
-  height: 80%;
-  background-color: var(--color-background);
+  height: 95%;
+  background-color: white;
   border-radius: 12px;
   box-shadow: 0 6px 12px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #d4cfcf;
-  }
 
   button {
     display: flex;
@@ -22,6 +16,12 @@
     height: 100%;
     width: 100%;
     background-color: transparent;
+
+    &:hover {
+      background-color: #b9b9b9;
+      color: #000000;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
 
     span {
       display: flex;
@@ -33,18 +33,18 @@
       text-align: center;
       text-decoration: none;
       cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-
-      &:hover {
-        background-color: #d4cfcf;
-        color: #000000;
-      }
     }
 
     img {
       width: 50px;
       height: 50px;
       margin-top: 10%;
+    }
+
+    &.active {
+      background-color: #b9b9b9;
+      color: #000000;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
   }
 }

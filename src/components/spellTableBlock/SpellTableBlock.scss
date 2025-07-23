@@ -1,0 +1,16 @@
+@import '../../assets/style/table-mixins';
+
+.floating-add-button {
+  @include floating-add-button;
+}
+
+.spell-table-container {
+  // Styles spécifiques au tableau des sorts
+  font-weight: 600;
+  
+  @include complete-table(
+    $container-bg: map-get($table-colors, 'background'),
+    $add-button-bg: map-get($table-colors, 'button-dark')
+  );
+}
+  

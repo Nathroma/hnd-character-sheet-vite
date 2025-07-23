@@ -1,9 +1,9 @@
+import { tabSelectorIcons, tabSelectorTitles, TabSelectorType } from "@/types/tabSelectorType";
+import cx from 'classnames';
 import React from "react";
 import "./TabSelector.scss";
-import { tabSelectorIcons, tabSelectorTitles, TabSelectorType } from "@/types/tabSelectorType";
 
 const tabs: Array<TabSelectorType> = Object.values(TabSelectorType);
-const imgPath = "./src/assets/icons/tabSelectorIcons/";
 
 type TabSelectorProps = {
     selectedTab: string;
@@ -12,14 +12,14 @@ type TabSelectorProps = {
 
 const TabSelector = ({ selectedTab, setSelectedTab }: TabSelectorProps) => {
     return (
-        <div className="tab-selector">
+        <div className={cx('tab-selector')}>
             {tabs.map((tab) => (
                 <button
                     key={tab}
-                    className={`tab-button ${selectedTab === tab ? "active" : ""}`}
+                    className={cx('tab-button', { 'active': selectedTab === tab })}
                     onClick={() => setSelectedTab(tab)}>
                     <span>{tabSelectorTitles[tab]}</span>
-                    <img src={imgPath + tabSelectorIcons[tab]} alt={tabSelectorIcons[tab]} className="tab-icon" />
+                    <img src={`/assets/icons/tabSelectorIcons/${tabSelectorIcons[tab]}`} alt={tabSelectorIcons[tab]} className={cx('tab-icon')} />
                 </button>
             ))}
         </div>

@@ -1,9 +1,10 @@
-import "./StringNumberInput.scss";
+import cx from 'classnames';
 import React, {
   ChangeEventHandler,
   FocusEventHandler,
   KeyboardEventHandler,
 } from "react";
+import "./StringNumberInput.scss";
 
 type NumberInputProps = {
   value: string;
@@ -24,7 +25,7 @@ const StringNumberInput = ({
   readOnly,
 }: NumberInputProps) => {
   return (
-    <div className="number-input">
+    <div className={cx('number-input')}>
       <input
         type="number"
         value={value}

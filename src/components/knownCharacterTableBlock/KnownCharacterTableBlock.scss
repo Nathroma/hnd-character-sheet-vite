@@ -1,0 +1,24 @@
+@import '../../assets/style/table-mixins';
+
+.floating-add-button {
+  @include floating-add-button;
+}
+
+.known-character-table-container {
+  @include table-container(transparent);
+  box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.2);
+
+  .table-header {
+    @include table-header;
+
+    .add-button {
+      @include table-add-button(map-get($table-colors, 'button-success'));
+    }
+  }
+
+  .known-character-table {
+    @include base-table;
+    @include table-action-buttons;
+  }
+}
+  
