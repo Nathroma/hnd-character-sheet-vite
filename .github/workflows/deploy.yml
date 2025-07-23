@@ -21,7 +21,6 @@ jobs:
 
       # 3. Build du frontend
       - name: Build Frontend
-        working-directory: ./rolistica-client
         run: |
           npm install
           npm run build
@@ -31,7 +30,7 @@ jobs:
         run: |
           rsync -avz --delete \
             -e "ssh -p ${{ secrets.SSH_PORT }}" \
-            ./rolistica-client/build/ \
+            ./dist/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/rolistica/
 
       # 5. Rechargement de Nginx pour prendre en compte les nouveaux fichiers
