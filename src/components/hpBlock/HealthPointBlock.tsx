@@ -1,13 +1,13 @@
 import { Character } from '@/types/characterType';
 import cx from 'classnames';
 import React, { useState } from 'react';
-import './HpBlock.scss';
+import './HealthPointBlock.scss';
 
 type HealthPointProps = {
   character: Character;
 };
 
-const HealthPointBlock = ({ character }: HealthPointProps) => {
+export const HealthPointBlock = ({ character }: HealthPointProps) => {
   const [tempHealthPoint, setTempHealthPoint] = useState(0);
 
   return (
@@ -39,6 +39,4 @@ const HealthPointBlock = ({ character }: HealthPointProps) => {
       </div>
     </div>
   );
-};
-
-export default HealthPointBlock;
+}; 
