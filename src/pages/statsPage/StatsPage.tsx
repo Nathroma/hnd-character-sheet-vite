@@ -1,14 +1,15 @@
-import React from 'react';
-import './StatsPage.scss';
-import StatBlock from '@/components/mainStats/StatBlock';
-import SkillBlock from '@/components/mainSkill/SkillBlock';
+import ArmorClassBlock from '@/components/mainAc/AcBlock';
 import DerivedValueBlock from '@/components/mainDerivedValue/DerivedValueBlock';
 import HealthPointBlock from '@/components/mainHp/hpBlock';
-import ArmorClassBlock from '@/components/mainAc/AcBlock';
+import SkillBlock from '@/components/mainSkill/SkillBlock';
+import StatBlock from '@/components/mainStats/StatBlock';
 import { Character } from '@/types/characterType';
-import { StatType } from '@/types/statType';
-import { skillNames, SkillType } from '@/types/skillType';
 import { DerivedValueType } from '@/types/derivedValueType';
+import { skillNames, SkillType } from '@/types/skillType';
+import { StatType } from '@/types/statType';
+import cx from 'classnames';
+import React from 'react';
+import './StatsPage.scss';
 
 type StatPageProps = {
     character: Character;
@@ -16,29 +17,29 @@ type StatPageProps = {
 
 const StatsPage = ({ character }: StatPageProps) => {
     return (
-        <div className="wrapper-all-stats">
-            <div className="mainAttribute">
+        <div className={cx('wrapper-all-stats')}>
+            <div className={cx('mainAttribute')}>
                 {Object.values(StatType).map((statType) => (
                     <StatBlock key={statType} statType={statType} character={character} />
                 ))}
             </div>
-            <div className="secondarySkill">
+            <div className={cx('secondarySkill')}>
                 {Object.values(SkillType)
                     .sort((a, b) => skillNames[a].localeCompare(skillNames[b]))
                     .map((skillType) => (
                         <SkillBlock key={skillType} skillType={skillType} character={character} />
                     ))}
             </div>
-            <div className="additionalValues">
-                <div className="derivedValue">
+            <div className={cx('additionalValues')}>
+                <div className={cx('derivedValue')}>
                     {Object.values(DerivedValueType).map((attributeType) => (
                         <DerivedValueBlock key={attributeType} derivedValueType={attributeType} character={character} />
                     ))}
                 </div>
-                <div className="healthPoint">
+                <div className={cx('healthPoint')}>
                     <HealthPointBlock character={character} />
                 </div>
-                <div className="armorClass">
+                <div className={cx('armorClass')}>
                     <ArmorClassBlock character={character} />
                 </div>
             </div>

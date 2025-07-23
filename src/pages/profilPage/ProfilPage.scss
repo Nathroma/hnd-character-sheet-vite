@@ -1,30 +1,33 @@
 .character-sheet {
-    /* Dimensions & mise en page globale */
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row;
 
-    /* --- Header --- */
-    &__header {
+    .character-sheet__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .character-sheet__header {
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        gap: 1rem;
+        padding: 1rem;
     }
 
-    /* Photo du personnage */
     &__photo {
-        width: 120px;
-        height: 150px;
-        overflow: hidden;
 
-        /* Pour que l'image rentre bien dans le cercle */
+        width: 150px;
+        height: 200px;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: #fafafa;
         text-align: center;
+        border-radius: 5px;
+        border: 3px solid #020202;
 
         img {
             width: 100%;
@@ -39,94 +42,174 @@
         }
     }
 
-    /* Cercle Niveau / XP */
     &__level {
         display: flex;
         align-items: center;
         justify-content: center;
 
         &-circle {
-            width: 90px;
-            height: 90px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            background-color: #eee;
+            background-color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
+
+            .CircularProgressbar {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
 
             p {
                 margin: 0;
             }
         }
 
-        /* Flèche vers le haut devant "Niveau X" */
         &-arrow {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
+            font-size: 1rem;
         }
 
         .character-sheet__xp {
-            margin-top: 0.25rem;
             font-size: 0.8rem;
             color: #666;
         }
     }
 
-    /* Classes Barbare, Clerc, Magicien */
     &__classes {
         display: flex;
-        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+
+        &-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            .character-sheet__classes-icon {
+                font-size: 2rem;
+            }
+
+            .character-sheet__classes-name {
+                font-size: 1.2rem;
+                color: #666;
+            }
+
+            .character-sheet__classes-level {
+                font-size: 1.8rem;
+                color: #666;
+            }
+        }
+    }
+
+    .character-sheet-name-block {
+        display: flex;
+        height: 4rem;
+        align-items: center;
+        justify-content: center;
+        border-top: #666 solid 2px;
+        margin: 0 15px 0 15px;
+
+        p {
+            font-size: 2rem;
+            font-weight: bold;
+        }
     }
 
     .character-infos__content {
         display: flex;
-        flex-direction: row;
         width: 100%;
-        /* Informations générales : Nom, Race, etc. */
-        justify-content: space-between;
-        align-items: center;
 
         .character-datas {
             display: flex;
             flex-direction: column;
+            justify-content: space-around;
             gap: 0.5rem;
-            width: 100%;
+            margin-left: 20px;
 
-            .character-sheet__info-block{
-                
-                label {
+            .character-sheet__info-block {
+                display: flex;
+                flex-direction: row;
+
+                .character-name {
+                    font-size: 2.5rem;
                     font-weight: bold;
                     margin-bottom: 0.5rem;
                 }
 
-            }
+                img {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 0.5rem;
+                }
 
+
+                label {
+                    font-weight: bold;
+                    margin-bottom: 0.5rem;
+                    white-space: nowrap;
+                    padding-right: 5px;
+                }
+
+                p {
+                    margin: 0;
+                    line-height: 1.4;
+                    white-space: pre-line;
+                }
+
+                .race,
+                .variante,
+                .archetype,
+                .historical {
+                    display: flex;
+                    flex-direction: row;
+                    padding-right: 30px;
+                }
+            }
         }
 
         .character-physical {
-            display: flex;
-            flex-direction: column;
+            display: grid;
             gap: 0.5rem;
-            width: 100%;
-        }
-    }
+            border-left: #adadad solid 2px;
 
-    /* Biographie */
-    &__bio {
-        display: flex;
-        flex-direction: column;
+            .phsyical-wrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 1rem;
+                min-width: 400px;
 
-        label {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
+                p {
+                    margin: 0;
+                    line-height: 1.4;
+                    white-space: pre-line;
+                    text-align: left;
+                    min-width: 80px;
+                }
 
-        p {
-            margin: 0;
-            line-height: 1.4;
-            white-space: pre-line;
-            /* Au cas où tu veux respecter les sauts de ligne */
+                img {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 0.5rem;
+                }
+
+                div {
+                    display: flex;
+                    align-items: center;
+                }
+
+            }
         }
     }
 }

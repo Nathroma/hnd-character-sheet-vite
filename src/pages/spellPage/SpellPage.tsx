@@ -1,7 +1,8 @@
-import React from "react";
-import "./SpellPage.scss";
 import SpellTableBlock from "@/components/spellTableBlock/SpellTableBlock";
 import { Character } from "@/types/characterType";
+import cx from 'classnames';
+import React from "react";
+import "./SpellPage.scss";
 
 type SpellPageProps = {
     title: string;
@@ -10,9 +11,9 @@ type SpellPageProps = {
 
 const SpellPage = ({ title, character }: SpellPageProps) => {
     return (
-        <div className="spell-page">
+        <div className={cx('spell-page')}>
             <h1>{title}</h1>
-            <div className="spell-content">
+            <div className={cx('spell-content')}>
                 <SpellTableBlock character={character} />
             </div>
         </div>

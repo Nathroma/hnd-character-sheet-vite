@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import "./KnownCharacterTableBlock.scss";
-import AddKnownCharacter from "../addKnownCharacterModal/AddKnownCharacterModal";
-import { KnownCharacter } from "@/types/noteType";
 import { Character } from "@/types/characterType";
+import { KnownCharacter } from "@/types/noteType";
+import cx from 'classnames';
+import React, { useState } from "react";
+import AddKnownCharacter from "../addKnownCharacterModal/AddKnownCharacterModal";
+import "./KnownCharacterTableBlock.scss";
 
 type KnownCharacterTableBlockProps = {
     character: Character;
@@ -21,11 +22,11 @@ const KnownCharacterTableBlock = ({ character }: KnownCharacterTableBlockProps) 
     };
 
     return (
-        <div className="equipment-table-container">
-            <div className="table-header">
-                <button className="add-button" onClick={handleAdd}>Ajouter</button>
+        <div className={cx("equipment-table-container")}>
+            <div className={cx("table-header")}>
+                {/* Le bouton Ajouter est déplacé plus bas */}
             </div>
-            <table className="equipment-table">
+            <table className={cx("equipment-table")}>
                 <colgroup>
                     <col style={{ width: '5%' }} />
                     <col style={{ width: '30%' }} />
@@ -57,6 +58,15 @@ const KnownCharacterTableBlock = ({ character }: KnownCharacterTableBlockProps) 
                     ))}
                 </tbody>
             </table>
+            {/* Nouveau bouton Ajouter en bas à droite */}
+            {!isModalOpen && (
+                <button className={cx("floating-add-button")}
+                    onClick={handleAdd}
+                    aria-label="Ajouter un personnage connu"
+                >
+                    +
+                </button>
+            )}
             <AddKnownCharacter
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}

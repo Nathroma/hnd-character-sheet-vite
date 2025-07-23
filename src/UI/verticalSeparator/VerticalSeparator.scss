@@ -1,9 +1,13 @@
 .container {
     display: flex;
-    height: auto;
+    height: 100%;
+    width: 5px;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
   
 .divider {
-    border-left: 1px solid black;
-    height: auto;
+    border-left: 1px solid rgb(61, 61, 61);
+    height: 100%;
 }

@@ -1,7 +1,8 @@
+import KnownCharacterTableBlock from "@/components/knownCharacterTableBlock/KnownCharacterTableBlock";
+import { Character } from "@/types/characterType";
+import cx from 'classnames';
 import React from "react";
 import "./PlayerNotePage.scss";
-import { Character } from "@/types/characterType";
-import KnownCharacterTableBlock from "@/components/knownCharacterTableBlock/KnownCharacterTableBlock";
 
 type PlayerNotePageProps = {
     title: string;
@@ -10,16 +11,16 @@ type PlayerNotePageProps = {
 
 const PlayerNotePage = ({ title, character }: PlayerNotePageProps) => {
     return (
-        <div className="player-note-page">
-            <div className="player-note-header">
+        <div className={cx('player-note-page')}>
+            <div className={cx('player-note-header')}>
                 <h1>{title}</h1>
             </div>
-            <div className="infos-wrapper">
-                <textarea className="player-note"
+            <div className={cx('infos-wrapper')}>
+                <textarea className={cx('player-note')}
                     placeholder="Entrez vos notes ici..."
                     onChange={(e) => { character.updatePlayerNote(e.target.value) }} value={character.datas.playerNotes.note} />
-                <div className="secondary-infos">
-                    <div className="KnownCharacterTableBlock">
+                <div className={cx('secondary-infos')}>
+                    <div className={cx('KnownCharacterTableBlock')}>
                         <KnownCharacterTableBlock character={character} />
                     </div>
                 </div>

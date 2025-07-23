@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import React from "react";
 import "./LabeledCheckBox.scss";
 
@@ -14,14 +15,14 @@ const LabeledCheckbox = ({ label, isChecked, onChange }:LabeledCheckBoxProps) =>
   };
 
   return (
-    <div className="checkbox-container">
+    <div className={cx('checkbox-container')}>
       <input
         type="checkbox"
-        className="checkbox-input"
+        className={cx('checkbox-input')}
         checked={isChecked}
         onChange={handleCheckboxChange}
       />
-      <label htmlFor="checkbox" className="checkbox-label">
+      <label htmlFor="checkbox" className={cx('checkbox-label')}>
         {label}
       </label>
     </div>
