@@ -17,8 +17,8 @@ $table-colors: (
 
 // Variables pour les boutons flottants
 $floating-button: (
-  'background': #f5e9da,
-  'background-hover': #ecd7b7,
+  'background': #dfdfdf,
+  'background-hover': #929292,
   'color': #7a7773,
   'size': 60px,
   'border-radius': 50%,
@@ -50,6 +50,7 @@ $floating-button: (
 
   &:hover {
     background-color: map-get($floating-button, 'background-hover');
+    color: map-get($floating-button, 'background');
   }
 }
 
