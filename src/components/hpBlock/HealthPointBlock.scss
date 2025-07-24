@@ -6,12 +6,12 @@
   background-color: #707070;
   border-radius: 0.5rem;
   width: 100%;
-  
+
   .health-section {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    
+
     .health-label {
       font-size: 0.8rem;
       font-weight: 900;
@@ -19,10 +19,10 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    
+
     .health-bar-container {
       width: 100%;
-      
+
       .health-bar {
         width: 100%;
         height: 2rem;
@@ -31,18 +31,18 @@
         border-radius: 0.25rem;
         overflow: hidden;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        
+
         .health-fill {
           height: 100%;
-          width: 80%;
           background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
           display: flex;
           align-items: center;
           justify-content: center;
           transition: width 0.3s ease;
           position: relative;
-          
+
           .health-text {
             position: absolute;
             align-items: center;
@@ -79,16 +79,16 @@
             }
           }
         }
-        
-        .hit-dice-fill {
-          height: 100%;
-          background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+
+        .temp-health-section {
+          height: 20%;
+          background: linear-gradient(90deg, #445bef 0%, #445bef 100%);
           display: flex;
           align-items: center;
           justify-content: center;
           transition: width 0.3s ease;
           position: relative;
-          
+
           .health-text {
             color: white;
             font-weight: bold;
@@ -97,36 +97,31 @@
             z-index: 2;
           }
         }
-        
-        .temp-health-section {
+      }
+
+      .hit-dice-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .hit-dice-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
           display: flex;
           align-items: center;
-          justify-content: flex-end;
-          padding-right: 0.5rem;
-          width: 20%;
-          
-          .temp-divider {
-            width: 1px;
-            height: 60%;
-            background: repeating-linear-gradient(
-              to bottom,
-              #666 0px,
-              #666 2px,
-              transparent 2px,
-              transparent 4px
-            );
-            margin-right: 0.5rem;
-          }
-          
-          .temp-label {
-            color: #b0b0b0;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+          justify-content: center;
+          transition: width 0.3s ease;
+          position: relative;
+
+          .health-text {
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            z-index: 2;
           }
         }
       }
     }
   }
-} 
+}
