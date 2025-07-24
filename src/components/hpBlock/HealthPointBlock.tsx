@@ -28,33 +28,32 @@ export const HealthPointBlock = ({ character }: HealthPointProps) => {
             <div
               className={cx('health-fill')}
               style={{ width: `${hpPercentage}%` }}
-            >
-              <span className={cx('health-text')}>
-                <input
-                  type="text"
-                  className={cx('current-health')}
-                  value={character.datas.attributes.healthPoint.current}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    character.setCurrentHp(parseInt(e.target.value))
-                  }
-                />
-                <span className={cx('health-text')}>/</span>
-                <input
-                  type="text"
-                  className={cx('max-health')}
-                  value={character.datas.attributes.healthPoint.max}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    character.setMaxHp(parseInt(e.target.value))
-                  }
-                />
-              </span>
-            </div>
-            <div className={cx('temp-health-section')}>
-              <div className={cx('temp-bar-container')}>
-                <div className={cx('temp-bar')}>
-                  <div className={cx('temp-fill')}>
-                    <span className={cx('health-text')}>{tempHealthPoint}</span>
-                  </div>
+            ></div>
+            <span className={cx('health-text')}>
+              <input
+                type="text"
+                className={cx('current-health')}
+                value={character.datas.attributes.healthPoint.current}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  character.setCurrentHp(parseInt(e.target.value))
+                }
+              />
+              <span className={cx('health-text')}>/</span>
+              <input
+                type="text"
+                className={cx('max-health')}
+                value={character.datas.attributes.healthPoint.max}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  character.setMaxHp(parseInt(e.target.value))
+                }
+              />
+            </span>
+          </div>
+          <div className={cx('temp-health-section')}>
+            <div className={cx('temp-bar-container')}>
+              <div className={cx('temp-bar')}>
+                <div className={cx('temp-fill')}>
+                  <span className={cx('health-text')}>{tempHealthPoint}</span>
                 </div>
               </div>
             </div>

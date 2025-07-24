@@ -21,6 +21,8 @@
     }
 
     .health-bar-container {
+      display: flex;
+      flex-direction: column;
       width: 100%;
 
       .health-bar {
@@ -28,11 +30,13 @@
         height: 2rem;
         background-color: #000;
         border: 1px solid #444;
+        border-color: #eceaea;
         border-radius: 0.25rem;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: left;
+        position: relative;
 
         .health-fill {
           height: 100%;
@@ -42,60 +46,60 @@
           justify-content: center;
           transition: width 0.3s ease;
           position: relative;
-
-          .health-text {
-            position: absolute;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-
-            input {
-              text-align: center;
-              width: 10%;
-              height: 100%;
-              border: none;
-              background-color: transparent;
-              color: white;
-              font-weight: bold;
-              font-size: 1.5rem;
-
-              &:focus {
-                outline: none;
-              }
-            }
-
-            span {
-              font-weight: bold;
-              font-size: 1.5rem;
-              padding-left: 0.5rem;
-              padding-right: 0.5rem;
-            }
-          }
         }
 
-        .temp-health-section {
-          height: 20%;
-          background: linear-gradient(90deg, #445bef 0%, #445bef 100%);
+        .health-text {
+          position: absolute;
+          align-items: center;
+          color: white;
+          font-weight: bold;
+          font-size: 0.9rem;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+          z-index: 2;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: width 0.3s ease;
-          position: relative;
+          gap: 0.5rem;
 
-          .health-text {
+          input {
+            text-align: center;
+            width: 10%;
+            height: 100%;
+            border: none;
+            background-color: transparent;
             color: white;
             font-weight: bold;
-            font-size: 0.9rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            z-index: 2;
+            font-size: 1.5rem;
+
+            &:focus {
+              outline: none;
+            }
           }
+
+          span {
+            font-weight: bold;
+            font-size: 1.5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+          }
+        }
+      }
+
+      .temp-health-section {
+        height: 20%;
+        background: linear-gradient(90deg, #445bef 0%, #445bef 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: width 0.3s ease;
+        position: relative;
+
+        .health-text {
+          color: white;
+          font-weight: bold;
+          font-size: 0.9rem;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+          z-index: 2;
         }
       }
 
