@@ -26,7 +26,6 @@ export const HealthPointBlock = ({ character }: HealthPointProps) => {
         <button className={cx('health-modifier-subtract')}>-</button>
       </div>
       <div className={cx('health-point-container')}>
-
         {/* Hit Points Bar */}
         <div className={cx('health-section')}>
           <div className={cx('health-label')}>HIT POINTS</div>
@@ -35,32 +34,39 @@ export const HealthPointBlock = ({ character }: HealthPointProps) => {
               <div
                 className={cx('health-fill')}
                 style={{ width: `${hpPercentage}%` }}
-                ></div>
-              <span className={cx('health-text')}>
+              ></div>
+              <div className={cx('health-text')}>
                 <input
                   type="text"
                   className={cx('current-health')}
                   value={character.datas.attributes.healthPoint.current}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    character.setCurrentHp(parseInt(e.target.value))
+                    character.setCurrentHp(parseInt(e.target.value) || 0)
                   }
-                  />
-                <span className={cx('health-text')}>/</span>
+                />
+                <span>/</span>
                 <input
                   type="text"
                   className={cx('max-health')}
                   value={character.datas.attributes.healthPoint.max}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    character.setMaxHp(parseInt(e.target.value))
+                    character.setMaxHp(parseInt(e.target.value) || 0)
                   }
-                  />
-              </span>
+                />
+              </div>
             </div>
             <div className={cx('temp-health-section')}>
               <div className={cx('temp-bar-container')}>
                 <div className={cx('temp-bar')}>
                   <div className={cx('temp-fill')}>
-                    <span className={cx('health-text')}>{tempHealthPoint}</span>
+                    <input
+                      type="text"
+                      className={cx('temp-health')}
+                      value={tempHealthPoint}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setTempHealthPoint(parseInt(e.target.value) || 0)
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -71,20 +77,33 @@ export const HealthPointBlock = ({ character }: HealthPointProps) => {
         {/* Hit Dice Bar */}
         <div className={cx('hit-dice-section')}>
           <div className={cx('hit-dice-label')}>HIT DICE</div>
-          <div className={cx('hit-dice-bar-container')}>
-            <div className={cx('hit-dice-bar')}>
-              <div
-                className={cx('hit-dice-fill')}
-                style={{ width: `${hitDicePercentage}%` }}
-                >
-                <span className={cx('health-text')}>
-                  {hitDiceCurrent} / {hitDiceMax}
-                </span>
-              </div>
+          <div className={cx('hit-dice-bar')}>
+            <div
+              className={cx('hit-dice-fill')}
+              style={{ width: `${hitDicePercentage}%` }}
+            ></div>
+            <div className={cx('hit-dice-text')}>
+              <input
+                type="text"
+                className={cx('hit-dice-current')}
+                value={hitDiceCurrent}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setHitDiceCurrent(parseInt(e.target.value) || 0)
+                }
+              />
+              <span>/</span>
+              <input
+                type="text"
+                className={cx('hit-dice-max')}
+                value={hitDiceMax}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setHitDiceMax(parseInt(e.target.value) || 0)
+                }
+              />
             </div>
           </div>
-                </div>
         </div>
+      </div>
     </div>
   );
 };
